@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/OneDrive_1_20-06-2023.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Projet open food facts.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/open-food-facts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +19,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -139,6 +139,7 @@
       <workItem from="1687113462442" duration="612000" />
       <workItem from="1687262502889" duration="1311000" />
       <workItem from="1687264398448" duration="601000" />
+      <workItem from="1687275541138" duration="391000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -252,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687109121487</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Mise en place structure projet + MCD v1">
+      <created>1687275816003</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1687275816005</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +290,8 @@
     <MESSAGE value="tp4 terminé" />
     <MESSAGE value="TP 5 Terminé" />
     <MESSAGE value="TP6 à terminer" />
-    <option name="LAST_COMMIT_MESSAGE" value="TP6 à terminer" />
+    <MESSAGE value="Mise en place structure projet + MCD v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mise en place structure projet + MCD v1" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
