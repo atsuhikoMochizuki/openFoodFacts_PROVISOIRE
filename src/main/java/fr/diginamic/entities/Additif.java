@@ -16,7 +16,7 @@ public class Additif {
     @ManyToMany
     @JoinTable(name = "ADD_PROD",
             joinColumns = @JoinColumn(name = "ID_ADDITIF", referencedColumnName = "id_additif"),
-            inverseJoinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produits")
+            inverseJoinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit")
     )
     private Set<Produit> produits;
 

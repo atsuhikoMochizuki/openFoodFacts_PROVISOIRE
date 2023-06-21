@@ -44,6 +44,20 @@ public class Produit {
     @ManyToMany(mappedBy = "produits")
     private Set<Additif> additifs;
 
+    @ManyToMany(mappedBy = "produits")
+    private Set<Allergene> allergenes;
+
+    @ManyToOne
+    @JoinColumn(name = "MARQUE_ID")
+    private Marque marque;
+
+    @ManyToOne
+    @JoinColumn(name = "NUTRISCORE_ID")
+    private Nutriscore nutriscore;
+
+    @ManyToMany(mappedBy = "produits")
+    private Set<Ingredient> ingredients;
+
 
     public Produit() {
     }
