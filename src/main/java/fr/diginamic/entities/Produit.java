@@ -2,13 +2,15 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Produit")
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer id;
+    private Integer id_produit;
     private String nom_produit;
 
     private double energiePour100g;
@@ -39,15 +41,19 @@ public class Produit {
     @JoinColumn(name = "CAT_ID")
     private Categorie categorie;
 
+    @ManyToMany(mappedBy = "produits")
+    private Set<Additif> additifs;
+
+
     public Produit() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getId_produit() {
+        return id_produit;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_produit(Integer id) {
+        this.id_produit = id;
     }
 
     public String getNom_produit() {
@@ -245,7 +251,7 @@ public class Produit {
     @Override
     public String toString() {
         return "Produit{" +
-                "id=" + id +
+                "id=" + id_produit +
                 ", nom_produit='" + nom_produit + '\'' +
                 ", energiePour100g=" + energiePour100g +
                 ", graisse100g=" + graisse100g +
