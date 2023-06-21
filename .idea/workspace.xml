@@ -5,18 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/check_reverseEngineerOfDatabase.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" beforeDir="false" afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +164,8 @@
       <workItem from="1687308735978" duration="122000" />
       <workItem from="1687308962580" duration="691000" />
       <workItem from="1687350714845" duration="1324000" />
-      <workItem from="1687353451354" duration="6112000" />
+      <workItem from="1687353451354" duration="6676000" />
+      <workItem from="1687361744538" duration="3708000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -314,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687356117088</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD">
+      <option name="closed" value="true" />
+      <created>1687359626159</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1687359626159</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +360,8 @@
     <MESSAGE value="MCD - MPD OK + Premier jet conception" />
     <MESSAGE value="Mapping relation produit-cat OK" />
     <MESSAGE value="Mapping relation produit-additif OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mapping relation produit-additif OK" />
+    <MESSAGE value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Nutriscore")
+@Table
 public class Nutriscore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

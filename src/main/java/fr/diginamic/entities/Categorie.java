@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Categorie")
+@Table
 public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_categorie;
-    @Column(name = "nom_categorie")
+
     private String nom_categorie;
 
     @OneToMany(mappedBy = "categorie")
