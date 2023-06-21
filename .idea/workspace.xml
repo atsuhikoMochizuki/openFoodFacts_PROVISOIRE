@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/archives/MCD_MPD_DATABAASE_V2.loo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/Jpa.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/methode_creation_projet_JPA_intelliJ_ultimate.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V2.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/chowyounfat/Donnees/Diginamic/projets/revision_18_juin/MochizukiTemplate&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/chowyounfat/Lien vers projets/OpenFoodFacts/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.diginamic.jdbc.dao" />
@@ -144,6 +157,9 @@
       <workItem from="1687264398448" duration="601000" />
       <workItem from="1687275541138" duration="391000" />
       <workItem from="1687307397002" duration="1068000" />
+      <workItem from="1687308735978" duration="122000" />
+      <workItem from="1687308962580" duration="691000" />
+      <workItem from="1687350714845" duration="1324000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -272,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687307536806</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="MCD - MPD OK + Premier jet conception">
+      <option name="closed" value="true" />
+      <created>1687308836295</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1687308836295</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
