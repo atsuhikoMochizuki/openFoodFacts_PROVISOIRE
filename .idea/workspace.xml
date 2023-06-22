@@ -5,21 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conception/check_reverseEngineerOfDatabase.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-color.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-no-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/ihm/Ihm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" beforeDir="false" afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +71,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="fr.diginamic" />
       <recent name="fr.diginamic.jdbc.dao" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fr.diginamic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.diginamic" />
       <recent name="fr.diginamic.jdbc" />
     </key>
   </component>
@@ -91,6 +90,19 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="Ihm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.ihm.Ihm" />
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.ihm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -98,7 +110,20 @@
       <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.diginamic.*" />
+          <option name="PATTERN" value="fr.diginamic.ihm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ihm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.ihm.ihm" />
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.ihm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,7 +135,7 @@
       <module name="IntroductionJPA-comprendre JDBC" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.diginamic.*" />
+          <option name="PATTERN" value="fr.diginamic.ihm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,6 +163,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Ihm" />
+        <item itemvalue="Application.ihm" />
         <item itemvalue="JUnit.TestApp.testValueOfLibelle" />
       </list>
     </recent_temporary>
@@ -165,7 +192,10 @@
       <workItem from="1687308962580" duration="691000" />
       <workItem from="1687350714845" duration="1324000" />
       <workItem from="1687353451354" duration="6676000" />
-      <workItem from="1687361744538" duration="3708000" />
+      <workItem from="1687361744538" duration="3822000" />
+      <workItem from="1687464500100" duration="8392000" />
+      <workItem from="1687474056213" duration="2208000" />
+      <workItem from="1687476864033" duration="1253000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -326,7 +356,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687359626159</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Mapping du MCD OK">
+      <option name="closed" value="true" />
+      <created>1687365765579</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1687365765579</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +399,8 @@
     <MESSAGE value="Mapping relation produit-cat OK" />
     <MESSAGE value="Mapping relation produit-additif OK" />
     <MESSAGE value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
+    <MESSAGE value="Mapping du MCD OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mapping du MCD OK" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
