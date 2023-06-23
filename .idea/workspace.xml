@@ -4,63 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Merge branch 'develop'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/fr/diginamic/Main.java">
-      <change afterPath="$PROJECT_DIR$/.idea/OpenFoodFacts.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conception/check_reverseEngineerOfDatabase.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-color.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-no-background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/Jpa.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/methode_creation_projet_JPA_intelliJ_ultimate.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/open-food-facts.csv.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/AbstractAdvanceICsvFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/AbstractICsvFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CsvFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CsvFileHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/I_CsvFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/ihm/Ihm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CsvFileBTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CsvFileTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/divers/FileNameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/open-food-facts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/ihm/Ihm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/open-food-facts.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/TestApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V2.loo" beforeDir="false" afterPath="$PROJECT_DIR$/conception/archives/MCD_MPD_DATABAASE_V2.loo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/open-food-facts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-    </list>
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,26 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
-    "last_opened_file_path": "/home/chowyounfat/Lien vers projets/OpenFoodFacts/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/chowyounfat/Lien vers projets/OpenFoodFacts/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.diginamic" />
@@ -479,7 +423,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687478299701</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer">
+      <option name="closed" value="true" />
+      <created>1687534374279</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1687534374279</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +468,8 @@
     <MESSAGE value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
     <MESSAGE value="Mapping du MCD OK" />
     <MESSAGE value="Ajout d'une petite interface graphique rudimentaire" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une petite interface graphique rudimentaire" />
+    <MESSAGE value="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
