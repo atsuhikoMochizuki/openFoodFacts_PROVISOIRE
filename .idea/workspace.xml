@@ -4,7 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Merge branch 'develop'&#10;&#10;# Conflicts:&#10;#&#9;src/main/java/fr/diginamic/Main.java">
+      <change afterPath="$PROJECT_DIR$/.idea/OpenFoodFacts.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.loo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conception/check_reverseEngineerOfDatabase.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-color.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-no-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/logo-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/Jpa.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/methode_creation_projet_JPA_intelliJ_ultimate.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/open-food-facts.csv.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/AbstractAdvanceICsvFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/AbstractICsvFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CsvFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CsvFileHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/I_CsvFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/ihm/Ihm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CsvFileBTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CsvFileTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/divers/FileNameTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/open-food-facts.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/ihm/Ihm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/open-food-facts.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/TestApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V2.loo" beforeDir="false" afterPath="$PROJECT_DIR$/conception/archives/MCD_MPD_DATABAASE_V2.loo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/open-food-facts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,17 +70,45 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit4 Test Class" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -37,29 +121,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/chowyounfat/Donnees/Diginamic/projets/revision_18_juin/MochizukiTemplate&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_opened_file_path": "/home/chowyounfat/Lien vers projets/OpenFoodFacts/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="fr.diginamic" />
       <recent name="fr.diginamic.jdbc.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/test" />
+      <recent name="$PROJECT_DIR$/src/test/java/fr/diginamic/bll" />
+      <recent name="$PROJECT_DIR$/src/main/java/fr/diginamic" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="fr.diginamic" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="fr.diginamic.bll" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.diginamic" />
       <recent name="fr.diginamic.jdbc" />
     </key>
   </component>
@@ -72,8 +175,6 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="fr.diginamic.Main" />
       <module name="OpenFoodFacts" />
       <extension name="coverage">
@@ -86,17 +187,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestApp.testValueOfLibelle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionJPA-comprendre JDBC" />
+    <configuration name="CsvFile01Test.testMappedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.diginamic.*" />
+          <option name="PATTERN" value="fr.diginamic.bll.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="fr.diginamic" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.TestApp" />
-      <option name="METHOD_NAME" value="testValueOfLibelle" />
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.CsvFile01Test" />
+      <option name="METHOD_NAME" value="testMappedData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvFile01Test.testTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.bll.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.CsvFile01Test" />
+      <option name="METHOD_NAME" value="testTitle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvFileBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.bll.parsingCsv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CsvFileBTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvFileBTest.testMappedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.bll.parsingCsv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CsvFileBTest" />
+      <option name="METHOD_NAME" value="testMappedData" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -118,7 +266,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestApp.testValueOfLibelle" />
+        <item itemvalue="JUnit.CsvFileBTest.testMappedData" />
+        <item itemvalue="JUnit.CsvFileBTest" />
+        <item itemvalue="JUnit.CsvFile01Test.testMappedData" />
+        <item itemvalue="JUnit.CsvFile01Test.testTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +291,18 @@
       <workItem from="1687262502889" duration="1311000" />
       <workItem from="1687264398448" duration="601000" />
       <workItem from="1687275541138" duration="391000" />
+      <workItem from="1687307397002" duration="1068000" />
+      <workItem from="1687308735978" duration="122000" />
+      <workItem from="1687308962580" duration="691000" />
+      <workItem from="1687350714845" duration="1324000" />
+      <workItem from="1687353451354" duration="6676000" />
+      <workItem from="1687361744538" duration="3822000" />
+      <workItem from="1687464500100" duration="8392000" />
+      <workItem from="1687474056213" duration="2208000" />
+      <workItem from="1687476864033" duration="1458000" />
+      <workItem from="1687509230051" duration="6240000" />
+      <workItem from="1687523744423" duration="5942000" />
+      <workItem from="1687531581937" duration="2113000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -260,7 +423,63 @@
       <option name="project" value="LOCAL" />
       <updated>1687275816005</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="MCD - MPD OK + Premier jet conception">
+      <option name="closed" value="true" />
+      <created>1687307536806</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1687307536806</updated>
+    </task>
+    <task id="LOCAL-00019" summary="MCD - MPD OK + Premier jet conception">
+      <option name="closed" value="true" />
+      <created>1687308836295</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1687308836295</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Mapping relation produit-cat OK">
+      <option name="closed" value="true" />
+      <created>1687355284440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1687355284442</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Mapping relation produit-additif OK">
+      <option name="closed" value="true" />
+      <created>1687356117088</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1687356117088</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD">
+      <option name="closed" value="true" />
+      <created>1687359626159</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1687359626159</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Mapping du MCD OK">
+      <option name="closed" value="true" />
+      <created>1687365765579</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1687365765579</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Ajout d'une petite interface graphique rudimentaire">
+      <option name="closed" value="true" />
+      <created>1687478299701</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1687478299701</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +510,13 @@
     <MESSAGE value="TP 5 Terminé" />
     <MESSAGE value="TP6 à terminer" />
     <MESSAGE value="Mise en place structure projet + MCD v1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en place structure projet + MCD v1" />
+    <MESSAGE value="MCD - MPD OK + Premier jet conception" />
+    <MESSAGE value="Mapping relation produit-cat OK" />
+    <MESSAGE value="Mapping relation produit-additif OK" />
+    <MESSAGE value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
+    <MESSAGE value="Mapping du MCD OK" />
+    <MESSAGE value="Ajout d'une petite interface graphique rudimentaire" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une petite interface graphique rudimentaire" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
