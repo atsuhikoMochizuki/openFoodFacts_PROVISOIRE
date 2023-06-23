@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/design/logo-black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-color.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-no-background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/design/logo-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/ihm/Ihm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" beforeDir="false" afterPath="$PROJECT_DIR$/conception/MCD_MPD_DATABAASE_V3.lo1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" afterDir="false" />
-    </list>
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,7 +182,7 @@
       <workItem from="1687361744538" duration="3822000" />
       <workItem from="1687464500100" duration="8392000" />
       <workItem from="1687474056213" duration="2208000" />
-      <workItem from="1687476864033" duration="1253000" />
+      <workItem from="1687476864033" duration="1458000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -364,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687365765579</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ajout d'une petite interface graphique rudimentaire">
+      <option name="closed" value="true" />
+      <created>1687478299701</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1687478299701</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +395,8 @@
     <MESSAGE value="Mapping relation produit-additif OK" />
     <MESSAGE value="Mapping reste petit bug:&#10;pas de relation en Ingredient et INGREDIENT_PROD" />
     <MESSAGE value="Mapping du MCD OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mapping du MCD OK" />
+    <MESSAGE value="Ajout d'une petite interface graphique rudimentaire" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'une petite interface graphique rudimentaire" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
