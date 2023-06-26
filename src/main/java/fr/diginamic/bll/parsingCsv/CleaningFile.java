@@ -1,14 +1,27 @@
 package fr.diginamic.bll.parsingCsv;
 
+import fr.diginamic.Main;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CleaningFile {
 
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
     public static ResourceBundle csvFile = ResourceBundle.getBundle("project");
     public static final String CSV_RELATIVE_PATH = csvFile.getString("project.csvfile");
+
+    public static String[] HEADER;
 
     // Filtres
     public static final String FILTRE_SUR_LES_POURCENTAGE = "([0-9]).*%";
@@ -21,6 +34,7 @@ public class CleaningFile {
     public static final String FILTRE_SUR_LE_TIRET = " - ";
     public static final String FILTRE_SUR_UNDERSCORE = "_";
     public static final String FILTRE_SUR_LE_POINT = "\\.";
+    public static final String FILTRE_BARRE_VERTICAL = "\\|";
 
     private static HashMap<String, Pattern> patternCollection = new HashMap<>();
 
@@ -35,6 +49,7 @@ public class CleaningFile {
         patternCollection.put("FILTRE_SUR_LES_ETOILES", Pattern.compile(FILTRE_SUR_LES_ETOILES));
         patternCollection.put("FILTRE_SUR_LE_POINT", Pattern.compile(FILTRE_SUR_LE_POINT));
         patternCollection.put("FILTRE_SUR_LE_TIRET", Pattern.compile(FILTRE_SUR_LE_TIRET));
+        patternCollection.put("FILTRE_BARRE_VERTICAL", Pattern.compile(FILTRE_BARRE_VERTICAL));
     }
 
     public CleaningFile() {
@@ -48,23 +63,55 @@ public class CleaningFile {
         CleaningFile.patternCollection = patternCollection;
     }
 
-    public static String getResourcePath(String fileName) {
-        if (fileName == null || fileName.length() == 0) {
-            throw new IllegalArgumentException("Le nom du fichier ne peut pas �tre null");
+    /**
+     *
+     */
+    public static void cleanFile(String pathcsv) {
+
+        Path path = Paths.get(pathcsv);
+
+        // Lecture ligne par ligne
+        List<String> lines;
+        try {
+            lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
         }
 
-        final File f = new File("");
-        final String dossierPath = f.getAbsolutePath() + File.separator + fileName;
-        return dossierPath;
+        // Initialisation de l'iterator
+        Iterator<String> iter = lines.iterator();
+        String entete = iter.next();
+        HEADER = entete.split("\\|");
+
+        List<String[]> arr = new ArrayList<>();
+        while (iter.hasNext()) {
+            String line = iter.next();
+            String[] lineSplit = line.split("\\|", 30);
+            for (int i = 0; i < lineSplit.length; i++) {
+                lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
+            }
+            arr.add(lineSplit);
+        }
+
+        for (String[] line : arr) {
+            System.out.println(Arrays.toString(line));
+        }
+
     }
 
-    public static File getResource(String fileName) {
-        if (fileName == null || fileName.length() == 0) {
-            throw new IllegalArgumentException("Le nom du fichier ne peut pas �tre null");
+    /**
+     * @param elemnt
+     * @param s
+     * @return
+     */
+    private static String nettoyage(HashMap<String, Pattern> elemnt, String s) {
+        // PREMIER TRAITEMENT
+        for (Pattern patt : elemnt.values()) {
+            Matcher matcher = patt.matcher(s);
+            s = matcher.replaceAll("");
         }
-
-        final String completeFileName = getResourcePath(fileName);
-        File file = new File(completeFileName);
-        return file;
+        s = s.replaceAll(" - ", ", ").trim();
+        return s;
     }
 }

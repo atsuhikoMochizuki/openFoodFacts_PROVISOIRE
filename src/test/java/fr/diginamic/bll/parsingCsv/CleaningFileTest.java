@@ -2,21 +2,11 @@ package fr.diginamic.bll.parsingCsv;
 
 import junit.framework.TestCase;
 
-import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CleaningFileTest extends TestCase {
 
-    private final static String FILE_NAME = "src/test/resources/chien-test-01.csv";
-
-    public void testGetResource() {
-        final File file = CleaningFile.getResource(CleaningFile.CSV_RELATIVE_PATH);
-        assertTrue(file.exists());
-    }
-
-    public void testGetResourcePath() {
-    }
 
     public void testNettoyagEtoile() {
         String chaineBrut = "*œuf d'esturgeon";
@@ -94,6 +84,10 @@ public class CleaningFileTest extends TestCase {
     public void testWhiteSpace() {
         String chaineBrut = "édulcorants, carrefour sélection, sirop framboise grenade, d, sucre, eau, jus de fruits à base de concentrés , acidifiant, 1318, 0, 78,";
 
+    }
+
+    public void testNettoyage() {
+        CleaningFile.cleanFile(CleaningFile.CSV_RELATIVE_PATH);
     }
 
 }

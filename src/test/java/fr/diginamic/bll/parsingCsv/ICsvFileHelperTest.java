@@ -13,21 +13,6 @@ public class ICsvFileHelperTest {
 
 	private final static String FILE_NAME = "src/test/resources/chien-test-01.csv";
 
-	@Test
-	public void testGetResource() {
-		// Param
-		final String fileName = FILE_NAME;
-
-		// Result
-		// ...
-
-		// Appel
-		final File file = CsvFileHelper.getResource(fileName);
-
-		// Test
-		assertTrue(file.exists());
-	}
-
 	@Test(expected = IllegalArgumentException.class)
 	public void testGetResourceNullFileName() {
 		// Param
