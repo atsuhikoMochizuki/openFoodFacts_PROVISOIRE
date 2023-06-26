@@ -42,9 +42,11 @@ public class Categorie {
 
     @Override
     public String toString() {
-        return "Categorie{" +
-                "id=" + id_categorie +
-                ", nom_categorie='" + nom_categorie + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("Categorie{");
+        sb.append("id_categorie=").append(id_categorie);
+        sb.append(", nom_categorie='").append(nom_categorie).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }

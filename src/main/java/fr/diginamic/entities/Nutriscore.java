@@ -41,9 +41,11 @@ public class Nutriscore {
 
     @Override
     public String toString() {
-        return "Nutriscore{" +
-                "id=" + id +
-                ", valeurScore=" + valeurScore +
-                '}';
+        final StringBuilder sb = new StringBuilder("Nutriscore{");
+        sb.append("id=").append(id);
+        sb.append(", valeurScore=").append(valeurScore);
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }

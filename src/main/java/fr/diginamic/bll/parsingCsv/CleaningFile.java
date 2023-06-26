@@ -1,6 +1,10 @@
 package fr.diginamic.bll.parsingCsv;
 
 import fr.diginamic.Main;
+import fr.diginamic.entities.Additif;
+import fr.diginamic.entities.Allergene;
+import fr.diginamic.entities.Categorie;
+import fr.diginamic.entities.Marque;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,6 +72,7 @@ public class CleaningFile {
      */
     public static void cleanFile(String pathcsv) {
 
+        int iteration = 0;
         Path path = Paths.get(pathcsv);
 
         // Lecture ligne par ligne
@@ -84,18 +89,19 @@ public class CleaningFile {
         String entete = iter.next();
         HEADER = entete.split("\\|");
 
-        List<String[]> arr = new ArrayList<>();
+
         while (iter.hasNext()) {
+            iteration++;
             String line = iter.next();
             String[] lineSplit = line.split("\\|", 30);
             for (int i = 0; i < lineSplit.length; i++) {
                 lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
+                new Categorie(iteration, lineSplit[0]);
+                new Allergene(iteration, lineSplit[28]);
+                new Additif(iteration, lineSplit[29]);
             }
-            arr.add(lineSplit);
-        }
 
-        for (String[] line : arr) {
-            System.out.println(Arrays.toString(line));
+
         }
 
     }

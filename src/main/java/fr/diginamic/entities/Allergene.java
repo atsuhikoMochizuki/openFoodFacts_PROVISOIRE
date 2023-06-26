@@ -44,9 +44,11 @@ public class Allergene {
 
     @Override
     public String toString() {
-        return "Allergene{" +
-                "id_allergene=" + id_allergene +
-                ", nom_allergene='" + nom_allergene + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("Allergene{");
+        sb.append("id_allergene=").append(id_allergene);
+        sb.append(", nom_allergene='").append(nom_allergene).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }

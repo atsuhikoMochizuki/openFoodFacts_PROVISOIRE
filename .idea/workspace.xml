@@ -11,9 +11,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CsvFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/TestCsvFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/CsvFileTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +262,7 @@
       <workItem from="1687509230051" duration="6240000" />
       <workItem from="1687523744423" duration="5942000" />
       <workItem from="1687531581937" duration="2113000" />
-      <workItem from="1687764567932" duration="14789000" />
+      <workItem from="1687764567932" duration="17267000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -455,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687791057201</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Implementation de la class CleaningFile + tests unitaires">
+      <created>1687802292886</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1687802292886</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

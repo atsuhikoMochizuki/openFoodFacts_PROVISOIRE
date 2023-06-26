@@ -46,9 +46,11 @@ public class Additif {
 
     @Override
     public String toString() {
-        return "Additif{" +
-                "id=" + id_additif +
-                ", nom_additif='" + nom_additif + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("Additif{");
+        sb.append("id_additif=").append(id_additif);
+        sb.append(", nom_additif='").append(nom_additif).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }

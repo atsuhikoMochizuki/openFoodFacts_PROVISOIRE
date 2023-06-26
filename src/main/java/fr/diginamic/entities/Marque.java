@@ -51,10 +51,11 @@ public class Marque {
 
     @Override
     public String toString() {
-        return "Marque{" +
-                "id=" + id +
-                ", nom_marque='" + nom_marque + '\'' +
-                ", produits=" + produits +
-                '}';
+        final StringBuilder sb = new StringBuilder("Marque{");
+        sb.append("id=").append(id);
+        sb.append(", nom_marque='").append(nom_marque).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }
