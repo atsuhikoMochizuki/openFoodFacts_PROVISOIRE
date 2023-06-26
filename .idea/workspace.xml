@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -65,26 +74,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/chowyounfat/Lien vers projets/OpenFoodFacts/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_opened_file_path": "/home/chowyounfat/Lien vers projets/OpenFoodFacts/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.diginamic" />
@@ -103,6 +113,7 @@
       <recent name="fr.diginamic" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="fr.diginamic.bll.parsingCsv" />
       <recent name="fr.diginamic.bll" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -117,7 +128,7 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CleaningFileTest.testGetResource">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.diginamic.Main" />
       <module name="OpenFoodFacts" />
@@ -131,39 +142,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CsvFile01Test.testMappedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OpenFoodFacts" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.diginamic.bll.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.diginamic.bll" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.CsvFile01Test" />
-      <option name="METHOD_NAME" value="testMappedData" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CsvFile01Test.testTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OpenFoodFacts" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.diginamic.bll.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.diginamic.bll" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.CsvFile01Test" />
-      <option name="METHOD_NAME" value="testTitle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CsvFileBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CleaningFileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
@@ -172,13 +151,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CsvFileBTest" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CleaningFileTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CsvFileBTest.testMappedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CleaningFileTest.testGetResource" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
@@ -187,9 +166,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CsvFileBTest" />
-      <option name="METHOD_NAME" value="testMappedData" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CleaningFileTest" />
+      <option name="METHOD_NAME" value="testGetResource" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CleaningFileTest.testNettoyagEtoile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.bll.parsingCsv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CleaningFileTest" />
+      <option name="METHOD_NAME" value="testNettoyagEtoile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CsvFileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OpenFoodFacts" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.bll.parsingCsv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CsvFileTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,11 +219,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CleaningFileTest.testGetResource" />
+        <item itemvalue="JUnit.CleaningFileTest" />
+        <item itemvalue="JUnit.CleaningFileTest.testNettoyagEtoile" />
+        <item itemvalue="JUnit.CsvFileTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CsvFileBTest.testMappedData" />
-        <item itemvalue="JUnit.CsvFileBTest" />
-        <item itemvalue="JUnit.CsvFile01Test.testMappedData" />
-        <item itemvalue="JUnit.CsvFile01Test.testTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -247,6 +257,7 @@
       <workItem from="1687509230051" duration="6240000" />
       <workItem from="1687523744423" duration="5942000" />
       <workItem from="1687531581937" duration="2113000" />
+      <workItem from="1687764567932" duration="10937000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
