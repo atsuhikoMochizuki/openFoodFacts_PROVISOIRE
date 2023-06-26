@@ -61,6 +61,11 @@ public class Produit {
     public Produit() {
     }
 
+    public Produit(Integer id_produit, String nom_produit) {
+        this.id_produit = id_produit;
+        this.nom_produit = nom_produit;
+    }
+
     public Integer getId_produit() {
         return id_produit;
     }

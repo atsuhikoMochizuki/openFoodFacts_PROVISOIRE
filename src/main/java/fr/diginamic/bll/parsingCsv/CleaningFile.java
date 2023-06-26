@@ -1,10 +1,8 @@
 package fr.diginamic.bll.parsingCsv;
 
 import fr.diginamic.Main;
-import fr.diginamic.entities.Additif;
-import fr.diginamic.entities.Allergene;
-import fr.diginamic.entities.Categorie;
-import fr.diginamic.entities.Marque;
+import fr.diginamic.entities.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,21 +87,89 @@ public class CleaningFile {
         String entete = iter.next();
         HEADER = entete.split("\\|");
 
+        HashMap<Integer, String> categories = new HashMap<>();
+        HashMap<Integer, String> nutriscores = new HashMap<>();
+        HashMap<Integer, String> marques = new HashMap<>();
+        HashMap<Integer, String> produits = new HashMap<>();
+        HashMap<Integer, String> ingredients = new HashMap<>();
+        HashMap<Integer, String> allergenes = new HashMap<>();
+        HashMap<Integer, String> additifs = new HashMap<>();
+
+        Set<Produit> listProduits = new HashSet<>();
 
         while (iter.hasNext()) {
             iteration++;
             String line = iter.next();
             String[] lineSplit = line.split("\\|", 30);
+            // L'APPEL DE LA METHODE DE NETTOYAGE EST PROPRE A LA CLASSE CLEANINGFILE
             for (int i = 0; i < lineSplit.length; i++) {
                 lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
-                new Categorie(iteration, lineSplit[0]);
-                new Allergene(iteration, lineSplit[28]);
-                new Additif(iteration, lineSplit[29]);
             }
 
+            // LES METHODES D'INSTANCIATION DES BO DOIVENT ETRE RANGES DANS LE DAO
+            creationInstanceCategorie(iteration, categories, lineSplit);
+
+            creationInstanceProduit(iteration, produits, listProduits, lineSplit);
+
+            creationInstanceMarque(iteration, marques, listProduits, lineSplit);
+
+            creationInstanceNutriscore(iteration, nutriscores, lineSplit);
+
+            creationInstanceIngredient(iteration, ingredients, lineSplit);
+
+            creationInstanceAllergene(iteration, lineSplit);
+
+            creationInstanceAdditif(iteration, lineSplit);
 
         }
 
+    }
+
+    private static void creationInstanceAdditif(int iteration, String[] lineSplit) {
+        new Additif(iteration, lineSplit[29]);
+    }
+
+    private static void creationInstanceAllergene(int iteration, String[] lineSplit) {
+        new Allergene(iteration, lineSplit[28]);
+    }
+
+    private static void creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
+        String[] listeIngredients = lineSplit[4].split(",");
+        for (String ingdt : listeIngredients) {
+            if (!ingredients.containsValue(ingdt)) {
+                ingredients.put(iteration, ingdt);
+                new Ingredient(iteration, ingredients.get(iteration));
+            }
+        }
+    }
+
+    private static void creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String[] lineSplit) {
+        if (!nutriscores.containsValue(lineSplit[3])) {
+            nutriscores.put(iteration, lineSplit[3]);
+            new Nutriscore(iteration, nutriscores.get(iteration).toCharArray()[0]);
+        }
+    }
+
+    private static void creationInstanceMarque(int iteration, HashMap<Integer, String> marques, Set<Produit> listProduits, String[] lineSplit) {
+        if (!marques.containsValue(lineSplit[1])) {
+            marques.put(iteration, lineSplit[1]);
+            new Marque(iteration, marques.get(iteration), listProduits);
+        }
+    }
+
+    private static void creationInstanceProduit(int iteration, HashMap<Integer, String> produits, Set<Produit> listProduits, String[] lineSplit) {
+        if (!produits.containsValue(lineSplit[2])) {
+            produits.put(iteration, lineSplit[2]);
+            Produit produit = new Produit(iteration, produits.get(iteration));
+            listProduits.add(produit);
+        }
+    }
+
+    private static void creationInstanceCategorie(int iteration, HashMap<Integer, String> categories, String[] lineSplit) {
+        if (!categories.containsValue(lineSplit[0])) {
+            categories.put(iteration, lineSplit[0]);
+            new Categorie(iteration, categories.get(iteration));
+        }
     }
 
     /**

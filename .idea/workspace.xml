@@ -7,12 +7,9 @@
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Implementation de la class CleaningFile + tests unitaires">
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/CsvFileTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +59,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -262,7 +262,7 @@
       <workItem from="1687509230051" duration="6240000" />
       <workItem from="1687523744423" duration="5942000" />
       <workItem from="1687531581937" duration="2113000" />
-      <workItem from="1687764567932" duration="17267000" />
+      <workItem from="1687764567932" duration="24074000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -461,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687802292886</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Implementation de la class CleaningFile + tests unitaires">
+      <created>1687807348608</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1687807348608</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
