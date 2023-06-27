@@ -263,32 +263,39 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" +
-                "id=" + id_produit +
-                ", nom_produit='" + nom_produit + '\'' +
-                ", energiePour100g=" + energiePour100g +
-                ", graisse100g=" + graisse100g +
-                ", sucres100g=" + sucres100g +
-                ", fibres100g=" + fibres100g +
-                ", proteines100g=" + proteines100g +
-                ", sel100g=" + sel100g +
-                ", vitA100g=" + vitA100g +
-                ", vitD100g=" + vitD100g +
-                ", vitE100g=" + vitE100g +
-                ", vitK100g=" + vitK100g +
-                ", vitC100g=" + vitC100g +
-                ", vitB1100g=" + vitB1100g +
-                ", vitB2100g=" + vitB2100g +
-                ", vitPP100g=" + vitPP100g +
-                ", vitB6100g=" + vitB6100g +
-                ", vitB9100g=" + vitB9100g +
-                ", vitB12100g=" + vitB12100g +
-                ", calcium100g=" + calcium100g +
-                ", magnesium100g=" + magnesium100g +
-                ", iron100g=" + iron100g +
-                ", fer100g=" + fer100g +
-                ", betaCarotene100g=" + betaCarotene100g +
-                ", presenceHuilePalme=" + presenceHuilePalme +
-                '}';
+        final StringBuffer sb = new StringBuffer("Produit{");
+        sb.append("id_produit=").append(id_produit);
+        sb.append(", nom_produit='").append(nom_produit).append('\'');
+        sb.append(", energiePour100g=").append(energiePour100g);
+        sb.append(", graisse100g=").append(graisse100g);
+        sb.append(", sucres100g=").append(sucres100g);
+        sb.append(", fibres100g=").append(fibres100g);
+        sb.append(", proteines100g=").append(proteines100g);
+        sb.append(", sel100g=").append(sel100g);
+        sb.append(", vitA100g=").append(vitA100g);
+        sb.append(", vitD100g=").append(vitD100g);
+        sb.append(", vitE100g=").append(vitE100g);
+        sb.append(", vitK100g=").append(vitK100g);
+        sb.append(", vitC100g=").append(vitC100g);
+        sb.append(", vitB1100g=").append(vitB1100g);
+        sb.append(", vitB2100g=").append(vitB2100g);
+        sb.append(", vitPP100g=").append(vitPP100g);
+        sb.append(", vitB6100g=").append(vitB6100g);
+        sb.append(", vitB9100g=").append(vitB9100g);
+        sb.append(", vitB12100g=").append(vitB12100g);
+        sb.append(", calcium100g=").append(calcium100g);
+        sb.append(", magnesium100g=").append(magnesium100g);
+        sb.append(", iron100g=").append(iron100g);
+        sb.append(", fer100g=").append(fer100g);
+        sb.append(", betaCarotene100g=").append(betaCarotene100g);
+        sb.append(", presenceHuilePalme=").append(presenceHuilePalme);
+        sb.append(", categorie=").append(categorie);
+        sb.append(", additifs=").append(additifs);
+        sb.append(", allergenes=").append(allergenes);
+        sb.append(", marque=").append(marque);
+        sb.append(", nutriscore=").append(nutriscore);
+        sb.append(", ingredients=").append(ingredients);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -9,7 +9,7 @@ import java.util.Set;
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id_marque;
     private String nom_marque;
 
     @OneToMany(mappedBy = "marque")
@@ -19,18 +19,18 @@ public class Marque {
 
     }
 
-    public Marque(Integer id, String nom_marque, Set<Produit> produits) {
-        this.id = id;
+    public Marque(Integer id_marque, String nom_marque, Set<Produit> produits) {
+        this.id_marque = id_marque;
         this.nom_marque = nom_marque;
         this.produits = produits;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getId_marque() {
+        return id_marque;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId_marque(Integer id) {
+        this.id_marque = id;
     }
 
     public String getNom_marque() {
@@ -51,10 +51,11 @@ public class Marque {
 
     @Override
     public String toString() {
-        return "Marque{" +
-                "id=" + id +
-                ", nom_marque='" + nom_marque + '\'' +
-                ", produits=" + produits +
-                '}';
+        final StringBuilder sb = new StringBuilder("Marque{");
+        sb.append("id=").append(id_marque);
+        sb.append(", nom_marque='").append(nom_marque).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }

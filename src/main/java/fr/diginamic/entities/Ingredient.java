@@ -46,9 +46,11 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-                "id=" + id_ingredient +
-                ", nom_ingredient='" + nom_ingredient + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("Ingredient{");
+        sb.append("id_ingredient=").append(id_ingredient);
+        sb.append(", nom_ingredient='").append(nom_ingredient).append('\'');
+        sb.append(", produits=").append(produits);
+        sb.append('}');
+        return sb.toString();
     }
 }
