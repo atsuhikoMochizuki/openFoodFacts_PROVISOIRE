@@ -93,8 +93,6 @@ public class CleaningFile {
         HashMap<Integer, String> allergenes = new HashMap<>();
         HashMap<Integer, String> additifs = new HashMap<>();
 
-        Set<Produit> listProduits = new HashSet<>();
-
         while (iter.hasNext()) {
             iteration++;
             String line = iter.next();
@@ -124,71 +122,87 @@ public class CleaningFile {
      * @param iteration
      * @param additifs
      * @param lineSplit
+     * @return
      */
-    private static void creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String[] lineSplit) {
+    public static List<Additif> creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String[] lineSplit) {
+        List<Additif> listOfAdditifs = new ArrayList<>();
         for (String addit : lineSplit) {
             if (!additifs.containsValue(addit)) {
                 additifs.put(iteration, addit);
                 Additif additif = new Additif();
                 additif.setNom_additif(additifs.get(iteration));
+                listOfAdditifs.add(additif);
             }
         }
+        return listOfAdditifs;
     }
 
     /**
      * @param iteration
      * @param allergenes
      * @param lineSplit
+     * @return
      */
-    public static void creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] lineSplit) {
+    public static List<Allergene> creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] lineSplit) {
+        List<Allergene> listOfAllergenes = new ArrayList<>();
         for (String allerg : lineSplit) {
             if (!allergenes.containsValue(allerg)) {
                 allergenes.put(iteration, allerg);
                 Allergene allergene = new Allergene();
                 allergene.setNom_allergene(allergenes.get(iteration));
+                listOfAllergenes.add(allergene);
             }
         }
+        return listOfAllergenes;
     }
 
     /**
      * @param iteration
      * @param ingredients
      * @param lineSplit
+     * @return
      */
-    public static void creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
+    public static List<Ingredient> creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
+        List<Ingredient> listOfIngredients = new ArrayList<>();
         for (String ingdt : lineSplit) {
             if (!ingredients.containsValue(ingdt)) {
                 ingredients.put(iteration, ingdt);
                 Ingredient ingredient = new Ingredient();
                 ingredient.setNom_ingredient(ingredients.get(iteration));
+                listOfIngredients.add(ingredient);
             }
         }
+        return listOfIngredients;
     }
 
     /**
      * @param iteration
      * @param nutriscores
      * @param colContent
+     * @return
      */
-    public static void creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String colContent) {
+    public static Nutriscore creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String colContent) {
+        Nutriscore nutriscore = new Nutriscore();
         if (!nutriscores.containsValue(colContent)) {
             nutriscores.put(iteration, colContent);
-            Nutriscore nutriscore = new Nutriscore();
             nutriscore.setValeurScore(nutriscores.get(iteration).toCharArray()[0]);
         }
+        return nutriscore;
     }
 
     /**
      * @param iteration
      * @param marques
      * @param colContent
+     * @return
      */
-    public static void creationInstanceMarque(int iteration, HashMap<Integer, String> marques, String colContent) {
+    public static Marque creationInstanceMarque(int iteration, HashMap<Integer, String> marques, String colContent) {
+        Marque marque = new Marque();
         if (!marques.containsValue(colContent)) {
             marques.put(iteration, colContent);
-            Marque marque = new Marque();
             marque.setNom_marque(marques.get(iteration));
         }
+        return marque;
     }
 
     /**

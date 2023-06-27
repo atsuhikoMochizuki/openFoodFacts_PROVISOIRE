@@ -1,8 +1,7 @@
 package fr.diginamic.bll.parsingCsv;
 
 import fr.diginamic.Main;
-import fr.diginamic.entities.Categorie;
-import fr.diginamic.entities.Produit;
+import fr.diginamic.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -11,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -149,8 +149,8 @@ public class CleaningFileTest extends TestCase {
             // Debut de la persistence avec transaction
             em.getTransaction().begin();
 
-            String nettoyage = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[2].toLowerCase());
-            Produit produit = CleaningFile.creationInstanceProduit(1, produits, nettoyage);
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[2].toLowerCase());
+            Produit produit = CleaningFile.creationInstanceProduit(1, produits, splitLineCleaned);
             em.persist(produit);
 
             em.getTransaction().commit();
@@ -170,6 +170,9 @@ public class CleaningFileTest extends TestCase {
             // Debut de la persistence avec transaction
             em.getTransaction().begin();
 
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[1].toLowerCase());
+            Marque marque = CleaningFile.creationInstanceMarque(1, marques, splitLineCleaned);
+            em.persist(marque);
 
             em.getTransaction().commit();
             // Fin de la persistence avec transaction
@@ -181,18 +184,86 @@ public class CleaningFileTest extends TestCase {
     }
 
     public void testCreationInstanceNutriScore() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[3].toLowerCase());
+            Nutriscore nutriscore = CleaningFile.creationInstanceNutriscore(1, nutriscores, splitLineCleaned);
+            // List<Nutriscore> collect = Stream.of(nutriscore).collect(Collectors.toList());
+            em.persist(nutriscore);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
     }
 
     public void testCreationInstanceIngredient() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
 
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[4].toLowerCase());
+            List<Ingredient> listIngredients = CleaningFile.creationInstanceIngredient(1, ingredients, splitLineCleaned.split(","));
+            listIngredients.forEach(em::persist);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     public void testCreationInstanceAllergene() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[28].toLowerCase());
+            List<Allergene> listAllergenes = CleaningFile.creationInstanceAllergene(1, allergenes, splitLineCleaned.split(","));
+            listAllergenes.forEach(em::persist);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
     }
 
     public void testCreationInstanceAdditif() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            String splitLineCleaned = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[29].toLowerCase());
+            List<Additif> listAdditifs = CleaningFile.creationInstanceAdditif(1, additifs, splitLineCleaned.split(","));
+            listAdditifs.forEach(em::persist);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
     }
 
