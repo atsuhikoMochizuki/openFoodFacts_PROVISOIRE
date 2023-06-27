@@ -60,6 +60,9 @@ public class Utils {
         System.out.printf("[%sCONSIGN%s]%s%s%s\n", Colors.ANSI_PURPLE, Colors.ANSI_RESET, Colors.ANSI_PURPLE, i_str, Colors.ANSI_RESET);
     }
 
+    public static void msgTest(String i_str) {
+        System.out.printf("[%sTEST%s]%s%s%s\n", Colors.ANSI_YELLOW, Colors.ANSI_RESET, Colors.ANSI_YELLOW, i_str, Colors.ANSI_RESET);
+    }
 
 
     public static int generateRandomInt(int i_min, int i_max) {

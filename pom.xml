@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fr.diginamic</groupId>
-    <artifactId>OpenFoodFacts</artifactId>
+    <artifactId>IBOOF</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>OpenFoodFacts</name>
-    <description>Add project description here</description>
+    <name>IBOOF</name>
+    <description>Immersive and Best open fOOD Facts advisor</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,18 +46,6 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.2.4.Final</version>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.lanterna</groupId>
-            <artifactId>lanterna</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.7.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>
