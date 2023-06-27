@@ -44,6 +44,24 @@ public class Ingredient {
         this.nom_ingredient = nom_ingredient;
     }
 
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getIngredients().remove(this);
+            }
+        }
+        this.produits = produits;
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getIngredients().add(this);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Ingredient{");

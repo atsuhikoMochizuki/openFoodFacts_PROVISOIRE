@@ -1,11 +1,33 @@
 package fr.diginamic.bll.parsingCsv;
 
+import fr.diginamic.Main;
+import fr.diginamic.entities.Categorie;
+import fr.diginamic.entities.Produit;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import junit.framework.TestCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CleaningFileTest extends TestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
+    String lineExample = "Saucissons secs pur porc|Bordeau Chesnel|L'affiné|e|Viande de porc, gras de porc, sel, dextrose, sucre, épices, ail, rhum, nitrite de sodium, nitrate de potassium, ferments|1590|28|0.3||32|4.6|||||||||||||||||0||E250 - Nitrite de sodium|";
+    String[] lineSplit = lineExample.split("\\|");
+
+    HashMap<Integer, String> categories = new HashMap<>();
+    HashMap<Integer, String> nutriscores = new HashMap<>();
+    HashMap<Integer, String> marques = new HashMap<>();
+    HashMap<Integer, String> produits = new HashMap<>();
+    HashMap<Integer, String> ingredients = new HashMap<>();
+    HashMap<Integer, String> allergenes = new HashMap<>();
+    HashMap<Integer, String> additifs = new HashMap<>();
 
 
     public void testNettoyagEtoile() {
@@ -21,7 +43,7 @@ public class CleaningFileTest extends TestCase {
         Pattern pattern = CleaningFile.getPatternCollection().get("FILTRE_SUR_LES_POURCENTAGE");
         Matcher recherchePourcentage = pattern.matcher(chaineBrut);
         String chaineNettoye = recherchePourcentage.replaceAll("");
-        assertEquals("écrémé à", chaineNettoye.trim());
+        assertEquals("écrémé à", chaineNettoye);
     }
 
     public void testNettoyageMg() {
@@ -29,7 +51,7 @@ public class CleaningFileTest extends TestCase {
         Pattern pattern = CleaningFile.getPatternCollection().get("FILTRE_SUR_LES_GRAMMES");
         Matcher rechercheMg = pattern.matcher(chaine);
         String chaineNettoye = rechercheMg.replaceAll("");
-        assertEquals("yaourt", chaineNettoye.trim());
+        assertEquals("yaourt", chaineNettoye);
 
     }
 
@@ -38,7 +60,7 @@ public class CleaningFileTest extends TestCase {
         Pattern pattern = CleaningFile.getPatternCollection().get("FILTRE_SUR_LES_MILLIGRAMMES");
         Matcher matcher = pattern.matcher(chaine);
         String chaineNettoye = matcher.replaceAll("");
-        assertEquals("yaourt", chaineNettoye.trim());
+        assertEquals("yaourt", chaineNettoye);
     }
 
     public void testNettoyageCrochet() {
@@ -81,13 +103,97 @@ public class CleaningFileTest extends TestCase {
         assertEquals("oeuf, lait, creme, banane", chaineNettoye);
     }
 
-    public void testWhiteSpace() {
-        String chaineBrut = "édulcorants, carrefour sélection, sirop framboise grenade, d, sucre, eau, jus de fruits à base de concentrés , acidifiant, 1318, 0, 78,";
+    public void testNettoyageComplet() {
+        CleaningFile.cleanFile(CleaningFile.CSV_RELATIVE_PATH);
+    }
+
+    public void testConnectionToDataBase() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            System.out.println(em);
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
 
     }
 
-    public void testNettoyage() {
-        CleaningFile.cleanFile(CleaningFile.CSV_RELATIVE_PATH);
+    public void testCreationInstanceCategorie() {
+        // Creation de l'echantillon de test
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            lineSplit[0] = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[0].toLowerCase());
+            Categorie categorie = CleaningFile.creationInstanceCategorie(1, categories, lineSplit[0]);
+            em.persist(categorie);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void testCreationInstanceProduit() {
+        // Creation de l'echantillon de test
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            String nettoyage = CleaningFile.nettoyage(CleaningFile.getPatternCollection(), lineSplit[2].toLowerCase());
+            Produit produit = CleaningFile.creationInstanceProduit(1, produits, nettoyage);
+            em.persist(produit);
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void testCreationInstanceMarque() {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+
+            em.getTransaction().commit();
+            // Fin de la persistence avec transaction
+
+        } catch (IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void testCreationInstanceNutriScore() {
+
+    }
+
+    public void testCreationInstanceIngredient() {
+
+    }
+
+    public void testCreationInstanceAllergene() {
+
+    }
+
+    public void testCreationInstanceAdditif() {
+
     }
 
 }

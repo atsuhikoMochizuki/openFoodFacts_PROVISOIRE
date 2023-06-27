@@ -2,11 +2,9 @@ package fr.diginamic.bll.parsingCsv;
 
 import fr.diginamic.Main;
 import fr.diginamic.entities.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -100,76 +98,127 @@ public class CleaningFile {
         while (iter.hasNext()) {
             iteration++;
             String line = iter.next();
+            System.out.println(line);
             String[] lineSplit = line.split("\\|", 30);
             // L'APPEL DE LA METHODE DE NETTOYAGE EST PROPRE A LA CLASSE CLEANINGFILE
             for (int i = 0; i < lineSplit.length; i++) {
                 lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
+
+                // On fait appel aux Business Objects dans les méthodes suivantes pour
+                // créer les instanciations qui vont permettre de rentrer les données dans la BD
+                switch (i) {
+                    case 0 -> creationInstanceCategorie(iteration, categories, lineSplit[0]);
+                    case 1 -> creationInstanceMarque(iteration, marques, lineSplit[1]);
+                    case 2 -> creationInstanceProduit(iteration, produits, lineSplit[2]);
+                    case 3 -> creationInstanceNutriscore(iteration, nutriscores, lineSplit[3]);
+                    case 4 -> creationInstanceIngredient(iteration, ingredients, lineSplit[4].split(","));
+                    case 28 -> creationInstanceAllergene(iteration, allergenes, lineSplit[28].split(","));
+                    case 29 -> creationInstanceAdditif(iteration, additifs, lineSplit[29].split(","));
+                }
             }
-
-            // LES METHODES D'INSTANCIATION DES BO DOIVENT ETRE RANGES DANS LE DAO
-            creationInstanceCategorie(iteration, categories, lineSplit);
-
-            creationInstanceProduit(iteration, produits, listProduits, lineSplit);
-
-            creationInstanceMarque(iteration, marques, listProduits, lineSplit);
-
-            creationInstanceNutriscore(iteration, nutriscores, lineSplit);
-
-            creationInstanceIngredient(iteration, ingredients, lineSplit);
-
-            creationInstanceAllergene(iteration, lineSplit);
-
-            creationInstanceAdditif(iteration, lineSplit);
-
         }
 
     }
 
-    private static void creationInstanceAdditif(int iteration, String[] lineSplit) {
-        new Additif(iteration, lineSplit[29]);
+    /**
+     * @param iteration
+     * @param additifs
+     * @param lineSplit
+     */
+    private static void creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String[] lineSplit) {
+        for (String addit : lineSplit) {
+            if (!additifs.containsValue(addit)) {
+                additifs.put(iteration, addit);
+                Additif additif = new Additif();
+                additif.setNom_additif(additifs.get(iteration));
+            }
+        }
     }
 
-    private static void creationInstanceAllergene(int iteration, String[] lineSplit) {
-        new Allergene(iteration, lineSplit[28]);
+    /**
+     * @param iteration
+     * @param allergenes
+     * @param lineSplit
+     */
+    public static void creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] lineSplit) {
+        for (String allerg : lineSplit) {
+            if (!allergenes.containsValue(allerg)) {
+                allergenes.put(iteration, allerg);
+                Allergene allergene = new Allergene();
+                allergene.setNom_allergene(allergenes.get(iteration));
+            }
+        }
     }
 
-    private static void creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
-        String[] listeIngredients = lineSplit[4].split(",");
-        for (String ingdt : listeIngredients) {
+    /**
+     * @param iteration
+     * @param ingredients
+     * @param lineSplit
+     */
+    public static void creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
+        for (String ingdt : lineSplit) {
             if (!ingredients.containsValue(ingdt)) {
                 ingredients.put(iteration, ingdt);
-                new Ingredient(iteration, ingredients.get(iteration));
+                Ingredient ingredient = new Ingredient();
+                ingredient.setNom_ingredient(ingredients.get(iteration));
             }
         }
     }
 
-    private static void creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String[] lineSplit) {
-        if (!nutriscores.containsValue(lineSplit[3])) {
-            nutriscores.put(iteration, lineSplit[3]);
-            new Nutriscore(iteration, nutriscores.get(iteration).toCharArray()[0]);
+    /**
+     * @param iteration
+     * @param nutriscores
+     * @param colContent
+     */
+    public static void creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String colContent) {
+        if (!nutriscores.containsValue(colContent)) {
+            nutriscores.put(iteration, colContent);
+            Nutriscore nutriscore = new Nutriscore();
+            nutriscore.setValeurScore(nutriscores.get(iteration).toCharArray()[0]);
         }
     }
 
-    private static void creationInstanceMarque(int iteration, HashMap<Integer, String> marques, Set<Produit> listProduits, String[] lineSplit) {
-        if (!marques.containsValue(lineSplit[1])) {
-            marques.put(iteration, lineSplit[1]);
-            new Marque(iteration, marques.get(iteration), listProduits);
+    /**
+     * @param iteration
+     * @param marques
+     * @param colContent
+     */
+    public static void creationInstanceMarque(int iteration, HashMap<Integer, String> marques, String colContent) {
+        if (!marques.containsValue(colContent)) {
+            marques.put(iteration, colContent);
+            Marque marque = new Marque();
+            marque.setNom_marque(marques.get(iteration));
         }
     }
 
-    private static void creationInstanceProduit(int iteration, HashMap<Integer, String> produits, Set<Produit> listProduits, String[] lineSplit) {
-        if (!produits.containsValue(lineSplit[2])) {
-            produits.put(iteration, lineSplit[2]);
-            Produit produit = new Produit(iteration, produits.get(iteration));
-            listProduits.add(produit);
+    /**
+     * @param iteration
+     * @param produits
+     * @param colContent
+     * @return
+     */
+    public static Produit creationInstanceProduit(int iteration, HashMap<Integer, String> produits, String colContent) {
+        Produit produit = new Produit();
+        if (!produits.containsValue(colContent)) {
+            produits.put(iteration, colContent);
+            produit.setNom_produit(produits.get(iteration));
         }
+        return produit;
     }
 
-    private static void creationInstanceCategorie(int iteration, HashMap<Integer, String> categories, String[] lineSplit) {
-        if (!categories.containsValue(lineSplit[0])) {
-            categories.put(iteration, lineSplit[0]);
-            new Categorie(iteration, categories.get(iteration));
+    /**
+     * @param iteration
+     * @param categories
+     * @param colContent
+     * @return
+     */
+    public static Categorie creationInstanceCategorie(int iteration, HashMap<Integer, String> categories, String colContent) {
+        Categorie categorie = new Categorie();
+        if (!categories.containsValue(colContent)) {
+            categories.put(iteration, colContent);
+            categorie.setNom_categorie(categories.get(iteration));
         }
+        return categorie;
     }
 
     /**
@@ -177,13 +226,14 @@ public class CleaningFile {
      * @param s
      * @return
      */
-    private static String nettoyage(HashMap<String, Pattern> elemnt, String s) {
+    public static String nettoyage(HashMap<String, Pattern> elemnt, String s) {
         // PREMIER TRAITEMENT
         for (Pattern patt : elemnt.values()) {
             Matcher matcher = patt.matcher(s);
-            s = matcher.replaceAll("");
+            s = matcher.replaceAll("").trim();
         }
         s = s.replaceAll(" - ", ", ").trim();
         return s;
     }
+
 }

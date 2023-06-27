@@ -44,6 +44,24 @@ public class Additif {
         this.nom_additif = nom_additif;
     }
 
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getAdditifs().remove(this);
+            }
+        }
+        this.produits = produits;
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getAdditifs().add(this);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Additif{");
