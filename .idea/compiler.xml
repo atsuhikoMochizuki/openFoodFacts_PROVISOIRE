@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="IntroductionJPA-comprendre_JDBC" />
         <module name="OpenFoodFacts" />
+        <module name="IBOOF" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

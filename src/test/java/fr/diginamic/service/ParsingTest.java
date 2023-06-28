@@ -25,7 +25,8 @@ public class ParsingTest extends TestCase {
         test_filtrer("   [lentilles],   [pois chiches]", ",");
         test_filtrer("tomates-courgettes - oeufs", "tomates,courgettes,oeufs");
         test_filtrer("__||** ** ::..tomates___||||", "tomates");
-
+        test_filtrer("oeufs    -   patates-oignons - carottes", "oeufs,patates,oignons,carottes");
+        test_filtrer("lardons;pizza  ;   mozzarella; linguines, pesto ,carbonnara", "lardons,pizza,mozzarella,linguines,pesto,carbonnara");
         Utils.msgInfo("Test des filtres déroulé avec succès\n");
     }
 
