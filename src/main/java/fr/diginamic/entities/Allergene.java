@@ -42,6 +42,25 @@ public class Allergene {
         this.nom_allergene = nom_allergene;
     }
 
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getAllergenes().remove(this);
+            }
+        }
+        this.produits = produits;
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getAllergenes().add(this);
+            }
+        }
+    }
+
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Allergene{");

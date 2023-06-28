@@ -46,6 +46,11 @@ public class Marque {
     }
 
     public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.setMarque(this);
+            }
+        }
         this.produits = produits;
     }
 

@@ -40,6 +40,20 @@ public class Categorie {
         this.nom_categorie = nom_categorie;
     }
 
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.setCategorie(this);
+            }
+        }
+        this.produits = produits;
+    }
+
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Categorie{");

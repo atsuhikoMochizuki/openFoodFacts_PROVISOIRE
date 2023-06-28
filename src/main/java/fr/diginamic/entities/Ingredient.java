@@ -2,6 +2,7 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
+import java.time.temporal.ValueRange;
 import java.util.Set;
 
 @Entity
@@ -10,6 +11,7 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_ingredient;
+    @Column(length = 550)
     private String nom_ingredient;
 
     @ManyToMany
@@ -43,6 +45,25 @@ public class Ingredient {
     public void setNom_ingredient(String nom_ingredient) {
         this.nom_ingredient = nom_ingredient;
     }
+
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getIngredients().remove(this);
+            }
+        }
+        this.produits = produits;
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.getIngredients().add(this);
+            }
+        }
+    }
+
 
     @Override
     public String toString() {

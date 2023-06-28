@@ -7,13 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="IntroductionJPA-comprendre_JDBC" />
-        <module name="OpenFoodFacts" />
         <module name="IBOOF" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="IntroductionJPA-comprendre JDBC" target="9" />
       <module name="MochizukiTemplate" target="9" />
+      <module name="OpenFoodFacts" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>

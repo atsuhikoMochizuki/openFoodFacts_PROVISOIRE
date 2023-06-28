@@ -261,6 +261,103 @@ public class Produit {
         this.presenceHuilePalme = presenceHuilePalme;
     }
 
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        if (this.categorie != null) {
+            this.categorie.getProduits().remove(this);
+        }
+        this.categorie = categorie;
+        if (this.categorie != null) {
+            this.categorie.getProduits().add(this);
+        }
+    }
+
+    public Set<Additif> getAdditifs() {
+        return additifs;
+    }
+
+    public void setAdditifs(Set<Additif> additifs) {
+        if (this.additifs != null) {
+            for (Additif additif : this.additifs) {
+                additif.getProduits().remove(this);
+            }
+        }
+        this.additifs = additifs;
+        if (this.additifs != null) {
+            for (Additif additif : this.additifs) {
+                additif.getProduits().add(this);
+            }
+        }
+    }
+
+    public Set<Allergene> getAllergenes() {
+        return allergenes;
+    }
+
+    public void setAllergenes(Set<Allergene> allergenes) {
+        if (this.allergenes != null) {
+            for (Allergene allergene : this.allergenes) {
+                allergene.getProduits().remove(this);
+            }
+        }
+        this.allergenes = allergenes;
+        if (this.allergenes != null) {
+            for (Allergene allergene : this.allergenes) {
+                allergene.getProduits().add(this);
+            }
+        }
+    }
+
+    public Marque getMarque() {
+        return marque;
+    }
+
+    public void setMarque(Marque marque) {
+        if (this.marque != null) {
+            this.marque.getProduits().remove(this);
+        }
+        this.marque = marque;
+        if (this.marque != null) {
+            this.marque.getProduits().add(this);
+        }
+    }
+
+    public Nutriscore getNutriscore() {
+        return nutriscore;
+    }
+
+    public void setNutriscore(Nutriscore nutriscore) {
+        if (this.nutriscore != null) {
+            this.nutriscore.getProduits().remove(this);
+        }
+        this.nutriscore = nutriscore;
+        if (this.nutriscore != null) {
+            this.nutriscore.getProduits().add(this);
+        }
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        if (this.ingredients != null) {
+            for (Ingredient ingredient : this.ingredients) {
+                ingredient.getProduits().remove(this);
+            }
+        }
+        this.ingredients = ingredients;
+        if (this.ingredients != null) {
+            for (Ingredient ingredient : this.ingredients) {
+                ingredient.getProduits().add(this);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Produit{");

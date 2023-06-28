@@ -39,6 +39,19 @@ public class Nutriscore {
         this.valeurScore = valeurScore;
     }
 
+    public Set<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(Set<Produit> produits) {
+        if (this.produits != null) {
+            for (Produit produit : this.produits) {
+                produit.setNutriscore(this);
+            }
+        }
+        this.produits = produits;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Nutriscore{");
