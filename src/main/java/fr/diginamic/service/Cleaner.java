@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parsing {
+public class Cleaner {
     private static Logger LOG = null;
     public static String CSV_FILE_RELATIVE_PATH = null;
     private static String[] HEADER;
@@ -62,7 +62,7 @@ public class Parsing {
 
         //Suppression des caractères parasites
         matcher = pattern_EXTERMINATOR.matcher(chaineAfiltrer);
-        chaineAfiltrer = matcher.replaceAll(Parsing.EFFACER_CHAR);
+        chaineAfiltrer = matcher.replaceAll(Cleaner.EFFACER_CHAR);
 
 //        //Remplacement des éventuels tirets-du-six par des virgules
 //        matcher = pattern_PERMUTATION_TIRET_DU_SIX_VIRGULE.matcher(chaineAfiltrer);
@@ -70,7 +70,7 @@ public class Parsing {
 
         //Suppression des espaces en début et fin de chaine
         matcher = pattern_NETTOYAGE_ESPACES_SUPERFLUS.matcher(chaineAfiltrer);
-        chaineAfiltrer = matcher.replaceAll(Parsing.EFFACER_CHAR);
+        chaineAfiltrer = matcher.replaceAll(Cleaner.EFFACER_CHAR);
 
         //Suppression des espaces entre les virgules
         matcher = pattern_FILTRE_TRAITEMENTS_VIRGULES.matcher(chaineAfiltrer);

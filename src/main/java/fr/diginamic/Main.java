@@ -5,7 +5,7 @@ import fr.diginamic.ihm.Ihm;
 import fr.diginamic.mochizukiTools.Params;
 import fr.diginamic.mochizukiTools.Utils;
 import fr.diginamic.service.Logging;
-import fr.diginamic.service.Parsing;
+import fr.diginamic.service.Cleaner;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -19,7 +19,7 @@ public class Main {
         Params.welcomePrompt();
 
         Utils.msgDebug("Parsing du fichier csv");
-        Utils.msgResult(String.format("Parsing du fichier CSV <%s> OK", Parsing.CSV_FILE_RELATIVE_PATH));
+        Utils.msgResult(String.format("Parsing du fichier CSV <%s> OK", Cleaner.CSV_FILE_RELATIVE_PATH));
 
         Utils.msgInfo("Début du mapping JPA de la base de données");
         try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");

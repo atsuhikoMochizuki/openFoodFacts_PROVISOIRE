@@ -5,15 +5,13 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
-import static fr.diginamic.service.Parsing.SEP_CHAR;
-import static fr.diginamic.service.Parsing.filtrer;
+import static fr.diginamic.service.Cleaner.filtrer;
 
-public class ParsingTest extends TestCase {
+public class CleanerTest extends TestCase {
     public String CSV_TEST_FILE_PATH = ResourceBundle.getBundle("project").getString("project.TEST_csvfile");
-    public String COMPLETE_CSV_FILE_PATH= ResourceBundle.getBundle("project").getString("project.TEST_csvfileComplet");
+    public String COMPLETE_CSV_FILE_PATH = ResourceBundle.getBundle("project").getString("project.TEST_csvfileComplet");
 
     public void test_filtrage() {
         Utils.msgInfo("Lancement du test des filtres\n");
@@ -44,7 +42,7 @@ public class ParsingTest extends TestCase {
 
     public void testCleanFile() {
         Utils.msgInfo("Lancement du test de la fonction cleanFile");
-        ArrayList<String[]> rows = Parsing.cleanFile(CSV_TEST_FILE_PATH);
+        ArrayList<String[]> rows = Cleaner.cleanFile(CSV_TEST_FILE_PATH);
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(0)));
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(1)));
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(2)));
@@ -55,7 +53,7 @@ public class ParsingTest extends TestCase {
         assertEquals("[Sucre,banane,Pâte]", Arrays.toString(rows.get(7)));
 
         Utils.msgInfo("Nettoyage de la base de données openFoodFacts entière");
-        ArrayList<String[]> rows_CompleteCsvFile = Parsing.cleanFile(COMPLETE_CSV_FILE_PATH);
+        ArrayList<String[]> rows_CompleteCsvFile = Cleaner.cleanFile(COMPLETE_CSV_FILE_PATH);
         for(String[] row : rows_CompleteCsvFile)
             Utils.msgResult(Arrays.toString(row));
 
