@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Insertion en BD fonctionne (voir les Tests)">
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Insertion en BD">
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/bll/parsingCsv/CleaningFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/bll/parsingCsv/CleaningFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/AbstractAdvanceICsvFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/AbstractAdvanceICsvFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/AbstractICsvFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/AbstractICsvFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/CsvFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/CsvFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/CsvFileHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/CsvFileHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/I_CsvFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/bll/parsingCsv/I_CsvFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/ihm/Ihm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/ihm/Ihm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Params.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Params.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Utils$Colors.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Utils$Colors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/mochizukiTools/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/service/LogAppender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/service/LogAppender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/TestApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/TestApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/CsvFileBTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/CsvFileBTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/ICsvFileHelperTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/divers/FileNameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/fr/diginamic/bll/parsingCsv/divers/FileNameTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +59,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -146,8 +129,8 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CleaningFileTest.testCreationInstanceIngredient">
-    <configuration name="CleaningFileTest.testConnectionToDataBase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CleaningFileTest.testNettoyageCompletEtMigration">
+    <configuration name="CleaningFileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
@@ -157,8 +140,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
       <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CleaningFileTest" />
-      <option name="METHOD_NAME" value="testConnectionToDataBase" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -211,7 +193,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CleaningFileTest.testNettoyageComplet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CleaningFileTest.testNettoyageCompletEtMigration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
         <pattern>
@@ -221,7 +203,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="fr.diginamic.bll.parsingCsv" />
       <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.parsingCsv.CleaningFileTest" />
-      <option name="METHOD_NAME" value="testNettoyageComplet" />
+      <option name="METHOD_NAME" value="testNettoyageCompletEtMigration" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -242,11 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CleaningFileTest.testNettoyageCompletEtMigration" />
+        <item itemvalue="JUnit.CleaningFileTest" />
         <item itemvalue="JUnit.CleaningFileTest.testCreationInstanceIngredient" />
         <item itemvalue="JUnit.CleaningFileTest.testCreationInstanceCategorie" />
         <item itemvalue="JUnit.CleaningFileTest.testCreationInstanceProduit" />
-        <item itemvalue="JUnit.CleaningFileTest.testConnectionToDataBase" />
-        <item itemvalue="JUnit.CleaningFileTest.testNettoyageComplet" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +264,8 @@
       <workItem from="1687531581937" duration="2113000" />
       <workItem from="1687764567932" duration="24824000" />
       <workItem from="1687849274982" duration="26575000" />
-      <workItem from="1687900095005" duration="1322000" />
+      <workItem from="1687900095005" duration="3596000" />
+      <workItem from="1687934671987" duration="11098000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -502,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687874622787</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Insertion en BD">
+      <created>1687902504537</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1687902504537</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +503,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -543,7 +545,8 @@
     <MESSAGE value="Implementation de la class CleaningFile + tests unitaires" />
     <MESSAGE value="Une approche pour les insertions en BD" />
     <MESSAGE value="Insertion en BD fonctionne (voir les Tests)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Insertion en BD fonctionne (voir les Tests)" />
+    <MESSAGE value="Insertion en BD" />
+    <option name="LAST_COMMIT_MESSAGE" value="Insertion en BD" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

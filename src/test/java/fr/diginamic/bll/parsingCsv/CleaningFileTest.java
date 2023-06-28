@@ -103,7 +103,7 @@ public class CleaningFileTest extends TestCase {
         assertEquals("oeuf, lait, creme, banane", chaineNettoye);
     }
 
-    public void testNettoyageComplet() {
+    public void testNettoyageCompletEtMigration() {
         CleaningFile.cleanFile(CleaningFile.CSV_RELATIVE_PATH);
     }
 

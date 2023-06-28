@@ -2,6 +2,9 @@ package fr.diginamic.bll.parsingCsv;
 
 import fr.diginamic.Main;
 import fr.diginamic.entities.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,15 +27,20 @@ public class CleaningFile {
     public static String[] HEADER;
 
     // Filtres
-    public static final String FILTRE_SUR_LES_POURCENTAGE = "([0-9]).*%";
-    public static final String FILTRE_SUR_LES_GRAMMES = "([0-9]).*g";
-    public static final String FILTRE_SUR_LES_MILLIGRAMMES = "([0-9]).*%mg";
-    public static final String FILTRE_SUR_LES_CROCHETS = "\\[.+.\\]";
-    public static final String FILTRE_SUR_LES_PARENTHESES = "\\(.*.\\)";
-    public static final String FILTRE_SUR_LES_DEUX_POINTS = ".:.+";
+    public static final String FILTRE_SUR_LES_POURCENTAGE = "\\s+\\d+[%g]";
+    public static final String FILTRE_PARASITES = "([_*:.|%])";
+    public static final String FILTRE_SUR_LES_MILLIGRAMMES = "\\s+\\d+[m]g";
+    public static final String FILTRE_SUR_LES_CROCHETS = "(\\[(.*?)\\])";
+    public static final String FILTRE_SUR_LES_PARENTHESES = "(\\((.*?)\\))";
+    public static final String FILTRE_SUR_LE_TIRET = "\\-";
+    public static final String FILTRE_SUR_LES_DEUX_POINTS = " *: *";
+    public static final String FILTRE_SUR_ESPACE_CONTIGUES_VIRGULES = " *, *";
+    public static final String FILTRE_VIRGULES = ",*";
     public static final String FILTRE_SUR_LES_ETOILES = "\\*";
-    public static final String FILTRE_SUR_LE_TIRET = " - ";
-    public static final String FILTRE_SUR_UNDERSCORE = "_";
+    public static final String FILTRE_SUR_PARENTHESE_G = "\\)";
+    public static final String FILTRE_SUR_PARENTHESE_D = "\\(";
+    public static final String FILTRE_SUR_LES_POINTS_VIGULES = "\\;";
+    public static final String FILTRE_SUR_UNDERSCORE = " *_ *";
     public static final String FILTRE_SUR_LE_POINT = "\\.";
     public static final String FILTRE_BARRE_VERTICAL = "\\|";
 
@@ -41,7 +49,7 @@ public class CleaningFile {
     static {
         patternCollection.put("FILTRE_SUR_LES_POURCENTAGE", Pattern.compile(FILTRE_SUR_LES_POURCENTAGE));
         patternCollection.put("FILTRE_SUR_LES_MILLIGRAMMES", Pattern.compile(FILTRE_SUR_LES_MILLIGRAMMES));
-        patternCollection.put("FILTRE_SUR_LES_GRAMMES", Pattern.compile(FILTRE_SUR_LES_GRAMMES));
+        patternCollection.put("FILTRE_PARASITES", Pattern.compile(FILTRE_PARASITES));
         patternCollection.put("FILTRE_SUR_LES_CROCHETS", Pattern.compile(FILTRE_SUR_LES_CROCHETS));
         patternCollection.put("FILTRE_SUR_LES_PARENTHESES", Pattern.compile(FILTRE_SUR_LES_PARENTHESES));
         patternCollection.put("FILTRE_SUR_LES_DEUX_POINTS", Pattern.compile(FILTRE_SUR_LES_DEUX_POINTS));
@@ -50,6 +58,11 @@ public class CleaningFile {
         patternCollection.put("FILTRE_SUR_LE_POINT", Pattern.compile(FILTRE_SUR_LE_POINT));
         patternCollection.put("FILTRE_SUR_LE_TIRET", Pattern.compile(FILTRE_SUR_LE_TIRET));
         patternCollection.put("FILTRE_BARRE_VERTICAL", Pattern.compile(FILTRE_BARRE_VERTICAL));
+        patternCollection.put("FILTRE_SUR_ESPACE_CONTIGUES_VIRGULES", Pattern.compile(FILTRE_SUR_ESPACE_CONTIGUES_VIRGULES));
+        patternCollection.put("FILTRE_SUR_PARENTHESE_G", Pattern.compile(FILTRE_SUR_PARENTHESE_G));
+        patternCollection.put("FILTRE_SUR_PARENTHESE_D", Pattern.compile(FILTRE_SUR_PARENTHESE_D));
+        patternCollection.put("FILTRE_SUR_POINT_VIRGULE", Pattern.compile(FILTRE_SUR_LES_POINTS_VIGULES));
+        patternCollection.put("FILTRE_VIRGULES", Pattern.compile(FILTRE_VIRGULES));
     }
 
     public CleaningFile() {
@@ -85,6 +98,7 @@ public class CleaningFile {
         String entete = iter.next();
         HEADER = entete.split("\\|");
 
+        // HashMap de chaque colonne
         HashMap<Integer, String> categories = new HashMap<>();
         HashMap<Integer, String> nutriscores = new HashMap<>();
         HashMap<Integer, String> marques = new HashMap<>();
@@ -93,27 +107,57 @@ public class CleaningFile {
         HashMap<Integer, String> allergenes = new HashMap<>();
         HashMap<Integer, String> additifs = new HashMap<>();
 
-        while (iter.hasNext()) {
-            iteration++;
-            String line = iter.next();
-            System.out.println(line);
-            String[] lineSplit = line.split("\\|", 30);
-            // L'APPEL DE LA METHODE DE NETTOYAGE EST PROPRE A LA CLASSE CLEANINGFILE
-            for (int i = 0; i < lineSplit.length; i++) {
-                lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
+
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+            em.getTransaction().begin();
+
+            while (iter.hasNext()) {
+                iteration++;
+                String line = iter.next();
+                System.out.println(line);
+                String[] lineSplit = line.split("\\|", 30);
+                // L'APPEL DE LA METHODE DE NETTOYAGE EST PROPRE A LA CLASSE CLEANINGFILE
+                for (int i = 0; i < lineSplit.length; i++) {
+                    lineSplit[i] = nettoyage(patternCollection, lineSplit[i].toLowerCase());
+                }
 
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
-                switch (i) {
-                    case 0 -> creationInstanceCategorie(iteration, categories, lineSplit[0]);
-                    case 1 -> creationInstanceMarque(iteration, marques, lineSplit[1]);
-                    case 2 -> creationInstanceProduit(iteration, produits, lineSplit[2]);
-                    case 3 -> creationInstanceNutriscore(iteration, nutriscores, lineSplit[3]);
-                    case 4 -> creationInstanceIngredient(iteration, ingredients, lineSplit[4].split(","));
-                    case 28 -> creationInstanceAllergene(iteration, allergenes, lineSplit[28].split(","));
-                    case 29 -> creationInstanceAdditif(iteration, additifs, lineSplit[29].split(","));
+                Categorie categorie = creationInstanceCategorie(iteration, categories, lineSplit[0]);
+                if (categorie != null) {
+                    em.persist(categorie);
                 }
+                Marque marque = creationInstanceMarque(iteration, marques, lineSplit[1]);
+                if (marque != null) {
+                    em.persist(marque);
+                }
+                Nutriscore nutriscore = creationInstanceNutriscore(iteration, nutriscores, lineSplit[3]);
+                if (nutriscore != null) {
+                    em.persist(nutriscore);
+                }
+                Produit produit = creationInstanceProduit(iteration, produits, lineSplit[2]);
+                if (produit != null) {
+                    em.persist(produit);
+                }
+                List<Ingredient> listIngredients = creationInstanceIngredient(iteration, ingredients, lineSplit[4].split(","));
+                listIngredients.forEach(em::persist);
+                List<Allergene> listAllergenes = creationInstanceAllergene(iteration, allergenes, lineSplit[28].split(","));
+                listAllergenes.forEach(em::persist);
+                List<Additif> listAdditifs = creationInstanceAdditif(iteration, additifs, lineSplit[29].split(","));
+                listAdditifs.forEach(em::persist);
             }
+            em.getTransaction().
+
+                    commit();
+            // Fin de la persistence avec transaction
+
+        } catch (
+                IllegalStateException e) {
+            LOG.error(e.getMessage());
+            throw new RuntimeException(e);
         }
 
     }
@@ -182,12 +226,13 @@ public class CleaningFile {
      * @return
      */
     public static Nutriscore creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String colContent) {
-        Nutriscore nutriscore = new Nutriscore();
         if (!nutriscores.containsValue(colContent)) {
             nutriscores.put(iteration, colContent);
+            Nutriscore nutriscore = new Nutriscore();
             nutriscore.setValeurScore(nutriscores.get(iteration).toCharArray()[0]);
+            return nutriscore;
         }
-        return nutriscore;
+        return null;
     }
 
     /**
@@ -197,12 +242,13 @@ public class CleaningFile {
      * @return
      */
     public static Marque creationInstanceMarque(int iteration, HashMap<Integer, String> marques, String colContent) {
-        Marque marque = new Marque();
         if (!marques.containsValue(colContent)) {
             marques.put(iteration, colContent);
+            Marque marque = new Marque();
             marque.setNom_marque(marques.get(iteration));
+            return marque;
         }
-        return marque;
+        return null;
     }
 
     /**
@@ -212,27 +258,29 @@ public class CleaningFile {
      * @return
      */
     public static Produit creationInstanceProduit(int iteration, HashMap<Integer, String> produits, String colContent) {
-        Produit produit = new Produit();
         if (!produits.containsValue(colContent)) {
             produits.put(iteration, colContent);
+            Produit produit = new Produit();
             produit.setNom_produit(produits.get(iteration));
+            return produit;
         }
-        return produit;
+        return null;
     }
 
     /**
      * @param iteration
-     * @param categories
+     * @param hashMapCategorie
      * @param colContent
      * @return
      */
-    public static Categorie creationInstanceCategorie(int iteration, HashMap<Integer, String> categories, String colContent) {
-        Categorie categorie = new Categorie();
-        if (!categories.containsValue(colContent)) {
-            categories.put(iteration, colContent);
-            categorie.setNom_categorie(categories.get(iteration));
+    public static Categorie creationInstanceCategorie(int iteration, HashMap<Integer, String> hashMapCategorie, String colContent) {
+        if (!hashMapCategorie.containsValue(colContent)) {
+            hashMapCategorie.put(iteration, colContent);
+            Categorie categorie = new Categorie();
+            categorie.setNom_categorie(hashMapCategorie.get(iteration));
+            return categorie;
         }
-        return categorie;
+        return null;
     }
 
     /**
@@ -244,9 +292,9 @@ public class CleaningFile {
         // PREMIER TRAITEMENT
         for (Pattern patt : elemnt.values()) {
             Matcher matcher = patt.matcher(s);
-            s = matcher.replaceAll("").trim();
+            s = matcher.replaceAll(",").trim();
+            s.split(",");
         }
-        s = s.replaceAll(" - ", ", ").trim();
         return s;
     }
 
