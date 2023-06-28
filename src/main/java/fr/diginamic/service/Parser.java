@@ -1,6 +1,7 @@
 package fr.diginamic.service;
 
 import fr.diginamic.entities.*;
+import fr.diginamic.mochizukiTools.Utils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -43,12 +44,19 @@ public class Parser {
         try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
              EntityManager em = emf.createEntityManager();
         ) {
-            // Debut de la persistence avec transaction
+//         Debut de la persistence avec transaction
             em.getTransaction().begin();
 
             while (iter.hasNext()) {
                 iteration++;
                 String[] line = iter.next();
+
+//                if (line.length != 30) {
+//                    Utils.msgError(String.valueOf(line.length));
+//                    Utils.msgError(Arrays.toString(line));
+//                    while (true) ;
+//                }
+
 
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
@@ -68,16 +76,21 @@ public class Parser {
                 if (produit != null) {
                     em.persist(produit);
                 }
+
                 List<Ingredient> listIngredients = creationInstanceIngredient(iteration, ingredients, line[4].split(","));
                 listIngredients.forEach(em::persist);
-                List<Allergene> listAllergenes = creationInstanceAllergene(iteration, allergenes, line[28].split(","));
-                listAllergenes.forEach(em::persist);
-                List<Additif> listAdditifs = creationInstanceAdditif(iteration, additifs, line[29].split(","));
-                listAdditifs.forEach(em::persist);
-            }
-            em.getTransaction().
 
-                    commit();
+                Allergene allergene = creationInstanceAllergene(iteration, allergenes, line[28]);
+                if (allergene != null) {
+                    em.persist(allergene);
+                }
+
+                Additif additif = creationInstanceAdditif(iteration, additifs, line[29]);
+                if (additif != null) {
+                    em.persist(additif);
+                }
+            }
+            em.getTransaction().commit();
             // Fin de la persistence avec transaction
 
         } catch (
@@ -93,17 +106,14 @@ public class Parser {
      * @param additifs
      * @return
      */
-    public static List<Additif> creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String[] lineSplit) {
-        List<Additif> listOfAdditifs = new ArrayList<>();
-        for (String addit : lineSplit) {
-            if (!additifs.containsValue(addit)) {
-                additifs.put(iteration, addit);
-                Additif additif = new Additif();
-                additif.setNom_additif(additifs.get(iteration));
-                listOfAdditifs.add(additif);
-            }
+    public static Additif creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String lineSplit) {
+        if (!additifs.containsValue(lineSplit)) {
+            additifs.put(iteration, lineSplit);
+            Additif additif = new Additif();
+            additif.setNom_additif(additifs.get(iteration));
+            return additif;
         }
-        return listOfAdditifs;
+        return null;
     }
 
     /**
@@ -112,17 +122,14 @@ public class Parser {
      * @param lineSplit
      * @return
      */
-    public static List<Allergene> creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] lineSplit) {
-        List<Allergene> listOfAllergenes = new ArrayList<>();
-        for (String allerg : lineSplit) {
-            if (!allergenes.containsValue(allerg)) {
-                allergenes.put(iteration, allerg);
-                Allergene allergene = new Allergene();
-                allergene.setNom_allergene(allergenes.get(iteration));
-                listOfAllergenes.add(allergene);
-            }
+    public static Allergene creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String lineSplit) {
+        if (!allergenes.containsValue(lineSplit)) {
+            allergenes.put(iteration, lineSplit);
+            Allergene allergene = new Allergene();
+            allergene.setNom_allergene(allergenes.get(iteration));
+            return allergene;
         }
-        return listOfAllergenes;
+        return null;
     }
 
     /**

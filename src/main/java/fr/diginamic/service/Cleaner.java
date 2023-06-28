@@ -93,7 +93,7 @@ public class Cleaner {
         while (rowIterator.hasNext()) {
             String[] parsedRow = rowIterator.next().split(SEP_CHAR, HEADER.length);
             for (int i = 0; i < parsedRow.length; i++) {
-                parsedRow[i] = filtrer(parsedRow[i]);
+                parsedRow[i] = filtrer(parsedRow[i].toLowerCase());
             }
             cleanedRows.add(parsedRow);
         }

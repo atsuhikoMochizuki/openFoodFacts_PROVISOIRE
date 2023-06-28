@@ -10,6 +10,7 @@ public class Allergene {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_allergene;
+    @Column(length = 555)
     private String nom_allergene;
     @ManyToMany
     @JoinTable(name = "ALLERGENE_PROD",

@@ -4,6 +4,7 @@ import fr.diginamic.mochizukiTools.Utils;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ParserTest extends TestCase {
 

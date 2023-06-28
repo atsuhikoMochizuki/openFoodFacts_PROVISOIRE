@@ -4,10 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Création de la classe Parser">
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Merge et résolution des conflits">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts-example.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/project.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +66,14 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev_arnold_wilk" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,32 +86,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/chowyounfat/Donnees/Diginamic/projets/EN COURS/IBOOF&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_opened_file_path": "C:/Users/pc/IdeaProjects/openFoodFacts_PROVISOIRE/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.diginamic" />
       <recent name="fr.diginamic.jdbc.dao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\IdeaProjects\openFoodFacts_PROVISOIRE\src\main\resources" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/test" />
       <recent name="$PROJECT_DIR$/src/test/java/fr/diginamic/bll" />
@@ -464,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687946341016</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Merge et résolution des conflits">
+      <created>1687951347911</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1687951347911</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -505,7 +531,8 @@
     <MESSAGE value="Ajout de traitement pour les caractères séparateurs dans la classe Parsing" />
     <MESSAGE value="Renommage de la classe Parsing en Cleaning" />
     <MESSAGE value="Création de la classe Parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création de la classe Parser" />
+    <MESSAGE value="Merge et résolution des conflits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge et résolution des conflits" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
