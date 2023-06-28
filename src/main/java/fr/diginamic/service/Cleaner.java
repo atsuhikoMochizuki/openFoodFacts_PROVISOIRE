@@ -32,17 +32,12 @@ public class Cleaner {
     public static final String FILTRE_MILLIGRAMMES_MATIERES_GRASSES = "(?:\\s+\\d+[m]g)";
     public static final String FILTRE_PARENTHESES = "(\\((.*?)\\))";
     public static final String FILTRE_CROCHETS = "(\\[(.*?)\\])";
-    //    public static final String FILTRE_TIRET_DU_SIX = "\\-";
-//    public static final String FILTRE_ESPACES_CONTIGUES_AUX_VIRGULES = " *, *";
     public static final String FILTRE_TRAITEMENTS_VIRGULES = "(?:\\s+;\\s+)|(?:;\\s+)|(?:\\s+;)|(?:;)|(?:\\s+,\\s+)|(?:\\s+-\\s+)|(?:-)|(?:,\\s+)|(?:\\s+,)";
     public static final String FILTRE_TRIM_DEBUT_FIN = "^\\s+|\\s+$";
-
-
     public static String FILTRE_EXTERMINATOR = FILTRE_POURCENTAGES + "|" + FILTRE_GRAMMES + "|" + FILTRE_CARACTERES_PARASITES + "|" + FILTRE_MILLIGRAMMES_MATIERES_GRASSES + "|" + FILTRE_PARENTHESES + "|" + FILTRE_CROCHETS;
 
     //Patterns
     public static Pattern pattern_EXTERMINATOR;
-    //    public static Pattern pattern_PERMUTATION_TIRET_DU_SIX_VIRGULE;
     public static Pattern pattern_NETTOYAGE_ESPACES_SUPERFLUS;
     public static Pattern pattern_FILTRE_TRAITEMENTS_VIRGULES;
 
@@ -52,7 +47,6 @@ public class Cleaner {
 
         pattern_EXTERMINATOR = Pattern.compile(FILTRE_EXTERMINATOR);
         pattern_NETTOYAGE_ESPACES_SUPERFLUS = Pattern.compile(FILTRE_TRIM_DEBUT_FIN);
-        //pattern_PERMUTATION_TIRET_DU_SIX_VIRGULE = Pattern.compile(FILTRE_TIRET_DU_SIX);
         pattern_FILTRE_TRAITEMENTS_VIRGULES = Pattern.compile(FILTRE_TRAITEMENTS_VIRGULES);
     }
 
@@ -63,10 +57,6 @@ public class Cleaner {
         //Suppression des caractères parasites
         matcher = pattern_EXTERMINATOR.matcher(chaineAfiltrer);
         chaineAfiltrer = matcher.replaceAll(Cleaner.EFFACER_CHAR);
-
-//        //Remplacement des éventuels tirets-du-six par des virgules
-//        matcher = pattern_PERMUTATION_TIRET_DU_SIX_VIRGULE.matcher(chaineAfiltrer);
-//        chaineAfiltrer = matcher.replaceAll(Parsing.COMMA_CHAR);
 
         //Suppression des espaces en début et fin de chaine
         matcher = pattern_NETTOYAGE_ESPACES_SUPERFLUS.matcher(chaineAfiltrer);
@@ -99,7 +89,7 @@ public class Cleaner {
         Utils.msgInfo("Nettoyage des lignes du fichier");
         Iterator<String> rowIterator = rows.iterator();
         HEADER = rowIterator.next().split(SEP_CHAR);
-        ArrayList<String[]> cleanedRows= new ArrayList<>();
+        ArrayList<String[]> cleanedRows = new ArrayList<>();
         while (rowIterator.hasNext()) {
             String[] parsedRow = rowIterator.next().split(SEP_CHAR, HEADER.length);
             for (int i = 0; i < parsedRow.length; i++) {

@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Création de la classe Parser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parsing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parsing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParsingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParsingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +119,7 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ParsingTest.test_filtrage">
+  <component name="RunManager" selected="JUnit.CleanerTest.test_filtrage">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="fr.diginamic.Main" />
       <module name="OpenFoodFacts" />
@@ -133,6 +129,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CleanerTest.test_filtrage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IBOOF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.service" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.service.CleanerTest" />
+      <option name="METHOD_NAME" value="test_filtrage" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,22 +196,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParsingTest.test_filtrage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IBOOF" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.diginamic.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.diginamic.service" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.service.ParsingTest" />
-      <option name="METHOD_NAME" value="test_filtrage" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="DecouvrirJAVA - JDBC" />
       <method v="2">
@@ -215,7 +211,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ParsingTest.test_filtrage" />
+        <item itemvalue="JUnit.CleanerTest.test_filtrage" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.CsvFileBTest.testMappedData" />
         <item itemvalue="JUnit.CsvFileBTest" />
@@ -253,7 +249,7 @@
       <workItem from="1687509230051" duration="6240000" />
       <workItem from="1687523744423" duration="5942000" />
       <workItem from="1687531581937" duration="2113000" />
-      <workItem from="1687944691490" duration="1349000" />
+      <workItem from="1687944691490" duration="1657000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -438,7 +434,31 @@
       <option name="project" value="LOCAL" />
       <updated>1687534374279</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Ajout de traitement pour les caractères séparateurs dans la classe Parsing">
+      <option name="closed" value="true" />
+      <created>1687946095880</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946095882</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Renommage de la classe Parsing en Cleaning">
+      <option name="closed" value="true" />
+      <created>1687946125177</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946125177</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Création de la classe Parser">
+      <option name="closed" value="true" />
+      <created>1687946341015</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946341016</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +496,10 @@
     <MESSAGE value="Mapping du MCD OK" />
     <MESSAGE value="Ajout d'une petite interface graphique rudimentaire" />
     <MESSAGE value="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Récupération et mapping du fichier csv OK&#10;tests OK&#10;Nettoyage à continuer" />
+    <MESSAGE value="Ajout de traitement pour les caractères séparateurs dans la classe Parsing" />
+    <MESSAGE value="Renommage de la classe Parsing en Cleaning" />
+    <MESSAGE value="Création de la classe Parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création de la classe Parser" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
