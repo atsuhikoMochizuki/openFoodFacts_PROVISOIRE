@@ -9,10 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,7 +88,7 @@ public class Cleaner {
         HEADER = rowIterator.next().split(SEP_CHAR);
         ArrayList<String[]> cleanedRows = new ArrayList<>();
         while (rowIterator.hasNext()) {
-            String[] parsedRow = rowIterator.next().split(SEP_CHAR, HEADER.length);
+            String[] parsedRow = rowIterator.next().split(SEP_CHAR, HEADER.length + 1);
             for (int i = 0; i < parsedRow.length; i++) {
                 parsedRow[i] = filtrer(parsedRow[i].toLowerCase());
             }

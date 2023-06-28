@@ -11,7 +11,7 @@ public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_ingredient;
-    @Column(length = 555)
+    @Column(length = 1024)
     private String nom_ingredient;
 
     @ManyToMany

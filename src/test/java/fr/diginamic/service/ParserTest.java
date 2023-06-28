@@ -15,7 +15,6 @@ public class ParserTest extends TestCase {
         Utils.msgInfo("Migration des données dans la base...");
         Parser.insertToDataBase(rows);
         Utils.msgResult("Migration des données dans la base OK");
-
     }
 
 }

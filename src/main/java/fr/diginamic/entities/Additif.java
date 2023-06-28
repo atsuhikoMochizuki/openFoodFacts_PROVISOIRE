@@ -11,6 +11,7 @@ public class Additif {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id_additif;
+    @Column
     private String nom_additif;
 
     @ManyToMany
@@ -61,7 +62,6 @@ public class Additif {
             }
         }
     }
-
 
     @Override
     public String toString() {
