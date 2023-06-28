@@ -51,13 +51,6 @@ public class Parser {
                 iteration++;
                 String[] line = iter.next();
 
-//                if (line.length != 30) {
-//                    Utils.msgError(String.valueOf(line.length));
-//                    Utils.msgError(Arrays.toString(line));
-//                    while (true) ;
-//                }
-
-
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
                 Categorie categorie = creationInstanceCategorie(iteration, categories, line[0]);
@@ -72,10 +65,6 @@ public class Parser {
                 if (nutriscore != null) {
                     em.persist(nutriscore);
                 }
-                Produit produit = creationInstanceProduit(iteration, produits, line[2]);
-                if (produit != null) {
-                    em.persist(produit);
-                }
 
                 List<Ingredient> listIngredients = creationInstanceIngredient(iteration, ingredients, line[4].split(","));
                 listIngredients.forEach(em::persist);
@@ -83,8 +72,27 @@ public class Parser {
                 List<Allergene> listAllergenes = creationInstanceAllergene(iteration, allergenes, line[28].split(","));
                 listAllergenes.forEach(em::persist);
 
-                List<Additif> listAdditifs = creationInstanceAdditif(iteration, additifs, line[29].split(","));
-                listAdditifs.forEach(em::persist);
+                Additif additif = creationInstanceAdditif(iteration, additifs, line[29]);
+                if (additif != null) {
+                    em.persist(additif);
+                }
+
+                Produit produit = creationInstanceProduit(iteration, produits, line[2]);
+                if (produit != null) {
+                    produit.setCategorie(categorie);
+                    produit.setMarque(marque);
+                    produit.setNutriscore(nutriscore);
+                    Set<Ingredient> ingredientSet = produit.getIngredients();
+                    produit.setIngredients(ingredientSet);
+                    Set<Allergene> allergeneSet = produit.getAllergenes();
+                    produit.setAllergenes(allergeneSet);
+                    Set<Additif> additifSet = produit.getAdditifs();
+                    produit.setAdditifs(additifSet);
+
+                    em.persist(produit);
+                }
+
+
             }
             em.getTransaction().commit();
             // Fin de la persistence avec transaction
@@ -102,18 +110,15 @@ public class Parser {
      * @param additifs
      * @return
      */
-    public static List<Additif> creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String[] lineSplit) {
-        List<Additif> listAdditifs = new ArrayList<>();
-        for (String stringAdd : lineSplit) {
-            if (!additifs.containsValue(stringAdd)) {
-                Additif additif = new Additif();
-                additifs.put(iteration, stringAdd);
-                additif.setNom_additif(additifs.get(iteration));
-                listAdditifs.add(additif);
-            }
-
+    public static Additif creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String lineSplit) {
+        if (!additifs.containsValue(lineSplit)) {
+            additifs.put(iteration, lineSplit);
+            Additif additif = new Additif();
+            additif.setNom_additif(additifs.get(iteration));
+            return additif;
         }
-        return listAdditifs;
+        return null;
+
     }
 
     /**

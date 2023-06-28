@@ -11,7 +11,7 @@ public class Additif {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id_additif;
-    @Column
+    @Column(length = 1024)
     private String nom_additif;
 
     @ManyToMany
