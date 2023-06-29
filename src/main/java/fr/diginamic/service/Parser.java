@@ -1,22 +1,21 @@
 package fr.diginamic.service;
 
-import fr.diginamic.entities.*;
-import fr.diginamic.mochizukiTools.Utils;
+import fr.diginamic.entities.Additif;
+import fr.diginamic.entities.Allergene;
+import fr.diginamic.entities.Categorie;
+import fr.diginamic.entities.Ingredient;
+import fr.diginamic.entities.Marque;
+import fr.diginamic.entities.Nutriscore;
+import fr.diginamic.entities.Produit;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.slf4j.Logger;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Parser {
     private static final Logger LOG = Logging.LOG;
-    private static ArrayList<String[]> rows;
 
     static {
     }
@@ -53,44 +52,51 @@ public class Parser {
 
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
+
+                // AJOUT DE LA CATEGORIE
                 Categorie categorie = creationInstanceCategorie(iteration, categories, line[0]);
-                if (categorie != null) {
-                    em.persist(categorie);
-                }
+                em.persist(categorie);
+
+                // AJOUT DE LA MARQUE
                 Marque marque = creationInstanceMarque(iteration, marques, line[1]);
-                if (marque != null) {
-                    em.persist(marque);
-                }
+                em.persist(marque);
+
+                // AJOUT DU NUTRISCORE
                 Nutriscore nutriscore = creationInstanceNutriscore(iteration, nutriscores, line[3]);
-                if (nutriscore != null) {
-                    em.persist(nutriscore);
-                }
+                em.persist(nutriscore);
 
-                List<Ingredient> listIngredients = creationInstanceIngredient(iteration, ingredients, line[4].split(","));
-                listIngredients.forEach(em::persist);
+                // AJOUT DE LA LISTE INGREDIENT
+                Set<Ingredient> listSetIngredients = creationInstanceIngredient(iteration, ingredients, line[4].split(","));
+                listSetIngredients.forEach(em::persist);
 
-                List<Allergene> listAllergenes = creationInstanceAllergene(iteration, allergenes, line[28].split(","));
-                listAllergenes.forEach(em::persist);
+                // AJOUT DES ALLERGENES
+                Set<Allergene> listSetAllergenes = creationInstanceAllergene(iteration, allergenes, line[28].split(","));
+                listSetAllergenes.forEach(em::persist);
 
-                Additif additif = creationInstanceAdditif(iteration, additifs, line[29]);
-                if (additif != null) {
-                    em.persist(additif);
-                }
+                // AJOUT DES ADDITIFS
+                Set<Additif> listSetAdditif = creationInstanceAdditif(iteration, additifs, line[29].split(","));
+                listSetAdditif.forEach(em::persist);
 
+                // AJOUT DES PRODUITS AVEC LEUR JOINTURE
                 Produit produit = creationInstanceProduit(iteration, produits, line[2]);
-                if (produit != null) {
-                    produit.setCategorie(categorie);
-                    produit.setMarque(marque);
-                    produit.setNutriscore(nutriscore);
-                    Set<Ingredient> ingredientSet = produit.getIngredients();
-                    produit.setIngredients(ingredientSet);
-                    Set<Allergene> allergeneSet = produit.getAllergenes();
-                    produit.setAllergenes(allergeneSet);
-                    Set<Additif> additifSet = produit.getAdditifs();
-                    produit.setAdditifs(additifSet);
+                produit.setCategorie(categorie);
+                categorie.getProduits().add(produit);
+                produit.setMarque(marque);
+                marque.getProduits().add(produit);
+                produit.setNutriscore(nutriscore);
+                nutriscore.getProduits().add(produit);
 
-                    em.persist(produit);
-                }
+                produit.setIngredients(listSetIngredients);
+                listSetIngredients.forEach(ingredient -> ingredient.getProduits().add(produit));
+
+                produit.setAllergenes(listSetAllergenes);
+                listSetAllergenes.forEach(allergene -> allergene.getProduits().add(produit));
+
+                produit.setAdditifs(listSetAdditif);
+                listSetAdditif.forEach(additif -> additif.getProduits().add(produit));
+
+                // PERSISTANCE DES DONNEES DE LA TABLE PRODUIT
+                em.persist(produit);
 
 
             }
@@ -106,34 +112,45 @@ public class Parser {
     }
 
     /**
-     * @param iteration
-     * @param additifs
-     * @return
+     * @param iteration       on utilise l'iteration comme une clé pour préserver
+     *                        l'intégrité des données traîtées à chaque iteration
+     * @param hashMapAdditifs Le hashMap sert à conserver les pairs clés-valeurs
+     *                        qui vont servir à créer les instances d'objets
+     * @return La méthode retourne l'instance d'objet Additif
      */
-    public static Additif creationInstanceAdditif(int iteration, HashMap<Integer, String> additifs, String lineSplit) {
-        if (!additifs.containsValue(lineSplit)) {
-            additifs.put(iteration, lineSplit);
-            Additif additif = new Additif();
-            additif.setNom_additif(additifs.get(iteration));
-            return additif;
+    public static Set<Additif> creationInstanceAdditif(int iteration, HashMap<Integer, String> hashMapAdditifs, String[] colContent) {
+        Set<Additif> additifSet = new HashSet<>();
+        Additif additif = new Additif();
+        for (String additi : colContent) {
+            if (!hashMapAdditifs.containsKey(iteration)) {
+                hashMapAdditifs.put(iteration, additi);
+                additif.setNom_additif(hashMapAdditifs.get(iteration));
+            } else {
+                additif.setNom_additif(additi);
+            }
+
         }
-        return null;
+        additifSet.add(additif);
+        return additifSet;
 
     }
 
     /**
      * @param iteration
      * @param allergenes
-     * @param lineSplit
+     * @param colContent
      * @return
      */
-    public static List<Allergene> creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] lineSplit) {
-        List<Allergene> listAllergenes = new ArrayList<>();
-        for (String allerg : lineSplit) {
+    public static Set<Allergene> creationInstanceAllergene(int iteration, HashMap<Integer, String> allergenes, String[] colContent) {
+        Set<Allergene> listAllergenes = new HashSet<>();
+        Allergene allergene = new Allergene();
+        for (String allerg : colContent) {
             if (!allergenes.containsValue(allerg)) {
                 allergenes.put(iteration, allerg);
-                Allergene allergene = new Allergene();
                 allergene.setNom_allergene(allergenes.get(iteration));
+                listAllergenes.add(allergene);
+            } else {
+                allergene.setNom_allergene(allerg);
                 listAllergenes.add(allergene);
             }
         }
@@ -146,65 +163,71 @@ public class Parser {
      * @param lineSplit
      * @return
      */
-    public static List<Ingredient> creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
-        List<Ingredient> listOfIngredients = new ArrayList<>();
+    public static Set<Ingredient> creationInstanceIngredient(int iteration, HashMap<Integer, String> ingredients, String[] lineSplit) {
+        Set<Ingredient> setOfIngredients = new HashSet<>();
+        Ingredient ingredient = new Ingredient();
         for (String ingdt : lineSplit) {
             if (!ingredients.containsValue(ingdt)) {
                 ingredients.put(iteration, ingdt);
-                Ingredient ingredient = new Ingredient();
                 ingredient.setNom_ingredient(ingredients.get(iteration));
-                listOfIngredients.add(ingredient);
+                setOfIngredients.add(ingredient);
+            } else {
+                ingredient.setNom_ingredient(ingdt);
+                setOfIngredients.add(ingredient);
             }
         }
-        return listOfIngredients;
+        return setOfIngredients;
     }
 
     /**
      * @param iteration
-     * @param nutriscores
+     * @param hashMapNutriscores
      * @param colContent
      * @return
      */
-    public static Nutriscore creationInstanceNutriscore(int iteration, HashMap<Integer, String> nutriscores, String colContent) {
-        if (!nutriscores.containsValue(colContent)) {
-            nutriscores.put(iteration, colContent);
-            Nutriscore nutriscore = new Nutriscore();
-            nutriscore.setValeurScore(nutriscores.get(iteration).toCharArray()[0]);
-            return nutriscore;
+    public static Nutriscore creationInstanceNutriscore(int iteration, HashMap<Integer, String> hashMapNutriscores, String colContent) {
+        Nutriscore nutriscore = new Nutriscore();
+        if (!hashMapNutriscores.containsValue(colContent)) {
+            hashMapNutriscores.put(iteration, colContent);
+            nutriscore.setValeurScore(hashMapNutriscores.get(iteration).toCharArray()[0]);
+        } else {
+            nutriscore.setValeurScore(colContent.toCharArray()[0]);
         }
-        return null;
+        return nutriscore;
     }
 
     /**
      * @param iteration
-     * @param marques
+     * @param hashMapMarques
      * @param colContent
      * @return
      */
-    public static Marque creationInstanceMarque(int iteration, HashMap<Integer, String> marques, String colContent) {
-        if (!marques.containsValue(colContent)) {
-            marques.put(iteration, colContent);
-            Marque marque = new Marque();
-            marque.setNom_marque(marques.get(iteration));
-            return marque;
+    public static Marque creationInstanceMarque(int iteration, HashMap<Integer, String> hashMapMarques, String colContent) {
+        Marque marque = new Marque();
+        if (!hashMapMarques.containsValue(colContent)) {
+            hashMapMarques.put(iteration, colContent);
+            marque.setNom_marque(hashMapMarques.get(iteration));
+        } else {
+            marque.setNom_marque(colContent);
         }
-        return null;
+        return marque;
     }
 
     /**
      * @param iteration
-     * @param produits
+     * @param hashMapProduits
      * @param colContent
      * @return
      */
-    public static Produit creationInstanceProduit(int iteration, HashMap<Integer, String> produits, String colContent) {
-        if (!produits.containsValue(colContent)) {
-            produits.put(iteration, colContent);
-            Produit produit = new Produit();
-            produit.setNom_produit(produits.get(iteration));
-            return produit;
+    public static Produit creationInstanceProduit(int iteration, HashMap<Integer, String> hashMapProduits, String colContent) {
+        Produit produit = new Produit();
+        if (!hashMapProduits.containsValue(colContent)) {
+            hashMapProduits.put(iteration, colContent);
+            produit.setNom_produit(hashMapProduits.get(iteration));
+        } else {
+            produit.setNom_produit(colContent);
         }
-        return null;
+        return produit;
     }
 
     /**
@@ -214,12 +237,13 @@ public class Parser {
      * @return
      */
     public static Categorie creationInstanceCategorie(int iteration, HashMap<Integer, String> hashMapCategorie, String colContent) {
+        Categorie categorie = new Categorie();
         if (!hashMapCategorie.containsValue(colContent)) {
             hashMapCategorie.put(iteration, colContent);
-            Categorie categorie = new Categorie();
             categorie.setNom_categorie(hashMapCategorie.get(iteration));
-            return categorie;
+        } else {
+            categorie.setNom_categorie(colContent);
         }
-        return null;
+        return categorie;
     }
 }

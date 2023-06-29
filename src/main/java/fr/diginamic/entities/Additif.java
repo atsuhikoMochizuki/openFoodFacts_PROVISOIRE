@@ -2,6 +2,7 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,17 +10,17 @@ import java.util.Set;
 public class Additif {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "id_additif")
     private Integer id_additif;
     @Column(length = 1024)
     private String nom_additif;
 
-    @ManyToMany
-    @JoinTable(name = "ADD_PROD",
-            joinColumns = @JoinColumn(name = "ID_ADDITIF", referencedColumnName = "id_additif"),
-            inverseJoinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit")
-    )
+    @ManyToMany(mappedBy = "additifs")
     private Set<Produit> produits;
+
+    {
+        produits = new HashSet<>();
+    }
 
     public Additif() {
     }
@@ -51,9 +52,7 @@ public class Additif {
 
     public void setProduits(Set<Produit> produits) {
         if (this.produits != null) {
-            for (Produit produit : this.produits) {
-                produit.getAdditifs().remove(this);
-            }
+            this.produits.remove(this);
         }
         this.produits = produits;
         if (this.produits != null) {

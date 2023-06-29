@@ -2,6 +2,7 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,11 +10,16 @@ import java.util.Set;
 public class Nutriscore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "NUTRISCORE_ID")
     private Integer id_nutriscore;
     private char valeurScore;
 
     @OneToMany(mappedBy = "nutriscore")
     private Set<Produit> produits;
+
+    {
+        produits = new HashSet<>();
+    }
 
     public Nutriscore() {
     }
@@ -45,9 +51,7 @@ public class Nutriscore {
 
     public void setProduits(Set<Produit> produits) {
         if (this.produits != null) {
-            for (Produit produit : this.produits) {
-                produit.setNutriscore(this);
-            }
+            this.produits.remove(this);
         }
         this.produits = produits;
     }

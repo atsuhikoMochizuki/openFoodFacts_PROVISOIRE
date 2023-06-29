@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Test de migration DB success">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Test des jointures echec !">
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c49a5f0b265f47c0b4d64fa12c8190ee95ca4ec" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b667c8a1354bcf97fb49a8522be9d2943c45542" afterDir="false" />
@@ -30,14 +29,26 @@
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c84530a5f89b44205a638c16e8148a2638093a0a" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/4/d426a54999e6d0039ddd8b9fec1d1beea00fb749" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/mochizukiTools/ApportNutritionnel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts-example.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +61,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -293,7 +305,12 @@
       <workItem from="1687531581937" duration="2113000" />
       <workItem from="1687944691490" duration="1657000" />
       <workItem from="1687970616570" duration="139000" />
-      <workItem from="1687982085020" duration="4323000" />
+      <workItem from="1687982085020" duration="5687000" />
+      <workItem from="1688023934552" duration="7357000" />
+      <workItem from="1688031551404" duration="1987000" />
+      <workItem from="1688041738137" duration="795000" />
+      <workItem from="1688047687616" duration="184000" />
+      <workItem from="1688067448286" duration="11127000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -523,7 +540,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687970668670</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Test des jointures echec !">
+      <created>1687988574931</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1687988574931</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +566,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="1er Commit" />
     <MESSAGE value="1er commit" />
     <MESSAGE value="2nd commit" />
     <MESSAGE value="Implémentation slf4j OK" />
@@ -567,7 +590,8 @@
     <MESSAGE value="Merge et résolution des conflits" />
     <MESSAGE value="Test de migration failure" />
     <MESSAGE value="Test de migration DB success" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test de migration DB success" />
+    <MESSAGE value="Test des jointures echec !" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test des jointures echec !" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

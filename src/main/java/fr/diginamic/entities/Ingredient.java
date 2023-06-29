@@ -3,6 +3,7 @@ package fr.diginamic.entities;
 import jakarta.persistence.*;
 
 import java.time.temporal.ValueRange;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,17 +11,17 @@ import java.util.Set;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_ingredient")
     private Integer id_ingredient;
     @Column(length = 1024)
     private String nom_ingredient;
 
-    @ManyToMany
-    @JoinTable(name = "INGREDIENT_PROD",
-            joinColumns = @JoinColumn(name = "ID_INGREDIENT", referencedColumnName = "id_ingredient"),
-            inverseJoinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit")
-    )
+    @ManyToMany(mappedBy = "ingredients")
     private Set<Produit> produits;
 
+    {
+        produits = new HashSet<>();
+    }
 
     public Ingredient() {
     }
@@ -52,9 +53,7 @@ public class Ingredient {
 
     public void setProduits(Set<Produit> produits) {
         if (this.produits != null) {
-            for (Produit produit : this.produits) {
-                produit.getIngredients().remove(this);
-            }
+            this.produits.remove(this);
         }
         this.produits = produits;
         if (this.produits != null) {

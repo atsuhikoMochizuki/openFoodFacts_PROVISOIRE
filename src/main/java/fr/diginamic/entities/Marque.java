@@ -2,6 +2,7 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,11 +10,16 @@ import java.util.Set;
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MARQUE_ID")
     private Integer id_marque;
     private String nom_marque;
 
     @OneToMany(mappedBy = "marque")
     private Set<Produit> produits;
+
+    {
+        produits = new HashSet<>();
+    }
 
     public Marque() {
 
@@ -47,9 +53,7 @@ public class Marque {
 
     public void setProduits(Set<Produit> produits) {
         if (this.produits != null) {
-            for (Produit produit : this.produits) {
-                produit.setMarque(this);
-            }
+            this.produits.remove(this);
         }
         this.produits = produits;
     }
