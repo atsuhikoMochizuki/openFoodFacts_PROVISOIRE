@@ -14,8 +14,39 @@ import org.slf4j.Logger;
 
 import java.util.*;
 
-public class Parser {
+public class Mapper {
     private static final Logger LOG = Logging.LOG;
+
+    public static final int CATEGORIE = 0;
+    public static final int MARQUE = 1;
+    public static final int PRODUIT = 2;
+    public static final int NUTRITIONGRADEFR = 3;
+    public static final int INGREDIENTS = 4;
+    public static final int ENERGIE100G = 5;
+    public static final int GRAISSE100G = 6;
+    public static final int SUCRES100G = 7;
+    public static final int FIBRES100G = 8;
+    public static final int PROTEINES100G = 9;
+    public static final int SEL100G = 10;
+    public static final int VITA100G = 11;
+    public static final int VITD100G = 12;
+    public static final int VITE100G = 13;
+    public static final int VITK100G = 14;
+    public static final int VITC100G = 15;
+    public static final int VITB1100G = 16;
+    public static final int VITB2100G = 17;
+    public static final int VITPP100G = 18;
+    public static final int VITB6100G = 19;
+    public static final int VITB9100G = 20;
+    public static final int VITB12100G = 21;
+    public static final int CALCIUM100G = 22;
+    public static final int MAGNESIUM100G = 23;
+    public static final int IRON100G = 24;
+    public static final int FER100G = 25;
+    public static final int BETACAROTENE100G = 26;
+    public static final int PRESENCEHUILEPALME = 27;
+    public static final int ALLERGENES = 28;
+    public static final int ADDITIFS = 29;
 
     static {
     }
@@ -54,32 +85,32 @@ public class Parser {
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
 
                 // AJOUT DE LA CATEGORIE
-                Categorie categorie = creationInstanceCategorie(iteration, categories, line[0]);
+                Categorie categorie = creationInstanceCategorie(iteration, categories, line[CATEGORIE]);
                 em.persist(categorie);
 
                 // AJOUT DE LA MARQUE
-                Marque marque = creationInstanceMarque(iteration, marques, line[1]);
+                Marque marque = creationInstanceMarque(iteration, marques, line[MARQUE]);
                 em.persist(marque);
 
                 // AJOUT DU NUTRISCORE
-                Nutriscore nutriscore = creationInstanceNutriscore(iteration, nutriscores, line[3]);
+                Nutriscore nutriscore = creationInstanceNutriscore(iteration, nutriscores, line[NUTRITIONGRADEFR]);
                 em.persist(nutriscore);
 
 
                 // AJOUT DE LA LISTE INGREDIENT
-                Set<Ingredient> listSetIngredients = creationInstanceIngredient(iteration, ingredients, line[4].split(","));
+                Set<Ingredient> listSetIngredients = creationInstanceIngredient(iteration, ingredients, line[INGREDIENTS].split(","));
                 listSetIngredients.forEach(em::persist);
 
                 // AJOUT DES ALLERGENES
-                Set<Allergene> allergeneSet = creationInstanceAllergene(iteration, allergenes, line[28].split(","));
+                Set<Allergene> allergeneSet = creationInstanceAllergene(iteration, allergenes, line[ALLERGENES].split(","));
                 allergeneSet.forEach(em::persist);
 
                 // AJOUT DES ADDITIFS
-                Set<Additif> additifSet = creationInstanceAdditif(iteration, additifs, line[29].split(","));
+                Set<Additif> additifSet = creationInstanceAdditif(iteration, additifs, line[ADDITIFS].split(","));
                 additifSet.forEach(em::persist);
 
                 // AJOUT DES PRODUITS AVEC LEUR JOINTURE
-                Produit produit = creationInstanceProduit(iteration, produits, line[2]);
+                Produit produit = creationInstanceProduit(iteration, produits, line[PRODUIT]);
 
                 produit.setCategorie(categorie);
 

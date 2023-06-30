@@ -5,35 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Test Migration avec jointures SUCCES !">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c49a5f0b265f47c0b4d64fa12c8190ee95ca4ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b667c8a1354bcf97fb49a8522be9d2943c45542" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/745ab34c4f129c7bbc93ca9747284b13bf3d734c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9bb3c23f274a4c361051582d575a3a757b125fff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a3cfeaa60d24beedefe992855f9139cec24ba33e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a3fb8aca9812d45fbf8cccb186d6b8ad8e327df2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a89713ddd0f840a676e7e96553965b6a66a3aadb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/6/b62bf4ca1c2a0a521c44aede7eed28e77b7b5e11" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c84530a5f89b44205a638c16e8148a2638093a0a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/4/d426a54999e6d0039ddd8b9fec1d1beea00fb749" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/c/3c49a5f0b265f47c0b4d64fa12c8190ee95ca4ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/b/5b667c8a1354bcf97fb49a8522be9d2943c45542" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/745ab34c4f129c7bbc93ca9747284b13bf3d734c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/b/9bb3c23f274a4c361051582d575a3a757b125fff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/3/a3cfeaa60d24beedefe992855f9139cec24ba33e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/3/a3fb8aca9812d45fbf8cccb186d6b8ad8e327df2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/8/a89713ddd0f840a676e7e96553965b6a66a3aadb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/6/b62bf4ca1c2a0a521c44aede7eed28e77b7b5e11" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c84530a5f89b44205a638c16e8148a2638093a0a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/4/d426a54999e6d0039ddd8b9fec1d1beea00fb749" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts-example.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/mapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/open-food-facts.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +38,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,28 +93,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/pc/IdeaProjects/openFoodFacts_PROVISOIRE/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
+    "last_directory_selection": "/home/chowyounfat/Lien vers projets/EN COURS/IBBOF2_ESSAI/arnold30_06_detached/openFoodFacts_PROVISOIRE/src/main/java",
+    "last_opened_file_path": "C:/Users/pc/IdeaProjects/openFoodFacts_PROVISOIRE/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.diginamic" />
@@ -155,7 +150,7 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ParserTest.test_insertionToDataBase">
+  <component name="RunManager" selected="JUnit.mapperTest.test_insertionToDataBase">
     <configuration name="CsvFile01Test.testMappedData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
@@ -219,7 +214,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParserTest.test_insertionToDataBase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="mapperTest.test_insertionToDataBase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IBOOF" />
       <extension name="coverage">
         <pattern>
@@ -228,7 +223,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="fr.diginamic.service" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.service.ParserTest" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.service.mapperTest" />
       <option name="METHOD_NAME" value="test_insertionToDataBase" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -250,7 +245,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ParserTest.test_insertionToDataBase" />
+        <item itemvalue="JUnit.mapperTest.test_insertionToDataBase" />
         <item itemvalue="JUnit.CsvFileBTest.testMappedData" />
         <item itemvalue="JUnit.CsvFileBTest" />
         <item itemvalue="JUnit.CsvFile01Test.testTitle" />
@@ -298,6 +293,7 @@
       <workItem from="1688067448286" duration="11127000" />
       <workItem from="1688080840163" duration="240000" />
       <workItem from="1688113817338" duration="18623000" />
+      <workItem from="1688160263704" duration="1954000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -548,6 +544,27 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                  <option value="Arny Wilk" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -558,11 +575,24 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="arnold_wilk" />
+                        <option value="bifurcation_mochizuki" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                        <option value="Arny Wilk" />
                       </list>
                     </value>
                   </entry>
                 </map>
+              </option>
+              <option name="TEXT_FILTER_SETTINGS">
+                <TextFilterSettings>
+                  <option name="REGEX" value="true" />
+                </TextFilterSettings>
               </option>
             </State>
           </value>

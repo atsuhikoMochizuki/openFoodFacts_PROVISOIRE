@@ -6,14 +6,14 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class ParserTest extends TestCase {
+public class mapperTest extends TestCase {
 
     public void test_insertionToDataBase() {
         Utils.msgInfo("Extraction des données depuis le fichier csv...");
         ArrayList<String[]> rows = Cleaner.cleanFile(Cleaner.CSV_FILE_RELATIVE_PATH);
         Utils.msgResult("Extraction des données OK");
         Utils.msgInfo("Migration des données dans la base...");
-        Parser.insertToDataBase(rows);
+        Mapper.insertToDataBase(rows);
         Utils.msgResult("Migration des données dans la base OK");
     }
 

@@ -13,14 +13,14 @@
         <class>fr.diginamic.entities.Marque</class>
         <class>fr.diginamic.entities.Produit</class>
         <properties>
-            <!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/IBOOF"/>-->
-            <!--            <property name="jakarta.persistence.jdbc.user" value="root"/>-->
-            <!--            <property name="jakarta.persistence.jdbc.password" value="root"/>-->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/IBOOF"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
 
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://btbj8syzm2n3viiudu8b-mysql.services.clever-cloud.com:3306/btbj8syzm2n3viiudu8b"/>
-            <property name="jakarta.persistence.jdbc.user" value="ua1hclbyw8smozhk"/>
-            <property name="jakarta.persistence.jdbc.password" value="NFxnGRorGuccpKDhVR3F"/>
+            <!--            <property name="jakarta.persistence.jdbc.url"-->
+            <!--                      value="jdbc:mysql://btbj8syzm2n3viiudu8b-mysql.services.clever-cloud.com:3306/btbj8syzm2n3viiudu8b"/>-->
+            <!--            <property name="jakarta.persistence.jdbc.user" value="ua1hclbyw8smozhk"/>-->
+            <!--            <property name="jakarta.persistence.jdbc.password" value="NFxnGRorGuccpKDhVR3F"/>-->
 
             <property name="hibernate.archive.autodetection" value=""/>
             <!-- Activation de la génération des tables manquantes uniquement -->
@@ -30,6 +30,12 @@
                       value="drop-and-create"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
+            <property name="hibernate.cache.region.factory_class" value="jcache"/>
+            <property name="hibernate.cache.provider_class"
+                      value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>
+            <!--            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>-->
         </properties>
     </persistence-unit>
 </persistence>

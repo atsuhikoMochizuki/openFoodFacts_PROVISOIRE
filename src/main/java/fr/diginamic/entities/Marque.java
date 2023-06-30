@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table
+@Cacheable
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
