@@ -26,6 +26,10 @@ public class Categorie {
     public Categorie() {
     }
 
+    public Categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+
     public Categorie(Integer id_categorie, String nom_categorie) {
         this.id_categorie = id_categorie;
         this.nom_categorie = nom_categorie;

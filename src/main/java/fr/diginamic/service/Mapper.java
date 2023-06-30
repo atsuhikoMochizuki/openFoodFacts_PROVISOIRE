@@ -1,18 +1,14 @@
 package fr.diginamic.service;
 
-import fr.diginamic.entities.Additif;
-import fr.diginamic.entities.Allergene;
-import fr.diginamic.entities.Categorie;
-import fr.diginamic.entities.Ingredient;
-import fr.diginamic.entities.Marque;
-import fr.diginamic.entities.Nutriscore;
-import fr.diginamic.entities.Produit;
+import fr.diginamic.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.slf4j.Logger;
 
 import java.util.*;
+
+import static java.lang.System.in;
 
 public class Mapper {
     private static final Logger LOG = Logging.LOG;
@@ -56,96 +52,200 @@ public class Mapper {
      */
     public static void insertToDataBase(ArrayList<String[]> rows) {
 
-        int iteration = 0;
+        int colIndex = 0;
 
         // Initialisation de l'iterator
         Iterator<String[]> iter = rows.iterator();
 
         // HashMap de chaque colonne
-        HashMap<Integer, String> categories = new HashMap<>();
-        HashMap<Integer, String> nutriscores = new HashMap<>();
-        HashMap<Integer, String> marques = new HashMap<>();
+        HashMap<Integer, String> categories_members = new HashMap<>();
+        HashMap<Integer, String> nutriscores_members = new HashMap<>();
+        HashMap<Integer, String> marque_membres = new HashMap<>();
         HashMap<Integer, String> produits = new HashMap<>();
-        HashMap<Integer, String> ingredients = new HashMap<>();
+        HashMap<Integer, String> ingredients_membres = new HashMap<>();
         HashMap<Integer, String> allergenes = new HashMap<>();
         HashMap<Integer, String> additifs = new HashMap<>();
+        //Set<Ingredient> ingredient_members = new HashSet<>();
 
 
-        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
-             EntityManager em = emf.createEntityManager();
-        ) {
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA"); EntityManager em = emf.createEntityManager();) {
 //         Debut de la persistence avec transaction
             em.getTransaction().begin();
 
             while (iter.hasNext()) {
-                iteration++;
-                String[] line = iter.next();
+                colIndex++;
+                String[] row = iter.next();
 
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
 
                 // AJOUT DE LA CATEGORIE
-                Categorie categorie = creationInstanceCategorie(iteration, categories, line[CATEGORIE]);
-                em.persist(categorie);
+                switch (colIndex) {
+                    case CATEGORIE:
+                        if (!categories_members.containsValue(row[CATEGORIE])) {
+                            categories_members.put(colIndex, row[CATEGORIE]);
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
+                        break;
 
-                // AJOUT DE LA MARQUE
-                Marque marque = creationInstanceMarque(iteration, marques, line[MARQUE]);
-                em.persist(marque);
+                    case MARQUE:
+                        if (!marque_membres.containsValue(row[MARQUE])) {
+                            marque_membres.put(colIndex, row[MARQUE]);
+                            em.persist(new Marque(row[CATEGORIE]));
+                        }
+                        break;
 
-                // AJOUT DU NUTRISCORE
-                Nutriscore nutriscore = creationInstanceNutriscore(iteration, nutriscores, line[NUTRITIONGRADEFR]);
-                em.persist(nutriscore);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                        }
+                        break;
+
+                    case INGREDIENTS:
+                        String[] splittedRow = row[INGREDIENTS].split(",");
+                        for (String individualSplittedRow : splittedRow) {
+                            if (!ingredients_membres.containsValue(individualSplittedRow)) {
+                                em.persist(row[CATEGORIE]);
+                            }
+                        }
 
 
-                // AJOUT DE LA LISTE INGREDIENT
-                Set<Ingredient> listSetIngredients = creationInstanceIngredient(iteration, ingredients, line[INGREDIENTS].split(","));
-                listSetIngredients.forEach(em::persist);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                // AJOUT DES ALLERGENES
-                Set<Allergene> allergeneSet = creationInstanceAllergene(iteration, allergenes, line[ALLERGENES].split(","));
-                allergeneSet.forEach(em::persist);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                // AJOUT DES ADDITIFS
-                Set<Additif> additifSet = creationInstanceAdditif(iteration, additifs, line[ADDITIFS].split(","));
-                additifSet.forEach(em::persist);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                // AJOUT DES PRODUITS AVEC LEUR JOINTURE
-                Produit produit = creationInstanceProduit(iteration, produits, line[PRODUIT]);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                produit.setCategorie(categorie);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                categorie.getProduits().add(produit);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                produit.setMarque(marque);
+                    case NUTRITIONGRADEFR:
+                        if (!nutriscores_members.containsValue(row[NUTRITIONGRADEFR])) {
+                            nutriscores_members.put(colIndex, row[NUTRITIONGRADEFR]);
+                            em.persist(new Nutriscore(row[NUTRITIONGRADEFR].charAt(0)));
+                            em.persist(new Categorie(row[CATEGORIE]));
+                        }
 
-                marque.getProduits().add(produit);
+                    case INGREDIENTS:
+                        Set<Ingredient> Ingredient = new HashSet<>();
+                        Ingredient ingredient = new Ingredient();
+                        for (String ingdt : lineSplit) {
+                            if (!ingredients_membres.containsValue(ingdt)) {
+                                ingredients_membres.put(iteration, ingdt);
+                                ingredient.setNom_ingredient(ingredients_membres.get(iteration));
+                                Ingredient.add(ingredient);
+                            } else {
+                                ingredient.setNom_ingredient(ingdt);
+                                Ingredient.add(ingredient);
+                            }
+                        }
+                        return Ingredient;
 
-                produit.setNutriscore(nutriscore);
+                    case NUTRITIONGRADEFR:
 
-                nutriscore.getProduits().add(produit);
+                        break;
+                    case :
+                        break;
+                    case :
+                        break;
 
-                produit.setIngredients(listSetIngredients);
-                listSetIngredients.forEach(ingredient -> ingredient.getProduits().add(produit));
+                }
+            } Categorie categorie = creationInstanceCategorie(colIndex, categories_members, row[CATEGORIE]);
+            em.persist(categorie);
 
-                produit.setAllergenes(allergeneSet);
-                allergeneSet.forEach(allergene -> allergene.getProduits().add(produit));
+            // AJOUT DE LA MARQUE
+            Marque marque = creationInstanceMarque(colIndex, marque_membres, row[MARQUE]);
+            em.persist(marque);
 
-                produit.setAdditifs(additifSet);
-                additifSet.forEach(additif -> additif.getProduits().add(produit));
+            // AJOUT DU NUTRISCORE
+            Nutriscore nutriscore = creationInstanceNutriscore(colIndex, nutriscores_members, row[NUTRITIONGRADEFR]);
+            em.persist(nutriscore);
 
-                // PERSISTANCE DES DONNEES DE LA TABLE PRODUIT
-                em.persist(produit);
-            }
-            em.getTransaction().commit();
-            // Fin de la persistence avec transaction
 
-        } catch (
-                IllegalStateException e) {
-            LOG.error(e.getMessage());
-            throw new RuntimeException(e);
-        }
+            // AJOUT DE LA LISTE INGREDIENT
+            Set<Ingredient> listSetIngredients = creationInstanceIngredient(colIndex, ingredients_membres, row[INGREDIENTS].split(","));
+            listSetIngredients.forEach(em::persist);
 
+            // AJOUT DES ALLERGENES
+            Set<Allergene> allergeneSet = creationInstanceAllergene(colIndex, allergenes, row[ALLERGENES].split(","));
+            allergeneSet.forEach(em::persist);
+
+            // AJOUT DES ADDITIFS
+            Set<Additif> additifSet = creationInstanceAdditif(colIndex, additifs, row[ADDITIFS].split(","));
+            additifSet.forEach(em::persist);
+
+            // AJOUT DES PRODUITS AVEC LEUR JOINTURE
+            Produit produit = creationInstanceProduit(colIndex, produits, row[PRODUIT]);
+
+            produit.setCategorie(categorie);
+
+            categorie.getProduits().add(produit);
+
+            produit.setMarque(marque);
+
+            marque.getProduits().add(produit);
+
+            produit.setNutriscore(nutriscore);
+
+            nutriscore.getProduits().add(produit);
+
+            produit.setIngredients(listSetIngredients);
+            listSetIngredients.forEach(ingredient -> ingredient.getProduits().add(produit));
+
+            produit.setAllergenes(allergeneSet);
+            allergeneSet.forEach(allergene -> allergene.getProduits().add(produit));
+
+            produit.setAdditifs(additifSet);
+            additifSet.forEach(additif -> additif.getProduits().add(produit));
+
+            // PERSISTANCE DES DONNEES DE LA TABLE PRODUIT
+            em.persist(produit);
+        } em.getTransaction().commit();
+        // Fin de la persistence avec transaction
+
+    } catch(
+    IllegalStateException e)
+
+    {
+        LOG.error(e.getMessage());
+        throw new RuntimeException(e);
     }
+
+}
 
     /**
      * @param iteration       on utilise l'iteration comme une clé pour préserver
@@ -216,11 +316,11 @@ public class Mapper {
      */
     public static Nutriscore creationInstanceNutriscore(int iteration, HashMap<Integer, String> hashMapNutriscores, String colContent) {
         Nutriscore nutriscore = new Nutriscore();
-        String candidate;
+
         if (!hashMapNutriscores.containsValue(colContent)) {
             hashMapNutriscores.put(iteration, colContent);
-            candidate = hashMapNutriscores.get(iteration);
-            nutriscore.setValeurScore(candidate.toCharArray()[0]);
+            // candidate = hashMapNutriscores.get(iteration);
+            nutriscore.setValeurScore(colContent.charAt(0));
         }
         return nutriscore;
     }
@@ -233,11 +333,11 @@ public class Mapper {
      */
     public static Marque creationInstanceMarque(int iteration, HashMap<Integer, String> hashMapMarques, String colContent) {
         Marque marque = new Marque();
-        String candidate;
+//        String candidate;
         if (!hashMapMarques.containsValue(colContent)) {
             hashMapMarques.put(iteration, colContent);
-            candidate = hashMapMarques.get(iteration);
-            marque.setNom_marque(candidate);
+//            candidate = hashMapMarques.get(iteration);
+            marque.setNom_marque(colContent);
         }
         return marque;
     }
@@ -250,15 +350,16 @@ public class Mapper {
      */
     public static Produit creationInstanceProduit(int iteration, HashMap<Integer, String> hashMapProduits, String colContent) {
         Produit produit = new Produit();
-        String candidate;
+        // String candidate;
         if (!hashMapProduits.containsValue(colContent)) {
             hashMapProduits.put(iteration, colContent);
-            candidate = hashMapProduits.get(iteration);
-            produit.setNom_produit(candidate);
-        } else {
-            candidate = colContent;
-            produit.setNom_produit(candidate);
+            // candidate = hashMapProduits.get(iteration);
+//
+//        } else {
+//            candidate = colContent;
+//            produit.setNom_produit(candidate);
         }
+        produit.setNom_produit(colContent);
         return produit;
     }
 
@@ -269,13 +370,42 @@ public class Mapper {
      * @return
      */
     public static Categorie creationInstanceCategorie(int iteration, HashMap<Integer, String> hashMapCategorie, String colContent) {
+        //Instanciation de l'objet
         Categorie categorie = new Categorie();
-        String candidate;
+        //String candidate;
+        //Si l'objet n'a pas déjà été traité, on l'insère dans le hashMap
         if (!hashMapCategorie.containsValue(colContent)) {
             hashMapCategorie.put(iteration, colContent);
-            candidate = hashMapCategorie.get(iteration);
-            categorie.setNom_categorie(candidate);
+            //candidate = hashMapCategorie.get(iteration);
+            categorie.setNom_categorie(colContent);
         }
         return categorie;
     }
-}
+
+    public static void mapRow(int rowNbr, HashMap<Integer, String> hashMap, String rowContent) {
+        switch (rowNbr) {
+            case CATEGORIE:
+                if (!hashMap.containsValue(rowContent)) {
+                    hashMap.put(rowNbr, rowContent);
+                    new Categorie(rowContent);
+                    //candidate = hashMapCategorie.get(iteration);
+                    categorie.setNom_categorie(colContent);
+                }
+                Categorie categorie = new Categorie()
+                //String candidate;
+                //Si l'objet n'a pas déjà été traité, on l'insère dans le hashMap
+                if (!hashMapCategorie.containsValue(colContent)) {
+                    hashMapCategorie.put(iteration, colContent);
+                    //candidate = hashMapCategorie.get(iteration);
+                    categorie.setNom_categorie(colContent);
+                    break;
+                    case :
+                        break;
+                    case :
+                        break;
+                    case :
+                        break;
+
+                }
+        }
+    }

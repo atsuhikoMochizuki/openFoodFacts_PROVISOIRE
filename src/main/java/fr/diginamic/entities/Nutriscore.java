@@ -25,6 +25,10 @@ public class Nutriscore {
     public Nutriscore() {
     }
 
+    public Nutriscore(char valeurScore) {
+        this.valeurScore = valeurScore;
+    }
+
     public Nutriscore(Integer id_nutriscore, char valeurScore) {
         this.id_nutriscore = id_nutriscore;
         this.valeurScore = valeurScore;

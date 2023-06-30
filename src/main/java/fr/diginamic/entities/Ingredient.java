@@ -27,6 +27,10 @@ public class Ingredient {
     public Ingredient() {
     }
 
+    public Ingredient(String nom_ingredient) {
+        this.nom_ingredient = nom_ingredient;
+    }
+
     public Ingredient(Integer id_ingredient, String nom_ingredient) {
         this.id_ingredient = id_ingredient;
         this.nom_ingredient = nom_ingredient;

@@ -26,6 +26,10 @@ public class Marque {
 
     }
 
+    public Marque(String nom_marque) {
+        this.nom_marque = nom_marque;
+    }
+
     public Marque(Integer id_marque, String nom_marque, Set<Produit> produits) {
         this.id_marque = id_marque;
         this.nom_marque = nom_marque;
