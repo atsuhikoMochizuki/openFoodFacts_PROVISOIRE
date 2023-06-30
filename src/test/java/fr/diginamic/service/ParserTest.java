@@ -2,6 +2,7 @@ package fr.diginamic.service;
 
 import fr.diginamic.mochizukiTools.Utils;
 import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
@@ -16,4 +17,31 @@ public class ParserTest extends TestCase {
         Utils.msgResult("Migration des données dans la base OK");
     }
 
+    @Test
+    public void creationInstanceAdditif() {
+    }
+
+    @Test
+    public void creationInstanceAllergene() {
+    }
+
+    @Test
+    public void creationInstanceIngredient() {
+    }
+
+    @Test
+    public void creationInstanceNutriscore() {
+    }
+
+    @Test
+    public void creationInstanceMarque() {
+    }
+
+    @Test
+    public void creationInstanceProduit() {
+    }
+
+    @Test
+    public void creationInstanceCategorie() {
+    }
 }
