@@ -30,12 +30,12 @@
                       value="drop-and-create"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-
+            <property name="jakarta.persistence.sharedCache.mode" value="ENABLE_SELECTIVE"/>
             <property name="hibernate.cache.use_second_level_cache" value="true"/>
             <property name="hibernate.cache.region.factory_class" value="jcache"/>
             <property name="hibernate.cache.provider_class"
                       value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>
-            <!--            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.jcache.internal.JCacheRegionFactory"/>-->
+
         </properties>
     </persistence-unit>
 </persistence>
