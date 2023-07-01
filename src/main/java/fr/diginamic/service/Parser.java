@@ -2,13 +2,11 @@ package fr.diginamic.service;
 
 import fr.diginamic.entities.*;
 import fr.diginamic.mochizukiTools.Utils;
+import jakarta.persistence.EntityManager;
 import me.tongfei.progressbar.ProgressBar;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class Parser {
     private static final Logger LOG = Logging.LOG;
@@ -46,10 +44,12 @@ public class Parser {
     public static final int NBRE_LIGNES_IN_FILE = 13434;
 
     public static ArrayList parseFile(String csvFile_path) {
-        Utils.msgInfo("Extraction, nettoyage et référencement en mémoire des élements du fichier" +
-                " csv de OpenFoodFacts en vue de l'insertion en base de données");
+        Utils.msgInfo("Extraction, nettoyage et référencement en mémoire des élements du fichier" + " csv de OpenFoodFacts en vue de l'insertion en base de données");
         ArrayList<String[]> rowsOfFile = Cleaner.extractAndCleanDatas(csvFile_path);
-        return parseRows(rowsOfFile);
+        ArrayList listeGenerale = parseRows(rowsOfFile);
+        mapping(listeGenerale);
+
+        return listeGenerale;
     }
 
     public static ArrayList parseRows(ArrayList<String[]> rows) {
@@ -145,23 +145,26 @@ public class Parser {
                             break;
 
                         case ADDITIFS:
-                            String[] splittedAdditif = rowToParse[ADDITIFS].split(",");
-                            for (int j = 0; j < splittedAdditif.length; j++) {
-                                if (splittedAdditif[j] == null) {
-                                } else if (splittedAdditif[j].contentEquals("")) {
-                                } else if (splittedAdditif[j].contentEquals(" ")) {
+                            String[] splittedAdditifs = rowToParse[ADDITIFS].split(",");
+                            for (int j = 0; j < splittedAdditifs.length; j++) {
+                                if (splittedAdditifs[j] == null) {
+                                } else if (splittedAdditifs[j].contentEquals("")) {
+                                } else if (splittedAdditifs[j].contentEquals(" ")) {
                                 } else {
-                                    if (!refs_additifs.containsKey(splittedAdditif[j])) {
-                                        Additif additifToAdd = new Additif(splittedAdditif[j]);
-                                        refs_additifs.put(splittedAdditif[j], additifToAdd);
+                                    if (!refs_allergenes.containsKey(splittedAdditifs[j])) {
+                                        Allergene allergeneToAdd = new Allergene(splittedAdditifs[j]);
+                                        refs_allergenes.put(splittedAdditifs[j], allergeneToAdd);
                                     }
                                 }
                             }
                             break;
+
+
                     }
                 }
                 progressBar.step();
             }
+
         }
         try (ProgressBar progressBar2 = new ProgressBar("Mise à jour de la liste générale", 7)) {
             listeGenerale.add(refs_categories);
@@ -188,17 +191,177 @@ public class Parser {
         return listeGenerale;
     }
 
-    public static void mapping(ArrayList listeGenerale) {
-        Utils.msgTitle("Mapping des données en base relationnelle");
-        Map<String, Produit> produits = (Map<String, Produit>) listeGenerale.get(2);
-        Iterator<Map<String, Produit>> iterator = listeGenerale.iterator();
-        for (Map.Entry<String, Produit> entry : produits.entrySet()) {
-            String key = entry.getKey();
-            Produit value = entry.getValue();
-            System.out.println("Clé: " + key + ", Valeur: " + value.toString());
+    public static ArrayList instantiationProduit(ArrayList<String[]> rowsToParse, ArrayList listeGenerale, EntityManager em) {
+        Utils.msgTitle("Instantiation des produits...");
 
+        //Liste de référencements et leur index associés
+        Map<String, Categorie> refs_categories = (Map<String, Categorie>) listeGenerale.get(0);
+        Map<String, Marque> refs_marques = (Map<String, Marque>) listeGenerale.get(1);
+        Map<String, Produit> refs_produits = (Map<String, Produit>) listeGenerale.get(2);
+        Map<String, Nutriscore> refs_nutriscore = (Map<String, Nutriscore>) listeGenerale.get(3);
+        Map<String, Ingredient> refs_ingredients = (Map<String, Ingredient>) listeGenerale.get(4);
+        Map<String, Allergene> refs_allergenes = (Map<String, Allergene>) listeGenerale.get(5);
+        Map<String, Additif> refs_additifs = (Map<String, Additif>) listeGenerale.get(6);
+
+//        Set entrySet = refs_produits.entrySet();
+//        Iterator it_prod = entrySet.iterator();
+//
+//        while (it_prod.hasNext()) {
+//            Map.Entry refProduit = (Map.Entry)it_prod.next();
+//
+        Produit produitToPersist = new Produit();
+
+
+        Iterator<String[]> iter = rowsToParse.iterator();
+        while (iter.hasNext()) {
+
+            String[] rowToParse = iter.next();
+            for (int colIndex = 0; colIndex < rowToParse.length; colIndex++) {
+                switch (colIndex) {
+                    case CATEGORIE:
+                        Categorie catToAssociate = refs_categories.get(rowToParse[CATEGORIE]);
+                        if (catToAssociate == null) {
+                            throw new RuntimeException();
+                        } else {
+                            em.persist(catToAssociate);
+                            produitToPersist.setCategorie(catToAssociate);
+                        }
+                        break;
+
+                    case MARQUE:
+                        //Nota : un produit peut contenir plusieurs marques, ce qui remet en cause
+                        //Le mapping. Nous gardons donc pour le premier sprint d'éventuelles marques concaténées
+//                        String[] splittedMarque = rowToParse[MARQUE].trim().split(",");
+//                        for (int j = 0; j < splittedMarque.length; j++) {
+//                            if (splittedMarque[j] == null) {
+//                            } else if (splittedMarque[j].contentEquals("")) {
+//                            } else if (splittedMarque[j].contentEquals(" ")) {
+//                            } else {
+//                                if (!refs_marques.containsKey(splittedMarque[j])) {
+//                                    Marque marqueToAdd = new Marque(splittedMarque[j]);
+//                                    refs_marques.put(splittedMarque[j], marqueToAdd);
+//                                }
+//                            }
+//                        }
+                        Marque marqueToAssociate = refs_marques.get(rowToParse[MARQUE]);
+                        if (marqueToAssociate == null) {
+                            throw new RuntimeException();
+                        } else {
+                            em.persist(marqueToAssociate);
+                            produitToPersist.setMarque(marqueToAssociate);
+                        }
+                        break;
+
+                    case NUTRITIONGRADEFR:
+                        Nutriscore nutriscoreToAssociate = refs_nutriscore.get(rowToParse[NUTRITIONGRADEFR]);
+                        if (nutriscoreToAssociate == null) {
+                            throw new RuntimeException();
+                        } else {
+                            em.persist(nutriscoreToAssociate);
+                            produitToPersist.setNutriscore(nutriscoreToAssociate);
+                        }
+                        break;
+
+                    case INGREDIENTS:
+                        String[] splittedIngredient = rowToParse[INGREDIENTS].split(",");
+                        Set<Ingredient> ingredientsToAssociate = new HashSet<>();
+                        for (int j = 0; j < splittedIngredient.length; j++) {
+                            if (splittedIngredient[j] == null) {
+                            } else if (splittedIngredient[j].contentEquals("")) {
+                            } else if (splittedIngredient[j].contentEquals(" ")) {
+                            } else {
+                                Ingredient ingredientToAssociate = refs_ingredients.get(splittedIngredient[j]);
+                                if (ingredientToAssociate == null) {
+                                    throw new RuntimeException();
+                                } else {
+                                    ingredientsToAssociate.add(ingredientToAssociate);
+                                }
+                                break;
+                            }
+                        }
+                        em.persist(ingredientsToAssociate);
+                        produitToPersist.setIngredients(ingredientsToAssociate);
+                        break;
+
+                }
+            }
+        }
+        break;
+
+        case ALLERGENES:
+        String[] splittedAllergenes = rowToParse[ALLERGENES].split(",");
+        for (int j = 0; j < splittedAllergenes.length; j++) {
+            if (splittedAllergenes[j] == null) {
+            } else if (splittedAllergenes[j].contentEquals("")) {
+            } else if (splittedAllergenes[j].contentEquals(" ")) {
+            } else {
+                if (!refs_allergenes.containsKey(splittedAllergenes[j])) {
+                    Allergene allergeneToAdd = new Allergene(splittedAllergenes[j]);
+                    refs_allergenes.put(splittedAllergenes[j], allergeneToAdd);
+                }
+            }
+        }
+        break;
+
+        case ADDITIFS:
+        String[] splittedAdditif = rowToParse[ADDITIFS].split(",");
+        for (int j = 0; j < splittedAdditif.length; j++) {
+            if (splittedAdditif[j] == null) {
+            } else if (splittedAdditif[j].contentEquals("")) {
+            } else if (splittedAdditif[j].contentEquals(" ")) {
+            } else {
+                if (!refs_additifs.containsKey(splittedAdditif[j])) {
+                    Additif additifToAdd = new Additif(splittedAdditif[j]);
+                    refs_additifs.put(splittedAdditif[j], additifToAdd);
+                }
+            }
+        }
+        break;
+    }
+}
+        progressBar.step();
+                }
+                }
+                try(
+                ProgressBar progressBar2=new ProgressBar("Mise à jour de la liste générale",7))
+
+                {
+                listeGenerale.add(refs_categories);
+                progressBar2.step();
+
+                listeGenerale.add(refs_marques);
+                progressBar2.step();
+
+                listeGenerale.add(refs_produits);
+                progressBar2.step();
+
+                listeGenerale.add(refs_nutriscore);
+                progressBar2.step();
+
+                listeGenerale.add(refs_ingredients);
+                progressBar2.step();
+
+                listeGenerale.add(refs_allergenes);
+                progressBar2.step();
+
+                listeGenerale.add(refs_additifs);
+                progressBar2.step();
+                }
+                return listeGenerale;
+                }
+
+public static void mapping(ArrayList listeGenerale,){
+        Utils.msgTitle("Mapping des données en base relationnelle");
+        Map<String, Produit> produits=(Map<String, Produit>)listeGenerale.get(2);
+        Iterator<Map<String, Produit>>iterator=listeGenerale.iterator();
+
+        for(Map.Entry<String, Produit> entry:produits.entrySet()){
+        String key=entry.getKey();
+        Produit value=entry.getValue();
+        System.out.println("Clé: "+key+", Valeur: "+value.toString());
+        entry.get
         }
 
 
-    }
-}
+        }
+        }
