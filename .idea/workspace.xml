@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="activation du cache L2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Categorie_liste.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Mapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/mapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/mapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Additif.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Allergene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Categorie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Ingredient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Marque.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Nutriscore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/diginamic/entities/Produit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,6 +276,7 @@
       <workItem from="1688167974996" duration="3452000" />
       <workItem from="1688185437940" duration="3334000" />
       <workItem from="1688201868338" duration="8728000" />
+      <workItem from="1688211016323" duration="431000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>

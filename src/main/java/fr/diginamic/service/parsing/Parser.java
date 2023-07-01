@@ -203,14 +203,16 @@ public class Parser {
                                     break;
                                 }
                             }
-                            if (additif_exist)
+                            if (additif_exist) {
                                 Utils.msgResult(String.format("L'additif %s est déjà référencée dans la liste dédiée", splittedAdditifs[j]));
-                            else {
+                                j--;
+                            } else {
                                 Utils.msgInfo("Additif inexistant : début du référencement...");
                                 refs_allergenes.add(index_refs_additifs++, splittedAdditifs[j]);
                                 Utils.msgResult(String.format("Référencement de l'additif <%s> OK", splittedAdditifs[j]));
                             }
                         }
+
                         break;
 
 
