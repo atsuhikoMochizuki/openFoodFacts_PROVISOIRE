@@ -1,6 +1,7 @@
 package fr.diginamic.service;
 
 import fr.diginamic.mochizukiTools.Utils;
+import fr.diginamic.service.parsing.Parser;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class mapperTest extends TestCase {
         ArrayList<String[]> rows = Cleaner.cleanFile(Cleaner.CSV_FILE_RELATIVE_PATH);
         Utils.msgResult("Extraction des données OK");
         Utils.msgInfo("Migration des données dans la base...");
-        Mapper.insertToDataBase(rows);
+        Parser.parseRows(rows);
         Utils.msgResult("Migration des données dans la base OK");
     }
 

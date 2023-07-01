@@ -25,6 +25,10 @@ public class Allergene {
     public Allergene() {
     }
 
+    public Allergene(String nom_allergene) {
+        this.nom_allergene = nom_allergene;
+    }
+
     public Allergene(Integer id_allergene, String nom_allergene) {
         this.id_allergene = id_allergene;
         this.nom_allergene = nom_allergene;

@@ -26,6 +26,10 @@ public class Additif {
     public Additif() {
     }
 
+    public Additif(String nom_additif) {
+        this.nom_additif = nom_additif;
+    }
+
     public Additif(Integer id_additif, String nom_additif) {
         this.id_additif = id_additif;
         this.nom_additif = nom_additif;
