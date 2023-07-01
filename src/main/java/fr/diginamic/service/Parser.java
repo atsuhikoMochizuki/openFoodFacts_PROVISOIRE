@@ -122,8 +122,8 @@ public class Parser {
                                 .getNom_additif()
                                 .equalsIgnoreCase(additi))));
             } else {
+                additif.setNom_additif(additi);
                 hashMapAdditifs.put(iteration, additif);
-                additif.setNom_additif(String.valueOf(hashMapAdditifs.get(iteration).getNom_additif()));
             }
         }
     }
@@ -144,8 +144,8 @@ public class Parser {
                                 .getNom_allergene()
                                 .equalsIgnoreCase(allerg))));
             } else {
+                allergene.setNom_allergene(allerg);
                 hashMapAllergenes.put(iteration, allergene);
-                allergene.setNom_allergene(String.valueOf(hashMapAllergenes.get(iteration).getNom_allergene()));
             }
         }
     }
@@ -166,8 +166,8 @@ public class Parser {
                                 .getNom_ingredient()
                                 .equalsIgnoreCase(ingdt))));
             } else {
+                ingredient.setNom_ingredient(ingdt);
                 hashMapIngredients.put(iteration, ingredient);
-                ingredient.setNom_ingredient(String.valueOf(hashMapIngredients.get(iteration).getNom_ingredient()));
             }
         }
     }
@@ -187,8 +187,8 @@ public class Parser {
                             .getValeurScore()
                             .equalsIgnoreCase(colContent))));
         } else {
+            nutriscore.setValeurScore(colContent);
             hashMapNutriscore.put(iteration, nutriscore);
-            nutriscore.setValeurScore(String.valueOf(hashMapNutriscore.get(iteration).getValeurScore()));
         }
     }
 
@@ -207,8 +207,8 @@ public class Parser {
                             .getNom_marque()
                             .equalsIgnoreCase(colContent))));
         } else {
+            marque.setNom_marque(colContent);
             hashMapMarques.put(iteration, marque);
-            marque.setNom_marque(String.valueOf(hashMapMarques.get(iteration).getNom_marque()));
         }
     }
 
@@ -227,8 +227,8 @@ public class Parser {
                             .getNom_produit()
                             .equalsIgnoreCase(colContent))));
         } else {
+            produit.setNom_produit(colContent);
             hashMapProduits.put(iteration, produit);
-            produit.setNom_produit(String.valueOf(hashMapProduits.get(iteration).getNom_produit()));
         }
     }
 
@@ -247,8 +247,8 @@ public class Parser {
                             .getNom_categorie()
                             .equalsIgnoreCase(colContent))));
         } else {
+            categorie.setNom_categorie(colContent);
             hashMapCategorie.put(iteration, categorie);
-            categorie.setNom_categorie(String.valueOf(hashMapCategorie.get(iteration).getNom_categorie()));
         }
     }
 }
