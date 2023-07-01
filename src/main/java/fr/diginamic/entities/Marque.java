@@ -12,9 +12,10 @@ public class Marque {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MARQUE_ID")
     private Integer id_marque;
+    @Column(name = "nom_marque")
     private String nom_marque;
 
-    @OneToMany(mappedBy = "marque")
+    @OneToMany(mappedBy = "marque", cascade = CascadeType.ALL)
     private Set<Produit> produits;
 
     {

@@ -1,6 +1,13 @@
 package fr.diginamic.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +22,7 @@ public class Additif {
     @Column(length = 1024)
     private String nom_additif;
 
-    @ManyToMany(mappedBy = "additifs")
+    @ManyToMany(mappedBy = "additifs", cascade = CascadeType.ALL)
     private Set<Produit> produits;
 
     {

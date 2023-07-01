@@ -14,7 +14,7 @@ public class Allergene {
     private Integer id_allergene;
     @Column(length = 555)
     private String nom_allergene;
-    @ManyToMany(mappedBy = "allergenes")
+    @ManyToMany(mappedBy = "allergenes", cascade = CascadeType.ALL)
     private Set<Produit> produits;
 
     {

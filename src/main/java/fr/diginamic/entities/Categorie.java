@@ -13,9 +13,10 @@ public class Categorie {
     @Column(name = "CAT_ID")
     private Integer id_categorie;
 
+    @Column(name = "nom_categorie")
     private String nom_categorie;
 
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
     private Set<Produit> produits;
 
     {

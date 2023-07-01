@@ -2,7 +2,6 @@ package fr.diginamic.entities;
 
 import jakarta.persistence.*;
 
-import java.time.temporal.ValueRange;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +15,7 @@ public class Ingredient {
     @Column(length = 1024)
     private String nom_ingredient;
 
-    @ManyToMany(mappedBy = "ingredients")
+    @ManyToMany(mappedBy = "ingredients", cascade = CascadeType.ALL)
     private Set<Produit> produits;
 
     {
