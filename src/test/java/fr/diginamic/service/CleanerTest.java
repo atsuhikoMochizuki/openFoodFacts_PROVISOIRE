@@ -42,7 +42,7 @@ public class CleanerTest extends TestCase {
 
     public void testCleanFile() {
         Utils.msgInfo("Lancement du test de la fonction cleanFile");
-        ArrayList<String[]> rows = Cleaner.cleanFile(CSV_TEST_FILE_PATH);
+        ArrayList<String[]> rows = Cleaner.extractAndCleanDatas(CSV_TEST_FILE_PATH);
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(0)));
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(1)));
         assertEquals("[toto, titi, tutu]", Arrays.toString(rows.get(2)));
@@ -53,7 +53,7 @@ public class CleanerTest extends TestCase {
         assertEquals("[Sucre,banane,Pâte]", Arrays.toString(rows.get(7)));
 
         Utils.msgInfo("Nettoyage de la base de données openFoodFacts entière");
-        ArrayList<String[]> rows_CompleteCsvFile = Cleaner.cleanFile(COMPLETE_CSV_FILE_PATH);
+        ArrayList<String[]> rows_CompleteCsvFile = Cleaner.extractAndCleanDatas(COMPLETE_CSV_FILE_PATH);
         for(String[] row : rows_CompleteCsvFile)
             Utils.msgResult(Arrays.toString(row));
 

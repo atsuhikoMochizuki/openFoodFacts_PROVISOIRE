@@ -66,7 +66,7 @@ public class Cleaner {
         return chaineNettoyee;
     }
 
-    public static ArrayList<String[]> cleanFile(String csvFile_path) {
+    public static ArrayList<String[]> extractAndCleanDatas(String csvFile_path) {
         List<String> rows;
 
         Utils.msgInfo(String.format("Nettoyage du fichier %s", csvFile_path));
