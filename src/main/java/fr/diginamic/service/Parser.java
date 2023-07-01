@@ -1,14 +1,14 @@
 package fr.diginamic.service;
 
+import fr.diginamic.entities.*;
 import fr.diginamic.mochizukiTools.Utils;
-import fr.diginamic.service.Cleaner;
-import fr.diginamic.service.Logging;
 import me.tongfei.progressbar.ProgressBar;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
 public class Parser {
     private static final Logger LOG = Logging.LOG;
@@ -43,43 +43,30 @@ public class Parser {
     public static final int PRESENCEHUILEPALME = 27;
     public static final int ALLERGENES = 28;
     public static final int ADDITIFS = 29;
+    public static final int NBRE_LIGNES_IN_FILE = 13434;
 
-    public static final int NBRE_LIGNES_IN_FILE = 13342;
-
-    public static List<List<String>> parseFile(String csvFile_path) {
+    public static ArrayList parseFile(String csvFile_path) {
         Utils.msgInfo("Extraction, nettoyage et référencement en mémoire des élements du fichier" +
                 " csv de OpenFoodFacts en vue de l'insertion en base de données");
         ArrayList<String[]> rowsOfFile = Cleaner.extractAndCleanDatas(csvFile_path);
         return parseRows(rowsOfFile);
     }
 
-    public static List<List<String>> parseRows(ArrayList<String[]> rows) {
+    public static ArrayList parseRows(ArrayList<String[]> rows) {
         //Création d'une liste qui référence toutes les listes correspondant aux valeurs de colonnes à
         //mapper dans la base de données.
-        List<List<String>> generalList = new ArrayList<>();
+        ArrayList listeGenerale = new ArrayList();
+
         //Liste de référencements et leur index associés
-        List<String> refs_categories = new ArrayList<>();
-        int index_refs_categories = 0;
+        Map<String, Categorie> refs_categories = new HashMap<>();
+        Map<String, Marque> refs_marques = new HashMap<>();
+        Map<String, Produit> refs_produits = new HashMap<>();
+        Map<String, Nutriscore> refs_nutriscore = new HashMap<>();
+        Map<String, Ingredient> refs_ingredients = new HashMap<>();
+        Map<String, Allergene> refs_allergenes = new HashMap<>();
+        Map<String, Additif> refs_additifs = new HashMap<>();
 
-        List<String> refs_marques = new ArrayList<>();
-        int index_refs_marques = 0;
-
-        List<String> refs_produits = new ArrayList<>();
-        int index_refs_produits = 0;
-
-        List<String> refs_nutriscore = new ArrayList<>();
-        int index_refs_nutriscrore = 0;
-
-        List<String> refs_ingredients = new ArrayList<>();
-        int index_refs_ingredients = 0;
-
-        List<String> refs_allergenes = new ArrayList<>();
-        int index_refs_allergenes = 0;
-
-        List<String> refs_additifs = new ArrayList<>();
-        int index_refs_additifs = 0;
-
-        try (ProgressBar progressBar = new ProgressBar(String.format("Parsing du fichier %s", Cleaner.CSV_FILE_RELATIVE_PATH), NBRE_LIGNES_IN_FILE)) {
+        try (ProgressBar progressBar = new ProgressBar("Parsing du fichier", NBRE_LIGNES_IN_FILE)) {
             int lineNbrInFile = 0;
             Iterator<String[]> iter = rows.iterator();
 
@@ -87,56 +74,44 @@ public class Parser {
             while (iter.hasNext()) {
                 lineNbrInFile++;
                 String[] rowToParse = iter.next();
-
                 for (int colIndex = 0; colIndex < rowToParse.length; colIndex++) {
                     switch (colIndex) {
 
                         case CATEGORIE:
                             boolean categorie_exist = false;
-                            for (String categorie : refs_categories) {
-                                if (categorie.contentEquals(rowToParse[CATEGORIE])) {
-                                    categorie_exist = true;
-                                    break;
-                                }
+                            if (!refs_categories.containsKey(rowToParse[CATEGORIE])) {
+                                Categorie categorieToAdd = new Categorie(rowToParse[CATEGORIE]);
+                                refs_categories.put(rowToParse[CATEGORIE], categorieToAdd);
                             }
-                            if (!categorie_exist)
-                                refs_categories.add(index_refs_categories++, rowToParse[CATEGORIE]);
                             break;
 
                         case MARQUE:
-                            boolean marque_exist = false;
-                            for (String marque : refs_marques) {
-                                if (marque.contentEquals(rowToParse[MARQUE])) {
-                                    marque_exist = true;
-                                    break;
+                            String[] splittedMarque = rowToParse[MARQUE].trim().split(",");
+                            for (int j = 0; j < splittedMarque.length; j++) {
+                                if (splittedMarque[j] == null) {
+                                } else if (splittedMarque[j].contentEquals("")) {
+                                } else if (splittedMarque[j].contentEquals(" ")) {
+                                } else {
+                                    if (!refs_marques.containsKey(splittedMarque[j])) {
+                                        Marque marqueToAdd = new Marque(splittedMarque[j]);
+                                        refs_marques.put(splittedMarque[j], marqueToAdd);
+                                    }
                                 }
                             }
-                            if (!marque_exist)
-                                refs_marques.add(index_refs_marques++, rowToParse[MARQUE]);
                             break;
 
                         case PRODUIT:
-                            boolean produit_exist = false;
-                            for (String produit : refs_produits) {
-                                if (produit.contentEquals(rowToParse[PRODUIT])) {
-                                    produit_exist = true;
-                                    break;
-                                }
+                            if (!refs_produits.containsKey(rowToParse[PRODUIT])) {
+                                Produit produitToAdd = new Produit(rowToParse[PRODUIT]);
+                                refs_produits.put(rowToParse[PRODUIT], produitToAdd);
                             }
-                            if (!produit_exist)
-                                refs_produits.add(index_refs_produits++, rowToParse[PRODUIT]);
                             break;
 
                         case NUTRITIONGRADEFR:
-                            boolean nutriscore_Exist = false;
-                            for (String nutriscore : refs_nutriscore) {
-                                if (nutriscore.contentEquals(rowToParse[NUTRITIONGRADEFR])) {
-                                    nutriscore_Exist = true;
-                                    break;
-                                }
+                            if (!refs_nutriscore.containsKey(rowToParse[NUTRITIONGRADEFR])) {
+                                Nutriscore nutriscoreToAdd = new Nutriscore(rowToParse[NUTRITIONGRADEFR]);
+                                refs_nutriscore.put(rowToParse[NUTRITIONGRADEFR], nutriscoreToAdd);
                             }
-                            if (!nutriscore_Exist)
-                                refs_nutriscore.add(index_refs_nutriscrore++, rowToParse[NUTRITIONGRADEFR]);
                             break;
 
                         case INGREDIENTS:
@@ -146,15 +121,10 @@ public class Parser {
                                 } else if (splittedIngredient[j].contentEquals("")) {
                                 } else if (splittedIngredient[j].contentEquals(" ")) {
                                 } else {
-                                    boolean ingredient_exist = false;
-                                    for (String ingredient : refs_ingredients) {
-                                        if (ingredient.contentEquals(splittedIngredient[j])) {
-                                            ingredient_exist = true;
-                                            break;
-                                        }
+                                    if (!refs_ingredients.containsKey(splittedIngredient[j])) {
+                                        Ingredient ingredientToAdd = new Ingredient(splittedIngredient[j]);
+                                        refs_ingredients.put(splittedIngredient[j], ingredientToAdd);
                                     }
-                                    if (!ingredient_exist)
-                                        refs_ingredients.add(index_refs_ingredients++, splittedIngredient[j]);
                                 }
                             }
                             break;
@@ -166,65 +136,69 @@ public class Parser {
                                 } else if (splittedAllergenes[j].contentEquals("")) {
                                 } else if (splittedAllergenes[j].contentEquals(" ")) {
                                 } else {
-                                    boolean allergene_exist = false;
-                                    for (String ingredient : refs_allergenes) {
-                                        if (ingredient.contentEquals(splittedAllergenes[j])) {
-                                            allergene_exist = true;
-                                            break;
-                                        }
+                                    if (!refs_allergenes.containsKey(splittedAllergenes[j])) {
+                                        Allergene allergeneToAdd = new Allergene(splittedAllergenes[j]);
+                                        refs_allergenes.put(splittedAllergenes[j], allergeneToAdd);
                                     }
-                                    if (!allergene_exist)
-                                        refs_allergenes.add(index_refs_allergenes++, splittedAllergenes[j]);
                                 }
                             }
                             break;
 
                         case ADDITIFS:
-                            String[] splittedAdditifs = rowToParse[ADDITIFS].split(",");
-                            for (int j = 0; j < splittedAdditifs.length; j++) {
-                                if (splittedAdditifs[j] == null) {
-                                } else if (splittedAdditifs[j].contentEquals("")) {
-                                } else if (splittedAdditifs[j].contentEquals(" ")) {
+                            String[] splittedAdditif = rowToParse[ADDITIFS].split(",");
+                            for (int j = 0; j < splittedAdditif.length; j++) {
+                                if (splittedAdditif[j] == null) {
+                                } else if (splittedAdditif[j].contentEquals("")) {
+                                } else if (splittedAdditif[j].contentEquals(" ")) {
                                 } else {
-                                    boolean additif_exist = false;
-                                    for (String additif : refs_additifs) {
-                                        if (additif.contentEquals(splittedAdditifs[j])) {
-                                            additif_exist = true;
-                                            break;
-                                        }
+                                    if (!refs_additifs.containsKey(splittedAdditif[j])) {
+                                        Additif additifToAdd = new Additif(splittedAdditif[j]);
+                                        refs_additifs.put(splittedAdditif[j], additifToAdd);
                                     }
-                                    if (!additif_exist)
-                                        refs_allergenes.add(index_refs_additifs++, splittedAdditifs[j]);
                                 }
-                                break;
                             }
+                            break;
                     }
                 }
                 progressBar.step();
             }
-            try (ProgressBar progressBar2 = new ProgressBar("Mise à jour de la liste générale", 7)) {
-                generalList.add(refs_categories);
-                progressBar2.step();
-
-                generalList.add(refs_marques);
-                progressBar2.step();
-
-                generalList.add(refs_produits);
-                progressBar2.step();
-
-                generalList.add(refs_nutriscore);
-                progressBar2.step();
-
-                generalList.add(refs_ingredients);
-                progressBar2.step();
-
-                generalList.add(refs_allergenes);
-                progressBar2.step();
-
-                generalList.add(refs_additifs);
-                progressBar2.step();
-            }
         }
-        return generalList;
+        try (ProgressBar progressBar2 = new ProgressBar("Mise à jour de la liste générale", 7)) {
+            listeGenerale.add(refs_categories);
+            progressBar2.step();
+
+            listeGenerale.add(refs_marques);
+            progressBar2.step();
+
+            listeGenerale.add(refs_produits);
+            progressBar2.step();
+
+            listeGenerale.add(refs_nutriscore);
+            progressBar2.step();
+
+            listeGenerale.add(refs_ingredients);
+            progressBar2.step();
+
+            listeGenerale.add(refs_allergenes);
+            progressBar2.step();
+
+            listeGenerale.add(refs_additifs);
+            progressBar2.step();
+        }
+        return listeGenerale;
+    }
+
+    public static void mapping(ArrayList listeGenerale) {
+        Utils.msgTitle("Mapping des données en base relationnelle");
+        Map<String, Produit> produits = (Map<String, Produit>) listeGenerale.get(2);
+        Iterator<Map<String, Produit>> iterator = listeGenerale.iterator();
+        for (Map.Entry<String, Produit> entry : produits.entrySet()) {
+            String key = entry.getKey();
+            Produit value = entry.getValue();
+            System.out.println("Clé: " + key + ", Valeur: " + value.toString());
+
+        }
+
+
     }
 }

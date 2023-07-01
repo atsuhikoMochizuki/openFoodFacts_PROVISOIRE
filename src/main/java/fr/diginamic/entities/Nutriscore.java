@@ -13,7 +13,7 @@ public class Nutriscore {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NUTRISCORE_ID")
     private Integer id_nutriscore;
-    private char valeurScore;
+    private String valeurScore;
 
     @OneToMany(mappedBy = "nutriscore")
     private Set<Produit> produits;
@@ -25,11 +25,11 @@ public class Nutriscore {
     public Nutriscore() {
     }
 
-    public Nutriscore(char valeurScore) {
+    public Nutriscore(String valeurScore) {
         this.valeurScore = valeurScore;
     }
 
-    public Nutriscore(Integer id_nutriscore, char valeurScore) {
+    public Nutriscore(Integer id_nutriscore, String valeurScore) {
         this.id_nutriscore = id_nutriscore;
         this.valeurScore = valeurScore;
     }
@@ -42,11 +42,11 @@ public class Nutriscore {
         this.id_nutriscore = id;
     }
 
-    public char getValeurScore() {
+    public String getValeurScore() {
         return valeurScore;
     }
 
-    public void setValeurScore(char valeurScore) {
+    public void setValeurScore(String valeurScore) {
         this.valeurScore = valeurScore;
     }
 

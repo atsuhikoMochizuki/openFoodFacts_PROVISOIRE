@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Premiere version parser&#10;il y a quelques trous dans les List, bug à dénicher">
-      <change afterPath="$PROJECT_DIR$/DOSSIER_CONCEPTION.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conception/IBOOF_modèleUML.mdj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/divers/open-food-facts.csv" afterDir="false" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Instanciation des objets en HashMap OK&#10;il faut maintenant:&#10;Itérer les listes saut produits et en persister chaque valeur&#10;ensuite, itérer sur les produits, recherches les instances des attributs à l'aide des clés dans les hasmap, et persister le produit;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" beforeDir="false" afterPath="$PROJECT_DIR$/conception/DOSSIER_CONCEPTION.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conception/ModeleUML_OpenFoodFacts.mdj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/open-food-facts.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/parsing/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/CleanerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/CleanerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/mapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/open-food-facts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +113,7 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="fr.diginamic.service" />
       <recent name="fr.diginamic" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
@@ -289,7 +280,8 @@
       <workItem from="1688167974996" duration="3452000" />
       <workItem from="1688185437940" duration="3334000" />
       <workItem from="1688201868338" duration="8728000" />
-      <workItem from="1688211016323" duration="8606000" />
+      <workItem from="1688211016323" duration="9649000" />
+      <workItem from="1688223643760" duration="10972000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -549,7 +541,23 @@
       <option name="project" value="LOCAL" />
       <updated>1688211630536</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Parser fonctionnel + ajout d'une progressBar">
+      <option name="closed" value="true" />
+      <created>1688219787191</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1688219787192</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Parser fonctionnel + ajout d'une progressBar">
+      <option name="closed" value="true" />
+      <created>1688220043347</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1688220043347</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -614,8 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ajout du log en fichier App.log" />
-    <MESSAGE value="Implémentation de la méthode Database.connect();" />
     <MESSAGE value="Implémentation de la méthode Database.disconnect();" />
     <MESSAGE value="tp3 terminé" />
     <MESSAGE value="tp4 terminé" />
@@ -639,10 +645,21 @@
     <MESSAGE value="Test Migration avec jointures SUCCES !" />
     <MESSAGE value="activation du cache L2" />
     <MESSAGE value="Premiere version parser&#10;il y a quelques trous dans les List, bug à dénicher" />
-    <option name="LAST_COMMIT_MESSAGE" value="Premiere version parser&#10;il y a quelques trous dans les List, bug à dénicher" />
+    <MESSAGE value="Parser fonctionnel + ajout d'une progressBar" />
+    <MESSAGE value="Instanciation des objets en HashMap OK&#10;il faut maintenant:&#10;Itérer les listes saut produits et en persister chaque valeur&#10;ensuite, itérer sur les produits, recherches les instances des attributs à l'aide des clés dans les hasmap, et persister le produit;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Instanciation des objets en HashMap OK&#10;il faut maintenant:&#10;Itérer les listes saut produits et en persister chaque valeur&#10;ensuite, itérer sur les produits, recherches les instances des attributs à l'aide des clés dans les hasmap, et persister le produit;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="splittedAdditifs[j]" language="JAVA" />
