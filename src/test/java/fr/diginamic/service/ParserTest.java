@@ -1,11 +1,9 @@
 package fr.diginamic.service;
 
 import fr.diginamic.mochizukiTools.Utils;
-import fr.diginamic.service.parsing.Parser;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ParserTest extends TestCase {

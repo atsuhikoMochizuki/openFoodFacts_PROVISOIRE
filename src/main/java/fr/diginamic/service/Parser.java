@@ -1,4 +1,4 @@
-package fr.diginamic.service.parsing;
+package fr.diginamic.service;
 
 import fr.diginamic.mochizukiTools.Utils;
 import fr.diginamic.service.Cleaner;

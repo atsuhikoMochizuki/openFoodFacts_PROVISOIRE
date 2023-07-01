@@ -193,7 +193,7 @@
       <module name="IBOOF" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.diginamic.service.parsing.*" />
+          <option name="PATTERN" value="fr.diginamic.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
