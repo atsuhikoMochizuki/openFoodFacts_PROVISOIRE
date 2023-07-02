@@ -11,244 +11,215 @@ import java.util.*;
 public class Parser {
     private static final Logger LOG = Logging.LOG;
 
-    static {
+    private Parser() {
     }
 
     /**
      *
      */
-    public static void insertToDataBase(ArrayList<String[]> rows) {
-
-        int iteration = 0;
+    public static void insertToDataBase(List<String[]> rows) {
 
         // Initialisation de l'iterator
         Iterator<String[]> iter = rows.iterator();
 
         // HashMap de chaque colonne
-        HashMap<Integer, Categorie> categories = new HashMap<>();
-        HashMap<Integer, Nutriscore> nutriscores = new HashMap<>();
-        HashMap<Integer, Marque> marques = new HashMap<>();
-        HashMap<Integer, Produit> produits = new HashMap<>();
-        HashMap<Integer, Ingredient> ingredients = new HashMap<>();
-        HashMap<Integer, Allergene> allergenes = new HashMap<>();
-        HashMap<Integer, Additif> additifs = new HashMap<>();
+        HashSet<String> categories = new HashSet<>();
+        HashSet<String> nutriscores = new HashSet<>();
+        HashSet<String> marques = new HashSet<>();
+        HashSet<String> produits = new HashSet<>();
+        HashSet<String> ingredients = new HashSet<>();
+        HashSet<String> allergenes = new HashSet<>();
+        HashSet<String> additifs = new HashSet<>();
 
 
         try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
-             EntityManager em = emf.createEntityManager();
+             EntityManager em = emf.createEntityManager()
         ) {
 //         Debut de la persistence avec transaction
             em.getTransaction().begin();
 
             while (iter.hasNext()) {
-                iteration++;
                 String[] line = iter.next();
 
                 // On fait appel aux Business Objects dans les méthodes suivantes pour
                 // créer les instanciations qui vont permettre de rentrer les données dans la BD
 
                 // REMPLISSAGE DU MAPPER DE LA CATEGORIE
-                creationInstanceCategorie(iteration, categories, line[0]);
+                Categorie categorie = creationInstanceCategorie(categories, line[0]);
+                em.persist(categorie);
 
                 // REMPLISSAGE DU MAPPER DE LA MARQUE
-                creationInstanceMarque(iteration, marques, line[1]);
+                Marque marque = creationInstanceMarque(marques, line[1]);
+                em.persist(marque);
 
                 // REMPLISSAGE DU MAPPER DU NUTRISCORE
-                creationInstanceNutriscore(iteration, nutriscores, line[3]);
+                Nutriscore nutriscore = creationInstanceNutriscore(nutriscores, line[3]);
+                em.persist(nutriscore);
 
                 // REMPLISSAGE DU MAPPER DE LA LISTE INGREDIENT
-                creationInstanceIngredient(iteration, ingredients, line[4].split(","));
+                List<Ingredient> listIngredients = creationInstanceIngredient(ingredients, line[4].split(","));
+                listIngredients.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES ALLERGENES
-                creationInstanceAllergene(iteration, allergenes, line[28].split(","));
+                List<Allergene> listAllergenes = creationInstanceAllergene(allergenes, line[28].split(","));
+                listAllergenes.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES ADDITIFS
-                creationInstanceAdditif(iteration, additifs, line[29].split(","));
+                List<Additif> listAdditifs = creationInstanceAdditif(additifs, line[29].split(","));
+                listAdditifs.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES PRODUITS AVEC LEUR JOINTURE
-                creationInstanceProduit(iteration, produits, line[2]);
+                Produit produit = creationInstanceProduit(produits, line[2]);
 
+                // ASSOCIATIONS MANY TO MANY and MANY TO ONE
+                produit.setCategorie(categorie);
+                produit.setMarque(marque);
+                produit.setNutriscore(nutriscore);
+
+                Set<Ingredient> ingredientSet = new HashSet<>(listIngredients);
+                produit.setIngredients(ingredientSet);
+
+                Set<Allergene> allergeneSet = new HashSet<>(listAllergenes);
+                produit.setAllergenes(allergeneSet);
+
+                Set<Additif> additifSet = new HashSet<>(listAdditifs);
+                produit.setAdditifs(additifSet);
+
+                // PERSISTANCE DES DONNEES DE L'ENTITE PRODUIT
+                em.persist(produit);
             }
-
-            // PERSISTENCE DES DONNEES POUR CHAQUE ENTITES
-            categories.forEach((integer, categorie) -> em.persist(categorie));
-            marques.forEach((integer, marque) -> em.persist(marque));
-            nutriscores.forEach((integer, nutriscore) -> em.persist(nutriscore));
-            ingredients.forEach((integer, ingredient) -> em.persist(ingredient));
-            allergenes.forEach((integer, allergene) -> em.persist(allergene));
-            additifs.forEach((integer, additif) -> em.persist(additif));
-
-            // ASSOCIATIONS MANY TO MANY and MANY TO ONE
-            categories.values().forEach(categorie -> produits.values().forEach(produit -> produit.setCategorie(categorie)));
-            marques.values().forEach(marque -> produits.values().forEach(produit -> produit.setMarque(marque)));
-            nutriscores.values().forEach(nutriscore -> produits.values().forEach(produit -> produit.setNutriscore(nutriscore)));
-
-            Set<Ingredient> ingredientSet = new HashSet<>(ingredients.values());
-            produits.values().forEach(produit -> produit.setIngredients(ingredientSet));
-
-            Set<Allergene> allergeneSet = new HashSet<>(allergenes.values());
-            produits.values().forEach(produit -> produit.setAllergenes(allergeneSet));
-
-            Set<Additif> additifSet = new HashSet<>(additifs.values());
-            produits.values().forEach(produit -> produit.setAdditifs(additifSet));
-
-            // PERSISTANCE DES DONNEES DE L'ENTITE PRODUIT
-            produits.values().forEach(em::persist);
 
             // Fin de la persistence avec transaction
             em.getTransaction().commit();
 
-        } catch (
-                IllegalStateException e) {
+        } catch (IllegalStateException e) {
             LOG.error(e.getMessage());
-            throw new RuntimeException(e);
         }
 
     }
 
     /**
-     * @param hashMapAdditifs
-     * @param colContent
-     * @return
+     * @param hashSetAdditif HashSet permettant de récupérer les chaines de caractère unique
+     * @param colContent     tableau de chaine de caractère en paramètre de la méthode
+     * @return on retourne une liste composée des instances d'objets
      */
-    public static void creationInstanceAdditif(int iteration, Map<Integer, Additif> hashMapAdditifs, String[] colContent) {
+    public static List<Additif> creationInstanceAdditif(Set<String> hashSetAdditif, String[] colContent) {
+        List<Additif> listAdditifs = new ArrayList<>();
         for (String additi : colContent) {
             Additif additif = new Additif();
-            if (hashMapAdditifs.containsKey(iteration)) {
-                additif.setNom_additif(String.valueOf(hashMapAdditifs
-                        .values()
-                        .stream()
-                        .filter(additif1 -> additif1
-                                .getNom_additif()
-                                .equalsIgnoreCase(additi))));
-            } else {
-                additif.setNom_additif(additi);
-                hashMapAdditifs.put(iteration, additif);
-            }
+            hashSetAdditif.add(additi);
+            String s1 = String.valueOf(hashSetAdditif
+                    .stream()
+                    .filter(s -> s
+                            .equalsIgnoreCase(additi)));
+            additif.setNom_additif(s1);
+            listAdditifs.add(additif);
         }
+        return listAdditifs;
     }
 
     /**
-     * @param hashMapAllergenes
-     * @param colContent
-     * @return
+     * @param hashSetAllergene HashSet permettant de récupérer les chaines de caractère unique
+     * @param colContent       tableau de chaines de caractère en paramètre de la méthode
+     * @return on retourne une liste composée des instances d'objets
      */
-    public static void creationInstanceAllergene(int iteration, Map<Integer, Allergene> hashMapAllergenes, String[] colContent) {
+    public static List<Allergene> creationInstanceAllergene(Set<String> hashSetAllergene, String[] colContent) {
+        List<Allergene> listAllergenes = new ArrayList<>();
         for (String allerg : colContent) {
             Allergene allergene = new Allergene();
-            if (hashMapAllergenes.containsKey(iteration)) {
-                allergene.setNom_allergene(String.valueOf(hashMapAllergenes
-                        .values()
-                        .stream()
-                        .filter(s -> s
-                                .getNom_allergene()
-                                .equalsIgnoreCase(allerg))));
-            } else {
-                allergene.setNom_allergene(allerg);
-                hashMapAllergenes.put(iteration, allergene);
-            }
+            hashSetAllergene.add(allerg);
+            String s1 = String.valueOf(hashSetAllergene
+                    .stream()
+                    .filter(s -> s
+                            .equalsIgnoreCase(allerg)));
+            allergene.setNom_allergene(s1);
+            listAllergenes.add(allergene);
         }
+        return listAllergenes;
     }
 
     /**
-     * @param hashMapIngredients
-     * @param lineSplit
-     * @return
+     * @param hashSetIngredient HashSet permettant de récupérer les chaines de caractère unique
+     * @param lineSplit         tableau de chaines de caractère en paramètre de la méthode
+     * @return on retourne une liste composée des instances d'objets
      */
-    public static void creationInstanceIngredient(int iteration, Map<Integer, Ingredient> hashMapIngredients, String[] lineSplit) {
+    public static List<Ingredient> creationInstanceIngredient(Set<String> hashSetIngredient, String[] lineSplit) {
+        List<Ingredient> listIngredients = new ArrayList<>();
         for (String ingdt : lineSplit) {
             Ingredient ingredient = new Ingredient();
-            if (hashMapIngredients.containsKey(iteration)) {
-                ingredient.setNom_ingredient(String.valueOf(hashMapIngredients
-                        .values()
-                        .stream()
-                        .filter(s -> s
-                                .getNom_ingredient()
-                                .equalsIgnoreCase(ingdt))));
-            } else {
-                ingredient.setNom_ingredient(ingdt);
-                hashMapIngredients.put(iteration, ingredient);
-            }
+            hashSetIngredient.add(ingdt);
+            String s1 = String.valueOf(hashSetIngredient
+                    .stream()
+                    .filter(s -> s
+                            .equalsIgnoreCase(ingdt)));
+            ingredient.setNom_ingredient(s1);
+            listIngredients.add(ingredient);
         }
+        return listIngredients;
     }
 
     /**
-     * @param hashMapNutriscore
+     * @param hashSetNutriscore
      * @param colContent
      * @return
      */
-    public static void creationInstanceNutriscore(int iteration, Map<Integer, Nutriscore> hashMapNutriscore, String colContent) {
+    public static Nutriscore creationInstanceNutriscore(Set<String> hashSetNutriscore, String colContent) {
         Nutriscore nutriscore = new Nutriscore();
-        if (hashMapNutriscore.containsKey(iteration)) {
-            nutriscore.setValeurScore(String.valueOf(hashMapNutriscore
-                    .values()
-                    .stream()
-                    .filter(s -> s
-                            .getValeurScore()
-                            .equalsIgnoreCase(colContent))));
-        } else {
-            nutriscore.setValeurScore(colContent);
-            hashMapNutriscore.put(iteration, nutriscore);
-        }
+        hashSetNutriscore.add(colContent);
+        String s1 = String.valueOf(hashSetNutriscore
+                .stream()
+                .filter(s -> s
+                        .equalsIgnoreCase(colContent)));
+        nutriscore.setValeurScore(s1);
+        return nutriscore;
     }
 
     /**
-     * @param hashMapMarques
+     * @param hashSetMarque
      * @param colContent
      * @return
      */
-    public static void creationInstanceMarque(int iteration, Map<Integer, Marque> hashMapMarques, String colContent) {
+    public static Marque creationInstanceMarque(Set<String> hashSetMarque, String colContent) {
         Marque marque = new Marque();
-        if (hashMapMarques.containsKey(iteration)) {
-            marque.setNom_marque(String.valueOf(hashMapMarques
-                    .values()
-                    .stream()
-                    .filter(s -> s
-                            .getNom_marque()
-                            .equalsIgnoreCase(colContent))));
-        } else {
-            marque.setNom_marque(colContent);
-            hashMapMarques.put(iteration, marque);
-        }
+        hashSetMarque.add(colContent);
+        String s1 = String.valueOf(hashSetMarque
+                .stream()
+                .filter(s -> s
+                        .equalsIgnoreCase(colContent)));
+        marque.setNom_marque(s1);
+
+        return marque;
     }
 
     /**
-     * @param hashMapProduits
+     * @param hashSetProduit
      * @param colContent
      * @return
      */
-    public static void creationInstanceProduit(int iteration, Map<Integer, Produit> hashMapProduits, String colContent) {
+    public static Produit creationInstanceProduit(Set<String> hashSetProduit, String colContent) {
         Produit produit = new Produit();
-        if (hashMapProduits.containsKey(iteration)) {
-            produit.setNom_produit(String.valueOf(hashMapProduits
-                    .values()
-                    .stream()
-                    .filter(s -> s
-                            .getNom_produit()
-                            .equalsIgnoreCase(colContent))));
-        } else {
-            produit.setNom_produit(colContent);
-            hashMapProduits.put(iteration, produit);
-        }
+        hashSetProduit.add(colContent);
+        String s1 = String.valueOf(hashSetProduit
+                .stream()
+                .filter(s -> s
+                        .equalsIgnoreCase(colContent)));
+        produit.setNom_produit(s1);
+        return produit;
     }
 
     /**
-     * @param hashMapCategorie
+     * @param hashSetCategorie
      * @param colContent
      * @return
      */
-    public static void creationInstanceCategorie(int iteration, Map<Integer, Categorie> hashMapCategorie, String colContent) {
+    public static Categorie creationInstanceCategorie(Set<String> hashSetCategorie, String colContent) {
         Categorie categorie = new Categorie();
-        if (hashMapCategorie.containsKey(iteration)) {
-            categorie.setNom_categorie(String.valueOf(hashMapCategorie
-                    .values()
-                    .stream()
-                    .filter(s -> s
-                            .getNom_categorie()
-                            .equalsIgnoreCase(colContent))));
-        } else {
-            categorie.setNom_categorie(colContent);
-            hashMapCategorie.put(iteration, categorie);
-        }
+        hashSetCategorie.add(colContent);
+        String s1 = String.valueOf(hashSetCategorie
+                .stream()
+                .filter(s -> s
+                        .equalsIgnoreCase(colContent)));
+        categorie.setNom_categorie(s1);
+        return categorie;
     }
 }
