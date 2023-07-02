@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="parsing avec la nouvelle méthode en cours" />
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Implémenation par collections d'objets en cours">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fr/diginamic/service/ParserTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,23 +134,7 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ParserTest.test_parseFile">
-    <configuration name="CsvFile01Test.testTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OpenFoodFacts" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fr.diginamic.bll.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fr.diginamic.bll" />
-      <option name="MAIN_CLASS_NAME" value="fr.diginamic.bll.CsvFile01Test" />
-      <option name="METHOD_NAME" value="testTitle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ParserTest.test_instantiateProduit">
     <configuration name="CsvFileBTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OpenFoodFacts" />
       <extension name="coverage">
@@ -191,6 +182,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ParserTest.test_instantiateProduit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IBOOF" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fr.diginamic.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fr.diginamic.service" />
+      <option name="MAIN_CLASS_NAME" value="fr.diginamic.service.ParserTest" />
+      <option name="METHOD_NAME" value="test_instantiateProduit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ParserTest.test_parseFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IBOOF" />
       <extension name="coverage">
@@ -222,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParserTest.test_instantiateProduit" />
         <item itemvalue="JUnit.ParserTest.test_parseFile" />
         <item itemvalue="JUnit.ParserTest.test_insertionToDataBase" />
         <item itemvalue="JUnit.CsvFileBTest.testMappedData" />
         <item itemvalue="JUnit.CsvFileBTest" />
-        <item itemvalue="JUnit.CsvFile01Test.testTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +283,7 @@
       <workItem from="1688185437940" duration="3334000" />
       <workItem from="1688201868338" duration="8728000" />
       <workItem from="1688211016323" duration="9649000" />
-      <workItem from="1688223643760" duration="15371000" />
+      <workItem from="1688223643760" duration="23793000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -576,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688253161867</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Implémenation par collections d'objets en cours">
+      <option name="closed" value="true" />
+      <created>1688253249752</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1688253249752</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tp3 terminé" />
     <MESSAGE value="tp4 terminé" />
     <MESSAGE value="TP 5 Terminé" />
     <MESSAGE value="TP6 à terminer" />
@@ -666,7 +680,8 @@
     <MESSAGE value="Parser fonctionnel + ajout d'une progressBar" />
     <MESSAGE value="Instanciation des objets en HashMap OK&#10;il faut maintenant:&#10;Itérer les listes saut produits et en persister chaque valeur&#10;ensuite, itérer sur les produits, recherches les instances des attributs à l'aide des clés dans les hasmap, et persister le produit;" />
     <MESSAGE value="parsing avec la nouvelle méthode en cours" />
-    <option name="LAST_COMMIT_MESSAGE" value="parsing avec la nouvelle méthode en cours" />
+    <MESSAGE value="Implémenation par collections d'objets en cours" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implémenation par collections d'objets en cours" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -674,20 +689,20 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
-          <line>353</line>
+          <line>418</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="30" />
+          <line>247</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
+          <line>411</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="splittedAdditifs[j]" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

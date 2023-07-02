@@ -11,16 +11,11 @@ import java.util.Set;
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MARQUE_ID")
     private Integer id_marque;
     private String nom_marque;
 
-    @OneToMany(mappedBy = "marque")
+    @ManyToMany(mappedBy = "marques")
     private Set<Produit> produits;
-
-    {
-        produits = new HashSet<>();
-    }
 
     public Marque() {
 

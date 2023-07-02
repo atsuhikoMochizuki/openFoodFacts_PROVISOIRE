@@ -11,7 +11,7 @@ import java.util.Set;
 public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produit")
+//    @Column(name = "id_produit")
     private Integer id_produit;
     private String nom_produit;
 
@@ -19,9 +19,12 @@ public class Produit {
     @JoinColumn(name = "CAT_ID")
     private Categorie categorie;
 
-    @ManyToOne
-    @JoinColumn(name = "MARQUE_ID")
-    private Marque marque;
+    @ManyToMany
+    @JoinTable(name = "MARQUE_PROD",
+            joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
+            inverseJoinColumns = @JoinColumn(name = "ID_MARQUE", referencedColumnName = "id_marque")
+    )
+    private Set<Marque> marques;
 
     @ManyToOne
     @JoinColumn(name = "NUTRISCORE_ID")
@@ -97,22 +100,35 @@ public class Produit {
         return additifs;
     }
 
+//    public void setAdditifs(Set<Additif> additifs) {
+//        if (this.additifs != null) {
+//            for (Additif additif : this.additifs) {
+//                additif.getProduits().remove(this);
+//            }
+//        }
+//        this.additifs = additifs;
+//        if (this.additifs != null) {
+//            for (Additif additif : this.additifs) {
+//                additif.getProduits().add(this);
+//            }
+//        }
+//    }
+
+
     public void setAdditifs(Set<Additif> additifs) {
-        if (this.additifs != null) {
-            for (Additif additif : this.additifs) {
-                additif.getProduits().remove(this);
-            }
-        }
         this.additifs = additifs;
-        if (this.additifs != null) {
-            for (Additif additif : this.additifs) {
-                additif.getProduits().add(this);
-            }
-        }
+    }
+
+    public void setMarques(Set<Marque> marques) {
+        this.marques = marques;
     }
 
     public Set<Allergene> getAllergenes() {
         return allergenes;
+    }
+
+    public void setNutriscore(Nutriscore nutriscore) {
+        this.nutriscore = nutriscore;
     }
 
     public void setAllergenes(Set<Allergene> allergenes) {
@@ -129,33 +145,20 @@ public class Produit {
         }
     }
 
-    public Marque getMarque() {
-        return marque;
-    }
 
-    public void setMarque(Marque marque) {
-        if (this.marque != null) {
-            this.marque.getProduits().remove(this);
-        }
-        this.marque = marque;
-        if (this.marque != null) {
-            this.marque.getProduits().add(this);
-        }
-    }
-
-    public Nutriscore getNutriscore() {
-        return nutriscore;
-    }
-
-    public void setNutriscore(Nutriscore nutriscore) {
-        if (this.nutriscore != null) {
-            this.nutriscore.getProduits().remove(this);
-        }
-        this.nutriscore = nutriscore;
-        if (this.nutriscore != null) {
-            this.nutriscore.getProduits().add(this);
-        }
-    }
+//    public Nutriscore getNutriscore() {
+//        return nutriscore;
+//    }
+//
+//    public void setNutriscore(Nutriscore nutriscore) {
+//        if (this.nutriscore != null) {
+//            this.nutriscore.getProduits().remove(this);
+//        }
+//        this.nutriscore = nutriscore;
+//        if (this.nutriscore != null) {
+//            this.nutriscore.getProduits().add(this);
+//        }
+//    }
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
@@ -175,18 +178,18 @@ public class Produit {
         }
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Produit{");
-        sb.append("id_produit=").append(id_produit);
-        sb.append(", nom_produit='").append(nom_produit).append('\'');
-        sb.append(", categorie=").append(categorie);
-        sb.append(", additifs=").append(additifs);
-        sb.append(", allergenes=").append(allergenes);
-        sb.append(", marque=").append(marque);
-        sb.append(", nutriscore=").append(nutriscore);
-        sb.append(", ingredients=").append(ingredients);
-        sb.append('}');
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        final StringBuffer sb = new StringBuffer("Produit{");
+//        sb.append("id_produit=").append(id_produit);
+//        sb.append(", nom_produit='").append(nom_produit).append('\'');
+//        sb.append(", categorie=").append(categorie);
+//        sb.append(", additifs=").append(additifs);
+//        sb.append(", allergenes=").append(allergenes);
+//        sb.append(", marque=").append(marque);
+//        sb.append(", nutriscore=").append(nutriscore);
+//        sb.append(", ingredients=").append(ingredients);
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }

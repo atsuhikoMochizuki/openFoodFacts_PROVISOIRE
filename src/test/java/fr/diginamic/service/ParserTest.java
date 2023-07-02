@@ -2,6 +2,9 @@ package fr.diginamic.service;
 
 import fr.diginamic.entities.*;
 import fr.diginamic.mochizukiTools.Utils;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -58,6 +61,22 @@ public class ParserTest extends TestCase {
             System.out.println("Key=" + key + ", Value=" + value);
         });
         Utils.msgResult("Test de la fonction parseFile OK");
+    }
+
+    @Test
+    public void test_instantiateProduit() {
+
+        Utils.msgTitle("Test de la fonction instantiationProduit");
+        ArrayList<String[]> rowsToParse = Cleaner.extractAndCleanDatas(Cleaner.CSV_FILE_RELATIVE_PATH);
+        ArrayList references_attributs_Produits = Parser.parseRows(rowsToParse);
+        try (EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
+             EntityManager em = emf.createEntityManager();
+        ) {
+            // Debut de la persistence avec transaction
+
+            Parser.instantiationProduits(rowsToParse, references_attributs_Produits, em);
+
+        }
     }
 
     @Test
