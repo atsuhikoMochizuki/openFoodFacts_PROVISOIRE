@@ -282,7 +282,6 @@ public class Parser {
                                     ingredientsToAssociate.add(ingredientToAssociate);
                                 } catch (Exception e) {
                                     Utils.msgError(e.getMessage());
-
                                 }
                             }
                         }
@@ -291,7 +290,210 @@ public class Parser {
                         break;
 
                     case ENERGIE100G:
+                        if (rowToParse[ENERGIE100G] == null) {
+                        } else if (rowToParse[ENERGIE100G].contentEquals("")) {
+                        } else if (rowToParse[ENERGIE100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setEnergiePour100g(Double.parseDouble(rowToParse[ENERGIE100G]));
+                        }
+                        break;
 
+                    case GRAISSE100G:
+                        if (rowToParse[GRAISSE100G] == null) {
+                        } else if (rowToParse[GRAISSE100G].contentEquals("")) {
+                        } else if (rowToParse[GRAISSE100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setGraisse100g(Double.parseDouble(rowToParse[GRAISSE100G]));
+                        }
+                        break;
+
+                    case SUCRES100G:
+                        if (rowToParse[SUCRES100G] == null) {
+                        } else if (rowToParse[SUCRES100G].contentEquals("")) {
+                        } else if (rowToParse[SUCRES100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setSucres100g(Double.parseDouble(rowToParse[SUCRES100G]));
+                        }
+                        break;
+
+                    case FIBRES100G:
+                        if (rowToParse[FIBRES100G] == null) {
+                        } else if (rowToParse[FIBRES100G].contentEquals("")) {
+                        } else if (rowToParse[FIBRES100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setFibres100g(Double.parseDouble(rowToParse[FIBRES100G]));
+                        }
+                        break;
+
+                    case PROTEINES100G:
+                        if (rowToParse[PROTEINES100G] == null) {
+                        } else if (rowToParse[PROTEINES100G].contentEquals("")) {
+                        } else if (rowToParse[PROTEINES100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setProteines100g(Double.parseDouble(rowToParse[PROTEINES100G]));
+                        }
+                        break;
+
+                    case SEL100G:
+                        if (rowToParse[SEL100G] == null) {
+                        } else if (rowToParse[SEL100G].contentEquals("")) {
+                        } else if (rowToParse[SEL100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setSel100g(Double.parseDouble(rowToParse[SEL100G]));
+                        }
+                        break;
+
+                    case VITA100G:
+                        if (rowToParse[VITA100G] == null) {
+                        } else if (rowToParse[VITA100G].contentEquals("")) {
+                        } else if (rowToParse[VITA100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVita100g(Double.parseDouble(rowToParse[VITA100G]));
+                        }
+                        break;
+
+                    case VITD100G:
+                        if (rowToParse[VITD100G] == null) {
+                        } else if (rowToParse[VITD100G].contentEquals("")) {
+                        } else if (rowToParse[VITD100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitd100g(Double.parseDouble(rowToParse[VITD100G]));
+                        }
+                        break;
+
+                    case VITE100G:
+                        if (rowToParse[VITE100G] == null) {
+                        } else if (rowToParse[VITE100G].contentEquals("")) {
+                        } else if (rowToParse[VITE100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVite100g(Double.parseDouble(rowToParse[VITE100G]));
+                        }
+                        break;
+
+                    case VITK100G:
+                        if (rowToParse[ENERGIE100G] == null) {
+                        } else if (rowToParse[ENERGIE100G].contentEquals("")) {
+                        } else if (rowToParse[ENERGIE100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitk100g(Double.parseDouble(rowToParse[ENERGIE100G]));
+                        }
+                        break;
+
+                    case VITC100G:
+                        if (rowToParse[VITC100G] == null) {
+                        } else if (rowToParse[VITC100G].contentEquals("")) {
+                        } else if (rowToParse[VITC100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitc100g(Double.parseDouble(rowToParse[VITC100G]));
+                        }
+                        break;
+
+                    case VITB1100G:
+                        if (rowToParse[VITB1100G] == null) {
+                        } else if (rowToParse[VITB1100G].contentEquals("")) {
+                        } else if (rowToParse[VITB1100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitb1100g(Double.parseDouble(rowToParse[VITB1100G]));
+                        }
+                        break;
+
+                    case VITB2100G:
+                        if (rowToParse[VITB2100G] == null) {
+                        } else if (rowToParse[VITB2100G].contentEquals("")) {
+                        } else if (rowToParse[VITB2100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitb2100g(Double.parseDouble(rowToParse[VITB2100G]));
+                        }
+                        break;
+
+                    case VITPP100G:
+                        if (rowToParse[VITPP100G] == null) {
+                        } else if (rowToParse[VITPP100G].contentEquals("")) {
+                        } else if (rowToParse[VITPP100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitpp100g(Double.parseDouble(rowToParse[VITPP100G]));
+                        }
+                        break;
+
+                    case VITB6100G:
+                        if (rowToParse[VITB6100G] == null) {
+                        } else if (rowToParse[VITB6100G].contentEquals("")) {
+                        } else if (rowToParse[VITB6100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitb6100g(Double.parseDouble(rowToParse[VITB6100G]));
+                        }
+                        break;
+
+                    case VITB9100G:
+                        if (rowToParse[VITB9100G] == null) {
+                        } else if (rowToParse[VITB9100G].contentEquals("")) {
+                        } else if (rowToParse[VITB9100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitb9100g(Double.parseDouble(rowToParse[VITB9100G]));
+                        }
+                        break;
+
+                    case VITB12100G:
+                        if (rowToParse[VITB12100G] == null) {
+                        } else if (rowToParse[VITB12100G].contentEquals("")) {
+                        } else if (rowToParse[VITB12100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setVitb12100g(Double.parseDouble(rowToParse[VITB12100G]));
+                        }
+                        break;
+
+                    case CALCIUM100G:
+                        if (rowToParse[CALCIUM100G] == null) {
+                        } else if (rowToParse[CALCIUM100G].contentEquals("")) {
+                        } else if (rowToParse[CALCIUM100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setCalcium100g(Double.parseDouble(rowToParse[CALCIUM100G]));
+                        }
+                        break;
+
+                    case MAGNESIUM100G:
+                        if (rowToParse[MAGNESIUM100G] == null) {
+                        } else if (rowToParse[MAGNESIUM100G].contentEquals("")) {
+                        } else if (rowToParse[MAGNESIUM100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setMagnesium100g(Double.parseDouble(rowToParse[MAGNESIUM100G]));
+                        }
+                        break;
+
+                    case IRON100G:
+                        if (rowToParse[IRON100G] == null) {
+                        } else if (rowToParse[IRON100G].contentEquals("")) {
+                        } else if (rowToParse[IRON100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setIron100g(Double.parseDouble(rowToParse[IRON100G]));
+                        }
+                        break;
+
+                    case FER100G:
+                        if (rowToParse[FER100G] == null) {
+                        } else if (rowToParse[FER100G].contentEquals("")) {
+                        } else if (rowToParse[FER100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setFer100g(Double.parseDouble(rowToParse[FER100G]));
+                        }
+                        break;
+
+                    case BETACAROTENE100G:
+                        if (rowToParse[BETACAROTENE100G] == null) {
+                        } else if (rowToParse[BETACAROTENE100G].contentEquals("")) {
+                        } else if (rowToParse[BETACAROTENE100G].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setBetacarotene100g(Double.parseDouble(rowToParse[BETACAROTENE100G]));
+                        }
+                        break;
+
+                    case PRESENCEHUILEPALME:
+                        if (rowToParse[PRESENCEHUILEPALME] == null) {
+                        } else if (rowToParse[PRESENCEHUILEPALME].contentEquals("")) {
+                        } else if (rowToParse[PRESENCEHUILEPALME].contentEquals(" ")) {
+                        } else {
+                            produitToPersist.setPresencehuilepalme(Boolean.parseBoolean(rowToParse[PRESENCEHUILEPALME]));
+                        }
                         break;
 
                     case ALLERGENES:

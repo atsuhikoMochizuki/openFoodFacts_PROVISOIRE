@@ -9,19 +9,19 @@ import java.util.Set;
 @Table
 @Cacheable
 public class Nutriscore {
+    //Attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "NUTRISCORE_ID")
+    @Column
     private Integer id_nutriscore;
+    @Column
     private String valeurScore;
 
+    //relations
     @OneToMany(mappedBy = "nutriscore")
     private Set<Produit> produits;
 
-    {
-        produits = new HashSet<>();
-    }
-
+    //Constructeurs
     public Nutriscore() {
     }
 
@@ -34,40 +34,41 @@ public class Nutriscore {
         this.valeurScore = valeurScore;
     }
 
+    //Getters
     public Integer getId_nutriscore() {
         return id_nutriscore;
-    }
-
-    public void setId_nutriscore(Integer id) {
-        this.id_nutriscore = id;
     }
 
     public String getValeurScore() {
         return valeurScore;
     }
 
-    public void setValeurScore(String valeurScore) {
-        this.valeurScore = valeurScore;
-    }
-
     public Set<Produit> getProduits() {
         return produits;
     }
 
+    //Setters
+    public void setId_nutriscore(Integer id_nutriscore) {
+        this.id_nutriscore = id_nutriscore;
+    }
+
+    public void setValeurScore(String valeurScore) {
+        this.valeurScore = valeurScore;
+    }
+
     public void setProduits(Set<Produit> produits) {
-        if (this.produits != null) {
-            this.produits.remove(this);
-        }
         this.produits = produits;
     }
 
+    //ToString()
+
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Nutriscore{");
-        sb.append("id=").append(id_nutriscore);
-        sb.append(", valeurScore=").append(valeurScore);
-        sb.append(", produits=").append(produits);
-        sb.append('}');
-        return sb.toString();
+        return "Nutriscore{" +
+                "id_nutriscore=" + id_nutriscore +
+                ", valeurScore='" + valeurScore + '\'' +
+                ", produits=" + produits +
+                '}';
     }
 }

@@ -9,14 +9,20 @@ import java.util.Set;
 @Table
 @Cacheable
 public class Allergene {
+
+    //Attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer id_allergene;
     @Column
     private String nom_allergene;
+
+    //Relations
     @ManyToMany(mappedBy = "allergenes")
     private Set<Produit> produits;
 
+    //Constructeurs
     public Allergene() {
     }
 
@@ -29,41 +35,40 @@ public class Allergene {
         this.nom_allergene = nom_allergene;
     }
 
+    //Getters
     public Integer getId_allergene() {
         return id_allergene;
-    }
-
-    public void setId_allergene(Integer id_allergene) {
-        this.id_allergene = id_allergene;
     }
 
     public String getNom_allergene() {
         return nom_allergene;
     }
 
-    public void setNom_allergene(String nom_allergene) {
-        this.nom_allergene = nom_allergene;
-    }
-
     public Set<Produit> getProduits() {
         return produits;
     }
 
+    //Setters
+    public void setId_allergene(Integer id_allergene) {
+        this.id_allergene = id_allergene;
+    }
+
+    public void setNom_allergene(String nom_allergene) {
+        this.nom_allergene = nom_allergene;
+    }
+
     public void setProduits(Set<Produit> produits) {
-        if (this.produits != null) {
-            this.produits.remove(this);
-        }
         this.produits = produits;
     }
 
+    //ToString()
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Allergene{");
-        sb.append("id_allergene=").append(id_allergene);
-        sb.append(", nom_allergene='").append(nom_allergene).append('\'');
-        sb.append(", produits=").append(produits);
-        sb.append('}');
-        return sb.toString();
+        return "Allergene{" +
+                "id_allergene=" + id_allergene +
+                ", nom_allergene='" + nom_allergene + '\'' +
+                ", produits=" + produits +
+                '}';
     }
 }

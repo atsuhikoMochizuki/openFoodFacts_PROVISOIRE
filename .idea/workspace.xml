@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Bug sur la persistence pourtant bien avancée">
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="parser très prometteur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Additif.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Allergene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Categorie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Marque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Nutriscore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/entities/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Cleaner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/open-food-facts.csv" afterDir="false" />
     </list>
@@ -282,7 +288,7 @@
       <workItem from="1688185437940" duration="3334000" />
       <workItem from="1688201868338" duration="8728000" />
       <workItem from="1688211016323" duration="9649000" />
-      <workItem from="1688223643760" duration="29305000" />
+      <workItem from="1688223643760" duration="33291000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -598,7 +604,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688293417535</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="parser très prometteur">
+      <option name="closed" value="true" />
+      <created>1688299720398</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1688299720399</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +677,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="TP 5 Terminé" />
     <MESSAGE value="TP6 à terminer" />
     <MESSAGE value="Mise en place structure projet + MCD v1" />
     <MESSAGE value="MCD - MPD OK + Premier jet conception" />
@@ -688,7 +701,8 @@
     <MESSAGE value="parsing avec la nouvelle méthode en cours" />
     <MESSAGE value="Implémenation par collections d'objets en cours" />
     <MESSAGE value="Bug sur la persistence pourtant bien avancée" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug sur la persistence pourtant bien avancée" />
+    <MESSAGE value="parser très prometteur" />
+    <option name="LAST_COMMIT_MESSAGE" value="parser très prometteur" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -696,13 +710,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
-          <line>355</line>
+          <line>557</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fr/diginamic/service/Parser.java</url>
-          <line>298</line>
-          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

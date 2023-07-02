@@ -25,7 +25,7 @@ public class Cleaner {
     // Filtres
     public static final String FILTRE_POURCENTAGES = "(?:\\s+\\d+[%])";
     public static final String FILTRE_GRAMMES = "(?:\\s+\\d+[g])";
-    public static final String FILTRE_CARACTERES_PARASITES = "(?:[_*:.|%])";
+    public static final String FILTRE_CARACTERES_PARASITES = "(?:[_*:|%])";
     public static final String FILTRE_MILLIGRAMMES_MATIERES_GRASSES = "(?:\\s+\\d+[m]g)";
     public static final String FILTRE_PARENTHESES = "(\\((.*?)\\))";
     public static final String FILTRE_CROCHETS = "(\\[(.*?)\\])";

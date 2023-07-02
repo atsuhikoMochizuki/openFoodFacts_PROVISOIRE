@@ -9,20 +9,20 @@ import java.util.Set;
 @Table
 @Cacheable
 public class Categorie {
+
+    //Attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CAT_ID")
+    @Column
     private Integer id_categorie;
-
+    @Column
     private String nom_categorie;
 
+    //Relations
     @OneToMany(mappedBy = "categorie")
     private Set<Produit> produits;
 
-    {
-        produits = new HashSet<>();
-    }
-
+    //Constructeurs
     public Categorie() {
     }
 
@@ -35,41 +35,39 @@ public class Categorie {
         this.nom_categorie = nom_categorie;
     }
 
+    //Getters
     public Integer getId_categorie() {
         return id_categorie;
-    }
-
-    public void setId_categorie(Integer id) {
-        this.id_categorie = id;
     }
 
     public String getNom_categorie() {
         return nom_categorie;
     }
 
-    public void setNom_categorie(String nom_categorie) {
-        this.nom_categorie = nom_categorie;
-    }
-
     public Set<Produit> getProduits() {
         return produits;
     }
 
+    //Setters
+    public void setId_categorie(Integer id_categorie) {
+        this.id_categorie = id_categorie;
+    }
+
+    public void setNom_categorie(String nom_categorie) {
+        this.nom_categorie = nom_categorie;
+    }
+
     public void setProduits(Set<Produit> produits) {
-        if (this.produits != null) {
-            this.produits.remove(this);
-        }
         this.produits = produits;
     }
 
-
+    //ToString()
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Categorie{");
-        sb.append("id_categorie=").append(id_categorie);
-        sb.append(", nom_categorie='").append(nom_categorie).append('\'');
-        sb.append(", produits=").append(produits);
-        sb.append('}');
-        return sb.toString();
+        return "Categorie{" +
+                "id_categorie=" + id_categorie +
+                ", nom_categorie='" + nom_categorie + '\'' +
+                ", produits=" + produits +
+                '}';
     }
 }

@@ -9,14 +9,20 @@ import java.util.Set;
 @Table
 @Cacheable
 public class Marque {
+
+    //Attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Integer id_marque;
+    @Column
     private String nom_marque;
 
+    //Relations
     @ManyToMany(mappedBy = "marques")
     private Set<Produit> produits;
 
+    //Constructeurs
     public Marque() {
 
     }
@@ -31,40 +37,39 @@ public class Marque {
         this.produits = produits;
     }
 
+    //Getters
     public Integer getId_marque() {
         return id_marque;
-    }
-
-    public void setId_marque(Integer id) {
-        this.id_marque = id;
     }
 
     public String getNom_marque() {
         return nom_marque;
     }
 
-    public void setNom_marque(String nom_marque) {
-        this.nom_marque = nom_marque;
-    }
-
     public Set<Produit> getProduits() {
         return produits;
     }
 
+    //Setters
+    public void setId_marque(Integer id_marque) {
+        this.id_marque = id_marque;
+    }
+
+    public void setNom_marque(String nom_marque) {
+        this.nom_marque = nom_marque;
+    }
+
     public void setProduits(Set<Produit> produits) {
-        if (this.produits != null) {
-            this.produits.remove(this);
-        }
         this.produits = produits;
     }
 
+    //ToString()
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Marque{");
-        sb.append("id=").append(id_marque);
-        sb.append(", nom_marque='").append(nom_marque).append('\'');
-        sb.append(", produits=").append(produits);
-        sb.append('}');
-        return sb.toString();
+        return "Marque{" +
+                "id_marque=" + id_marque +
+                ", nom_marque='" + nom_marque + '\'' +
+                ", produits=" + produits +
+                '}';
     }
 }
