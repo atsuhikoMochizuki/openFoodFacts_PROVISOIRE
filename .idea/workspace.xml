@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Menu + Services almost done...">
+    <list default="true" id="75c20231-6e14-43a3-8372-c67bca64d69a" name="Changes" comment="Menu + Services done">
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c49a5f0b265f47c0b4d64fa12c8190ee95ca4ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b667c8a1354bcf97fb49a8522be9d2943c45542" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/745ab34c4f129c7bbc93ca9747284b13bf3d734c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9bb3c23f274a4c361051582d575a3a757b125fff" afterDir="false" />
@@ -18,7 +17,6 @@
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/4/d426a54999e6d0039ddd8b9fec1d1beea00fb749" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/c/3c49a5f0b265f47c0b4d64fa12c8190ee95ca4ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/b/5b667c8a1354bcf97fb49a8522be9d2943c45542" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/745ab34c4f129c7bbc93ca9747284b13bf3d734c" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/b/9bb3c23f274a4c361051582d575a3a757b125fff" afterDir="false" />
@@ -49,8 +47,8 @@
       <list>
         <option value="JUnit4 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -305,7 +303,7 @@
       <workItem from="1688196489918" duration="16052000" />
       <workItem from="1688238623828" duration="6653000" />
       <workItem from="1688280712725" duration="7777000" />
-      <workItem from="1688290460426" duration="21279000" />
+      <workItem from="1688290460426" duration="24533000" />
     </task>
     <task id="LOCAL-00001" summary="1er Commit">
       <created>1686687725615</created>
@@ -584,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688331559444</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Menu + Services done">
+      <created>1688334881882</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1688334881882</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tp3 terminé" />
     <MESSAGE value="tp4 terminé" />
     <MESSAGE value="TP 5 Terminé" />
     <MESSAGE value="TP6 à terminer" />
@@ -640,7 +644,8 @@
     <MESSAGE value="probleme heap space insuffisant" />
     <MESSAGE value="DAL done" />
     <MESSAGE value="Menu + Services almost done..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu + Services almost done..." />
+    <MESSAGE value="Menu + Services done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu + Services done" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
