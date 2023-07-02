@@ -11,16 +11,11 @@ import java.util.Set;
 public class Allergene {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_allergene")
     private Integer id_allergene;
-    @Column(length = 555)
+    @Column
     private String nom_allergene;
     @ManyToMany(mappedBy = "allergenes")
     private Set<Produit> produits;
-
-    {
-        produits = new HashSet<>();
-    }
 
     public Allergene() {
     }

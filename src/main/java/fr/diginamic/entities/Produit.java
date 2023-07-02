@@ -9,56 +9,51 @@ import java.util.Set;
 @Table
 @Cacheable
 public class Produit {
+    // Attributs propres aux produits
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id_produit")
     private Integer id_produit;
     private String nom_produit;
+    private double energiePour100g;
 
+    //Attributs relations 1-n
     @ManyToOne
     @JoinColumn(name = "CAT_ID")
     private Categorie categorie;
+    @ManyToOne
+    @JoinColumn(name = "NUTRISCORE_ID")
+    private Nutriscore nutriscore;
 
+    //Attributs relations n-n
     @ManyToMany
-    @JoinTable(name = "MARQUE_PROD",
+    @JoinTable(name = "JOIN_TABLE_MARQUE_PRODUIT",
             joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
             inverseJoinColumns = @JoinColumn(name = "ID_MARQUE", referencedColumnName = "id_marque")
     )
     private Set<Marque> marques;
 
-    @ManyToOne
-    @JoinColumn(name = "NUTRISCORE_ID")
-    private Nutriscore nutriscore;
+    @ManyToMany
+    @JoinTable(name = "JOIN_TABLE_ALLERGENE_PRODUIT",
+            joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
+            inverseJoinColumns = @JoinColumn(name = "ID_ALLERGENE", referencedColumnName = "id_allergene")
+    )
+    private Set<Allergene> allergenes;
 
     @ManyToMany
-    @JoinTable(name = "ADD_PROD",
+    @JoinTable(name = "JOIN_TABLE_ADDITIF_PRODUIT",
             joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
             inverseJoinColumns = @JoinColumn(name = "ID_ADDITIF", referencedColumnName = "id_additif")
     )
     private Set<Additif> additifs;
 
     @ManyToMany
-    @JoinTable(name = "ALLERGENE_PROD",
-            joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
-            inverseJoinColumns = @JoinColumn(name = "ID_ALLERGENE", referencedColumnName = "id_allergene")
-    )
-    private Set<Allergene> allergenes;
-
-
-    @ManyToMany
-    @JoinTable(name = "INGREDIENT_PROD",
+    @JoinTable(name = "JOIN_TABLE_INGREDIENT_PRODUIT",
             joinColumns = @JoinColumn(name = "ID_PRODUIT", referencedColumnName = "id_produit"),
             inverseJoinColumns = @JoinColumn(name = "ID_INGREDIENT", referencedColumnName = "id_ingredient")
     )
     private Set<Ingredient> ingredients;
 
-    {
-        additifs = new HashSet<>();
-        allergenes = new HashSet<>();
-        ingredients = new HashSet<>();
-    }
-
-
+    //Constructeurs
     public Produit() {
     }
 
@@ -66,130 +61,95 @@ public class Produit {
         this.nom_produit = nom_produit;
     }
 
+    //Getters
+
     public Integer getId_produit() {
         return id_produit;
-    }
-
-    public void setId_produit(Integer id) {
-        this.id_produit = id;
     }
 
     public String getNom_produit() {
         return nom_produit;
     }
 
-    public void setNom_produit(String nom_produit) {
-        this.nom_produit = nom_produit;
+    public double getEnergiePour100g() {
+        return energiePour100g;
     }
 
     public Categorie getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(Categorie categorie) {
-        if (this.categorie != null) {
-            this.categorie.getProduits().remove(this);
-        }
-        this.categorie = categorie;
-        if (this.categorie != null) {
-            this.categorie.getProduits().add(this);
-        }
+    public Nutriscore getNutriscore() {
+        return nutriscore;
     }
 
-    public Set<Additif> getAdditifs() {
-        return additifs;
-    }
-
-//    public void setAdditifs(Set<Additif> additifs) {
-//        if (this.additifs != null) {
-//            for (Additif additif : this.additifs) {
-//                additif.getProduits().remove(this);
-//            }
-//        }
-//        this.additifs = additifs;
-//        if (this.additifs != null) {
-//            for (Additif additif : this.additifs) {
-//                additif.getProduits().add(this);
-//            }
-//        }
-//    }
-
-
-    public void setAdditifs(Set<Additif> additifs) {
-        this.additifs = additifs;
-    }
-
-    public void setMarques(Set<Marque> marques) {
-        this.marques = marques;
+    public Set<Marque> getMarques() {
+        return marques;
     }
 
     public Set<Allergene> getAllergenes() {
         return allergenes;
     }
 
-    public void setNutriscore(Nutriscore nutriscore) {
-        this.nutriscore = nutriscore;
+    public Set<Additif> getAdditifs() {
+        return additifs;
     }
-
-    public void setAllergenes(Set<Allergene> allergenes) {
-        if (this.allergenes != null) {
-            for (Allergene allergene : this.allergenes) {
-                allergene.getProduits().remove(this);
-            }
-        }
-        this.allergenes = allergenes;
-        if (this.allergenes != null) {
-            for (Allergene allergene : this.allergenes) {
-                allergene.getProduits().add(this);
-            }
-        }
-    }
-
-
-//    public Nutriscore getNutriscore() {
-//        return nutriscore;
-//    }
-//
-//    public void setNutriscore(Nutriscore nutriscore) {
-//        if (this.nutriscore != null) {
-//            this.nutriscore.getProduits().remove(this);
-//        }
-//        this.nutriscore = nutriscore;
-//        if (this.nutriscore != null) {
-//            this.nutriscore.getProduits().add(this);
-//        }
-//    }
 
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        if (this.ingredients != null) {
-            for (Ingredient ingredient : this.ingredients) {
-                ingredient.getProduits().remove(this);
-            }
-        }
-        this.ingredients = ingredients;
-        if (this.ingredients != null) {
-            for (Ingredient ingredient : this.ingredients) {
-                ingredient.getProduits().add(this);
-            }
-        }
+    //Setters
+
+    public void setId_produit(Integer id_produit) {
+        this.id_produit = id_produit;
     }
 
-//    @Override
-//    public String toString() {
-//        final StringBuffer sb = new StringBuffer("Produit{");
-//        sb.append("id_produit=").append(id_produit);
-//        sb.append(", nom_produit='").append(nom_produit).append('\'');
-//        sb.append(", categorie=").append(categorie);
-//        sb.append(", additifs=").append(additifs);
-//        sb.append(", allergenes=").append(allergenes);
-//        sb.append(", marque=").append(marque);
-//        sb.append(", nutriscore=").append(nutriscore);
-//        sb.append(", ingredients=").append(ingredients);
-//        sb.append('}');
-//        return sb.toString();
-//    }
+    public void setNom_produit(String nom_produit) {
+        this.nom_produit = nom_produit;
+    }
+
+    public void setEnergiePour100g(double energiePour100g) {
+        this.energiePour100g = energiePour100g;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setNutriscore(Nutriscore nutriscore) {
+        this.nutriscore = nutriscore;
+    }
+
+    public void setMarques(Set<Marque> marques) {
+        this.marques = marques;
+    }
+
+    public void setAllergenes(Set<Allergene> allergenes) {
+        this.allergenes = allergenes;
+    }
+
+    public void setAdditifs(Set<Additif> additifs) {
+        this.additifs = additifs;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    //ToString()
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "id_produit=" + id_produit +
+                ", nom_produit='" + nom_produit + '\'' +
+                ", energiePour100g=" + energiePour100g +
+                ", categorie=" + categorie +
+                ", nutriscore=" + nutriscore +
+                ", marques=" + marques +
+                ", allergenes=" + allergenes +
+                ", additifs=" + additifs +
+                ", ingredients=" + ingredients +
+                '}';
+    }
 }

@@ -192,7 +192,9 @@ public class Parser {
     }
 
     public static void instantiationProduits(ArrayList<String[]> rowsToParse, ArrayList listeGenerale, EntityManager em) {
+        String nomProduit = new String("");
         Utils.msgTitle("Instantiation des produits...");
+
         em.getTransaction().begin();
         //Liste de référencements et leur index associés
         Map<String, Categorie> refs_categories = (Map<String, Categorie>) listeGenerale.get(0);
@@ -203,18 +205,9 @@ public class Parser {
         Map<String, Allergene> refs_allergenes = (Map<String, Allergene>) listeGenerale.get(5);
         Map<String, Additif> refs_additifs = (Map<String, Additif>) listeGenerale.get(6);
 
-//        Set entrySet = refs_produits.entrySet();
-//        Iterator it_prod = entrySet.iterator();
-//
-//        while (it_prod.hasNext()) {
-//            Map.Entry refProduit = (Map.Entry)it_prod.next();
-//
-        Produit produitToPersist = new Produit();
-
-
         Iterator<String[]> iter = rowsToParse.iterator();
         while (iter.hasNext()) {
-
+            Produit produitToPersist = new Produit();
             String[] rowToParse = iter.next();
             Utils.msgInfo(String.format("Persistence du produit %s", rowToParse[PRODUIT]));
             for (int colIndex = 0; colIndex < rowToParse.length; colIndex++) {
@@ -231,47 +224,16 @@ public class Parser {
                         break;
 
                     case MARQUE:
-                        //Nota : un produit peut contenir plusieurs marques, ce qui remet en cause
-                        //Le mapping. Nous gardons donc pour le premier sprint d'éventuelles marques concaténées
-//                        String[] splittedMarque = rowToParse[MARQUE].trim().split(",");
-//                        for (int j = 0; j < splittedMarque.length; j++) {
-//                            if (splittedMarque[j] == null) {
-//                            } else if (splittedMarque[j].contentEquals("")) {
-//                            } else if (splittedMarque[j].contentEquals(" ")) {
-//                            } else {
-//                                if (!refs_marques.containsKey(splittedMarque[j])) {
-//                                    Marque marqueToAdd = new Marque(splittedMarque[j]);
-//                                    refs_marques.put(splittedMarque[j], marqueToAdd);
-//                                }
-//                            }
-//                        }
-//                        Marque marqueToAssociate = refs_marques.get(rowToParse[MARQUE]);
-//                        if (marqueToAssociate == null) {
-//                            throw new RuntimeException();
-//                        } else {
-//                            em.persist(marqueToAssociate);
-//                            produitToPersist.setMarque(marqueToAssociate);
-//                        }
-//                        Utils.msgDebug("marque attribuées");
-//                        break;
-
                         Set<Marque> marquesToAssociate = new HashSet<>();
-
-                        //Sur la ligne que l'on traite, on splitte les valeurs de la colonne "ingredient"
-                        // dans un tableau de Strings
                         String[] splittedMarque = rowToParse[MARQUE].split(",");
-
-                        //Pour chaque valeur de ce tableau, on recherche recherche l'objet associé
-                        // dans le Map de référence de cette colonne
                         for (int j = 0; j < splittedMarque.length; j++) {
                             if (splittedMarque[j] == null) {
                             } else if (splittedMarque[j].contentEquals("")) {
                             } else if (splittedMarque[j].contentEquals(" ")) {
                             } else {
-                                //Recherche de l'objet correspondant dans le Map de référencement des ingrédients
                                 try {
                                     Marque marqueToAssociate = refs_marques.get(splittedMarque[j]);
-                                    //On place l'objet trouvé dans le set d'ingrédients qui compose le produit
+                                    em.persist(marqueToAssociate);
                                     marquesToAssociate.add(marqueToAssociate);
                                 } catch (Exception e) {
                                     Utils.msgError(e.getMessage());
@@ -279,14 +241,20 @@ public class Parser {
                                 }
                             }
                         }
-
-                        // em.persist(ingredientsToAssociate);
-                        //On persiste le set d'ingrédient ainsi crée
-
-
-                        //On l'associe au produit
                         produitToPersist.setMarques(marquesToAssociate);
-                        Utils.msgDebug("ingredient attribuées");
+                        Utils.msgDebug("marque attribuées");
+                        break;
+
+                    case PRODUIT:
+                        Produit produitToAssociate = refs_produits.get(rowToParse[PRODUIT]);
+                        if (produitToAssociate == null) {
+                            throw new RuntimeException();
+                        } else {
+//                            em.persist(catToAssociate);
+//                            produitToPersist.setCategorie(catToAssociate);
+                            nomProduit = produitToAssociate.getNom_produit();
+                        }
+                        Utils.msgDebug("nom Récupéré");
                         break;
 
                     case NUTRITIONGRADEFR:
@@ -301,25 +269,16 @@ public class Parser {
                         break;
 
                     case INGREDIENTS:
-                        //Création d'un set qui va regroupper l'ensemble des ingrédients qui
-                        //compose le produit
                         Set<Ingredient> ingredientsToAssociate = new HashSet<>();
-
-                        //Sur la ligne que l'on traite, on splitte les valeurs de la colonne "ingredient"
-                        // dans un tableau de Strings
-                        String[] splittedIngredient = rowToParse[INGREDIENTS].split(",");
-
-                        //Pour chaque valeur de ce tableau, on recherche recherche l'objet associé
-                        // dans le Map de référence de cette colonne
-                        for (int j = 0; j < splittedIngredient.length; j++) {
-                            if (splittedIngredient[j] == null) {
-                            } else if (splittedIngredient[j].contentEquals("")) {
-                            } else if (splittedIngredient[j].contentEquals(" ")) {
+                        String[] splittedIngredients = rowToParse[INGREDIENTS].split(",");
+                        for (int j = 0; j < splittedIngredients.length; j++) {
+                            if (splittedIngredients[j] == null) {
+                            } else if (splittedIngredients[j].contentEquals("")) {
+                            } else if (splittedIngredients[j].contentEquals(" ")) {
                             } else {
-                                //Recherche de l'objet correspondant dans le Map de référencement des ingrédients
                                 try {
-                                    Ingredient ingredientToAssociate = refs_ingredients.get(splittedIngredient[j]);
-                                    //On place l'objet trouvé dans le set d'ingrédients qui compose le produit
+                                    Ingredient ingredientToAssociate = refs_ingredients.get(splittedIngredients[j]);
+                                    em.persist(ingredientToAssociate);
                                     ingredientsToAssociate.add(ingredientToAssociate);
                                 } catch (Exception e) {
                                     Utils.msgError(e.getMessage());
@@ -327,90 +286,68 @@ public class Parser {
                                 }
                             }
                         }
-
-                        em.persist(ingredientsToAssociate);
-                        //On persiste le set d'ingrédient ainsi crée
-
-
-                        //On l'associe au produit
                         produitToPersist.setIngredients(ingredientsToAssociate);
-                        Utils.msgDebug("ingredient attribuées");
+                        Utils.msgDebug("ingredients attribuées");
+                        break;
+
+                    case ENERGIE100G:
+
                         break;
 
                     case ALLERGENES:
-                        //Création d'un set qui va regroupper l'ensemble des allergenes qui
-                        //compose le produit
                         Set<Allergene> allergenesToAssociate = new HashSet<>();
-
-                        //Sur la ligne que l'on traite, on splitte les valeurs de la colonne "ingredient"
-                        // dans un tableau de Strings
                         String[] splittedAllergenes = rowToParse[ALLERGENES].split(",");
-
-                        //Pour chaque valeur de ce tableau, on recherche recherche l'objet associé
-                        // dans le Map de référence de cette colonne
                         for (int j = 0; j < splittedAllergenes.length; j++) {
                             if (splittedAllergenes[j] == null) {
+                                Utils.msgWarning("La colonnes ne contient aucune donnée");
                             } else if (splittedAllergenes[j].contentEquals("")) {
+                                Utils.msgWarning("La colonnes ne contient aucune donnée");
                             } else if (splittedAllergenes[j].contentEquals(" ")) {
+                                Utils.msgWarning("La colonnes ne contient aucune donnée");
                             } else {
-                                //Recherche de l'objet correspondant dans le Map de référencement des ingrédients
-                                Allergene allergeneToAssociate = refs_allergenes.get(splittedAllergenes[j]);
-                                if (allergeneToAssociate == null) {
-                                    throw new RuntimeException();
-                                } else {
-                                    //On place l'objet trouvé dans le set d'ingrédients qui compose le produit
+                                try {
+                                    Allergene allergeneToAssociate = refs_allergenes.get(splittedAllergenes[j]);
+                                    em.persist(allergeneToAssociate);
                                     allergenesToAssociate.add(allergeneToAssociate);
+                                } catch (Exception e) {
+                                    Utils.msgError(e.getMessage());
+
                                 }
                             }
                         }
-                        //On persiste le set d'allergenes ainsi crée
-//                       em.persist(allergenesToAssociate);
-
-                        //On l'associe au produit
                         produitToPersist.setAllergenes(allergenesToAssociate);
                         Utils.msgDebug("allergenes attribuées");
                         break;
 
-//                    case ADDITIFS:
-//                        //Création d'un set qui va regroupper l'ensemble des allergenes qui
-//                        //compose le produit
-//                        Set<Additif> additifsToAssociate = new HashSet<>();
-//
-//                        //Sur la ligne que l'on traite, on splitte les valeurs de la colonne "ingredient"
-//                        // dans un tableau de Strings
-//                        String[] splittedAdditifs = rowToParse[ADDITIFS].split(",");
-//
-//                        //Pour chaque valeur de ce tableau, on recherche recherche l'objet associé
-//                        // dans le Map de référence de cette colonne
-//                        for (int j = 0; j < splittedAdditifs.length; j++) {
-//                            if (splittedAdditifs[j] == null) {
-//                            } else if (splittedAdditifs[j].contentEquals("")) {
-//                            } else if (splittedAdditifs[j].contentEquals(" ")) {
-//                            } else {
-//                                //Recherche de l'objet correspondant dans le Map de référencement des ingrédients
-//                                Additif additifToAssociate = refs_additifs.get(splittedAdditifs[j]);
-//                                if (additifToAssociate == null) {
-//                                    throw new RuntimeException();
-//                                } else {
-//                                    //On place l'objet trouvé dans le set d'ingrédients qui compose le produit
-//                                    additifsToAssociate.add(additifToAssociate);
-//                                }
-//                            }
-//                        }
-//                        //On persiste le set d'allergenes ainsi crée
-//                        // em.persist(allergenesToAssociate);
-//
-//                        //On l'associe au produit
-//                        produitToPersist.setAdditifs(additifsToAssociate);
-//                        Utils.msgDebug("additifs attribuées");
-//                        break;
+                    case ADDITIFS:
+                        Set<Additif> additifsToAssociate = new HashSet<>();
+                        String[] splittedAdditifs = rowToParse[ADDITIFS].split(",");
+                        for (int j = 0; j < splittedAdditifs.length; j++) {
+                            if (splittedAdditifs[j] == null) {
+                            } else if (splittedAdditifs[j].contentEquals("")) {
+                            } else if (splittedAdditifs[j].contentEquals(" ")) {
+                            } else {
+                                try {
+                                    Additif additifToAssociate = refs_additifs.get(splittedAdditifs[j]);
+                                    em.persist(additifToAssociate);
+                                    additifsToAssociate.add(additifToAssociate);
+                                } catch (Exception e) {
+                                    Utils.msgError(e.getMessage());
+
+                                }
+                            }
+                        }
+                        produitToPersist.setAdditifs(additifsToAssociate);
+                        Utils.msgDebug("additifs attribuées");
+                        break;
                 }
             }
             //Pour finir, on persiste le produit
+            produitToPersist.setNom_produit(nomProduit);
             em.persist(produitToPersist);
             Utils.msgDebug("produit persisté");
-            em.getTransaction().commit();
         }
+        em.getTransaction().commit();
     }
 }
 
