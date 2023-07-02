@@ -11,12 +11,14 @@ import java.util.List;
 
 public class Services implements Iservices {
 
-    private Produit produit;
     private Marque marque;
     private Categorie categorie;
-    private Ingredient ingredient;
-    private Allergene allergene;
-    private Additif additif;
+
+    String nomMarque;
+    String nomCategorie;
+
+    public Services() {
+    }
 
     @PersistenceContext
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("IBOOF-JPA");
@@ -33,7 +35,7 @@ public class Services implements Iservices {
                                 "WHERE marq.nom_marque = ? " +
                                 "AND nutri.valeurScore = \"a\"" +
                                 "LIMIT 10")
-                .setParameter(1, marque.getNom_marque())
+                .setParameter(1, getMarque())
                 .getResultList();
         resultList.forEach(System.out::println);
 
@@ -49,7 +51,7 @@ public class Services implements Iservices {
                                 "WHERE categ.nom_categorie = ? " +
                                 "AND nutri.valeurScore = \"a\"" +
                                 "LIMIT 10")
-                .setParameter(1, categorie.getNom_categorie())
+                .setParameter(1, getCategorie())
                 .getResultList();
         resultList.forEach(System.out::println);
     }
@@ -63,11 +65,11 @@ public class Services implements Iservices {
                                 "Marque AS marq, " +
                                 "NutriScore AS nutri " +
                                 "WHERE categ.nom_categorie = ? " +
-                                "AND mar.nom_marque = ? " +
+                                "AND marq.nom_marque = ? " +
                                 "AND nutri.valeurScore = \"a\"" +
                                 "LIMIT 10")
-                .setParameter(1, categorie.getNom_categorie())
-                .setParameter(2, marque.getNom_marque())
+                .setParameter(1, getCategorie())
+                .setParameter(2, getMarque())
                 .getResultList();
         resultList.forEach(System.out::println);
 
@@ -109,4 +111,13 @@ public class Services implements Iservices {
         resultList.forEach(System.out::println);
     }
 
+    public String getMarque() {
+        nomMarque = this.marque.getNom_marque();
+        return nomMarque;
+    }
+
+    public String getCategorie() {
+        nomCategorie = this.categorie.getNom_categorie();
+        return nomCategorie;
+    }
 }

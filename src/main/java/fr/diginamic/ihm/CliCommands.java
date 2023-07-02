@@ -28,14 +28,14 @@ public class CliCommands {
                 case "1" -> {
                     System.out.println("Choix de la marque : ");
                     Scanner choixMarque = new Scanner(System.in);
-                    if (services.getMarque().getNom_marque().equalsIgnoreCase(String.valueOf(choixMarque))) {
+                    if (services.getMarque().equalsIgnoreCase(String.valueOf(choixMarque))) {
                         services.service1();
                     }
                 }
                 case "2" -> {
                     System.out.println("Choix de la Categorie : ");
                     Scanner choixCategorie = new Scanner(System.in);
-                    if (services.getCategorie().getNom_categorie().equalsIgnoreCase(String.valueOf(choixCategorie))) {
+                    if (services.getCategorie().equalsIgnoreCase(String.valueOf(choixCategorie))) {
                         services.service2();
                     }
                 }
@@ -44,8 +44,8 @@ public class CliCommands {
                     Scanner choixMarque = new Scanner(System.in);
                     System.out.println("Choix de la Categorie : ");
                     Scanner choixCategorie = new Scanner(System.in);
-                    if (services.getMarque().getNom_marque().equalsIgnoreCase(String.valueOf(choixMarque))
-                            && services.getCategorie().getNom_categorie().equalsIgnoreCase(String.valueOf(choixCategorie))) {
+                    if (services.getMarque().equalsIgnoreCase(String.valueOf(choixMarque))
+                            && services.getCategorie().equalsIgnoreCase(String.valueOf(choixCategorie))) {
                         services.service3();
                     }
                 }
