@@ -4,6 +4,7 @@ import fr.diginamic.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -57,15 +58,15 @@ public class Parser {
                 em.persist(nutriscore);
 
                 // REMPLISSAGE DU MAPPER DE LA LISTE INGREDIENT
-                List<Ingredient> listIngredients = creationInstanceIngredient(ingredients, line[4].split(","));
+                Set<Ingredient> listIngredients = creationInstanceIngredient(ingredients, line[4].split(","));
                 listIngredients.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES ALLERGENES
-                List<Allergene> listAllergenes = creationInstanceAllergene(allergenes, line[28].split(","));
+                Set<Allergene> listAllergenes = creationInstanceAllergene(allergenes, line[28].split(","));
                 listAllergenes.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES ADDITIFS
-                List<Additif> listAdditifs = creationInstanceAdditif(additifs, line[29].split(","));
+                Set<Additif> listAdditifs = creationInstanceAdditif(additifs, line[29].split(","));
                 listAdditifs.forEach(em::persist);
 
                 // REMPLISSAGE DU MAPPER DES PRODUITS AVEC LEUR JOINTURE
@@ -75,15 +76,9 @@ public class Parser {
                 produit.setCategorie(categorie);
                 produit.setMarque(marque);
                 produit.setNutriscore(nutriscore);
-
-                Set<Ingredient> ingredientSet = new HashSet<>(listIngredients);
-                produit.setIngredients(ingredientSet);
-
-                Set<Allergene> allergeneSet = new HashSet<>(listAllergenes);
-                produit.setAllergenes(allergeneSet);
-
-                Set<Additif> additifSet = new HashSet<>(listAdditifs);
-                produit.setAdditifs(additifSet);
+                produit.setIngredients(listIngredients);
+                produit.setAllergenes(listAllergenes);
+                produit.setAdditifs(listAdditifs);
 
                 // PERSISTANCE DES DONNEES DE L'ENTITE PRODUIT
                 em.persist(produit);
@@ -103,19 +98,18 @@ public class Parser {
      * @param colContent     tableau de chaine de caractère en paramètre de la méthode
      * @return on retourne une liste composée des instances d'objets
      */
-    public static List<Additif> creationInstanceAdditif(Set<String> hashSetAdditif, String[] colContent) {
-        List<Additif> listAdditifs = new ArrayList<>();
+    public static Set<Additif> creationInstanceAdditif(Set<String> hashSetAdditif, String[] colContent) {
+        Set<Additif> setAdditifs = new HashSet<>();
+        Additif additif = new Additif();
         for (String additi : colContent) {
-            Additif additif = new Additif();
-            hashSetAdditif.add(additi);
-            String s1 = String.valueOf(hashSetAdditif
-                    .stream()
-                    .filter(s -> s
-                            .equalsIgnoreCase(additi)));
-            additif.setNom_additif(s1);
-            listAdditifs.add(additif);
+            if (!hashSetAdditif.contains(additi)) {
+                hashSetAdditif.add(additi);
+            }
+            Optional<String> optionalS = hashSetAdditif.stream().findAny().filter(s -> s.equalsIgnoreCase(additi));
+            additif.setNom_additif(optionalS.get());
+            setAdditifs.add(additif);
         }
-        return listAdditifs;
+        return setAdditifs;
     }
 
     /**
@@ -123,19 +117,18 @@ public class Parser {
      * @param colContent       tableau de chaines de caractère en paramètre de la méthode
      * @return on retourne une liste composée des instances d'objets
      */
-    public static List<Allergene> creationInstanceAllergene(Set<String> hashSetAllergene, String[] colContent) {
-        List<Allergene> listAllergenes = new ArrayList<>();
+    public static Set<Allergene> creationInstanceAllergene(Set<String> hashSetAllergene, String[] colContent) {
+        Set<Allergene> setAllergenes = new HashSet<>();
+        Allergene allergene = new Allergene();
         for (String allerg : colContent) {
-            Allergene allergene = new Allergene();
-            hashSetAllergene.add(allerg);
-            String s1 = String.valueOf(hashSetAllergene
-                    .stream()
-                    .filter(s -> s
-                            .equalsIgnoreCase(allerg)));
-            allergene.setNom_allergene(s1);
-            listAllergenes.add(allergene);
+            if (!hashSetAllergene.contains(allerg)) {
+                hashSetAllergene.add(allerg);
+            }
+            Optional<String> optionalS = hashSetAllergene.stream().findAny().filter(s -> s.equalsIgnoreCase(allerg));
+            allergene.setNom_allergene(optionalS.get());
+            setAllergenes.add(allergene);
         }
-        return listAllergenes;
+        return setAllergenes;
     }
 
     /**
@@ -143,19 +136,18 @@ public class Parser {
      * @param lineSplit         tableau de chaines de caractère en paramètre de la méthode
      * @return on retourne une liste composée des instances d'objets
      */
-    public static List<Ingredient> creationInstanceIngredient(Set<String> hashSetIngredient, String[] lineSplit) {
-        List<Ingredient> listIngredients = new ArrayList<>();
+    public static Set<Ingredient> creationInstanceIngredient(Set<String> hashSetIngredient, String[] lineSplit) {
+        Set<Ingredient> setIngredients = new HashSet<>();
+        Ingredient ingredient = new Ingredient();
         for (String ingdt : lineSplit) {
-            Ingredient ingredient = new Ingredient();
-            hashSetIngredient.add(ingdt);
-            String s1 = String.valueOf(hashSetIngredient
-                    .stream()
-                    .filter(s -> s
-                            .equalsIgnoreCase(ingdt)));
-            ingredient.setNom_ingredient(s1);
-            listIngredients.add(ingredient);
+            if (!hashSetIngredient.contains(ingdt)) {
+                hashSetIngredient.add(ingdt);
+            }
+            Optional<String> optionalS = hashSetIngredient.stream().findAny().filter(s -> s.equalsIgnoreCase(ingdt));
+            ingredient.setNom_ingredient(optionalS.get());
+            setIngredients.add(ingredient);
         }
-        return listIngredients;
+        return setIngredients;
     }
 
     /**
@@ -164,13 +156,12 @@ public class Parser {
      * @return
      */
     public static Nutriscore creationInstanceNutriscore(Set<String> hashSetNutriscore, String colContent) {
+        if (!hashSetNutriscore.contains(colContent)) {
+            hashSetNutriscore.add(colContent);
+        }
+        Optional<String> optionalS = hashSetNutriscore.stream().findAny().filter(s -> s.equalsIgnoreCase(colContent));
         Nutriscore nutriscore = new Nutriscore();
-        hashSetNutriscore.add(colContent);
-        String s1 = String.valueOf(hashSetNutriscore
-                .stream()
-                .filter(s -> s
-                        .equalsIgnoreCase(colContent)));
-        nutriscore.setValeurScore(s1);
+        nutriscore.setValeurScore(optionalS.get());
         return nutriscore;
     }
 
@@ -180,14 +171,12 @@ public class Parser {
      * @return
      */
     public static Marque creationInstanceMarque(Set<String> hashSetMarque, String colContent) {
+        if (!hashSetMarque.contains(colContent)) {
+            hashSetMarque.add(colContent);
+        }
+        Optional<String> optionalS = hashSetMarque.stream().findAny().filter(s -> s.equalsIgnoreCase(colContent));
         Marque marque = new Marque();
-        hashSetMarque.add(colContent);
-        String s1 = String.valueOf(hashSetMarque
-                .stream()
-                .filter(s -> s
-                        .equalsIgnoreCase(colContent)));
-        marque.setNom_marque(s1);
-
+        marque.setNom_marque(optionalS.get());
         return marque;
     }
 
@@ -197,13 +186,12 @@ public class Parser {
      * @return
      */
     public static Produit creationInstanceProduit(Set<String> hashSetProduit, String colContent) {
+        if (!hashSetProduit.contains(colContent)) {
+            hashSetProduit.add(colContent);
+        }
+        Optional<String> optionalS = hashSetProduit.stream().findAny().filter(s -> s.equalsIgnoreCase(colContent));
         Produit produit = new Produit();
-        hashSetProduit.add(colContent);
-        String s1 = String.valueOf(hashSetProduit
-                .stream()
-                .filter(s -> s
-                        .equalsIgnoreCase(colContent)));
-        produit.setNom_produit(s1);
+        produit.setNom_produit(optionalS.get());
         return produit;
     }
 
@@ -213,13 +201,12 @@ public class Parser {
      * @return
      */
     public static Categorie creationInstanceCategorie(Set<String> hashSetCategorie, String colContent) {
+        if (!hashSetCategorie.contains(colContent)) {
+            hashSetCategorie.add(colContent);
+        }
+        Optional<String> optionalS = hashSetCategorie.stream().findAny().filter(s -> s.equalsIgnoreCase(colContent));
         Categorie categorie = new Categorie();
-        hashSetCategorie.add(colContent);
-        String s1 = String.valueOf(hashSetCategorie
-                .stream()
-                .filter(s -> s
-                        .equalsIgnoreCase(colContent)));
-        categorie.setNom_categorie(s1);
+        categorie.setNom_categorie(optionalS.get());
         return categorie;
     }
 }

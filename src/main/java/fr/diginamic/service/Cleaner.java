@@ -47,6 +47,10 @@ public class Cleaner {
         pattern_FILTRE_TRAITEMENTS_VIRGULES = Pattern.compile(FILTRE_TRAITEMENTS_VIRGULES);
     }
 
+    /**
+     * @param chaineAfiltrer
+     * @return
+     */
     public static String filtrer(String chaineAfiltrer) {
         String chaineNettoyee;
         Matcher matcher;
@@ -66,6 +70,10 @@ public class Cleaner {
         return chaineNettoyee;
     }
 
+    /**
+     * @param csvFile_path
+     * @return
+     */
     public static ArrayList<String[]> cleanFile(String csvFile_path) {
         List<String> rows;
 

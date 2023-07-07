@@ -25,6 +25,9 @@ public class Services implements Iservices {
     private final EntityManager em = emf.createEntityManager();
 
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service1() {
@@ -41,6 +44,9 @@ public class Services implements Iservices {
 
     }
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service2() {
@@ -56,6 +62,9 @@ public class Services implements Iservices {
         resultList.forEach(System.out::println);
     }
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service3() {
@@ -75,6 +84,9 @@ public class Services implements Iservices {
 
     }
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service4() {
@@ -87,6 +99,9 @@ public class Services implements Iservices {
         resultList.forEach(System.out::println);
     }
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service5() {
@@ -99,6 +114,9 @@ public class Services implements Iservices {
         resultList.forEach(System.out::println);
     }
 
+    /**
+     *
+     */
     @Transactional
     @Override
     public void service6() {

@@ -1,5 +1,6 @@
 package fr.diginamic.ihm;
 
+import fr.diginamic.service.Iservices;
 import fr.diginamic.service.Services;
 
 import java.util.Scanner;
@@ -21,6 +22,7 @@ public class CliCommands {
         Scanner scanner = new Scanner(System.in);
 
         Services services = new Services();
+//        Iservices services = new Services();
 
         while (!scanner.hasNext("x")) {
             System.out.println(menu);
